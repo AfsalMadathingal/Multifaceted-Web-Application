@@ -18,6 +18,9 @@
     <input class="button--submit" value="Download" type="submit">
 </div>
 
+
+<div class="loading-bar">Loading</div>
+
     <div class="container">
   <div class="palette">
     <div class="image">
@@ -66,7 +69,20 @@
 
         getReels.addEventListener('click', (event) => {
 
+            const loading= document.querySelector('.loading-bar')
             const url = document.getElementById('url').value
+
+            
+
+           var urlRegx = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/g
+
+            if (!urlRegx.test(document.getElementById('url').value)) {
+                
+                return alert('Please enter a valid URL')
+
+            }
+
+            loading.style.display = 'block';
             
             console.log(url)
            
@@ -89,7 +105,7 @@
                   return alert(data.error)
                }
 
-
+               loading.style.display = 'none';
                window.location.href = data.data[0].link
                
            })
