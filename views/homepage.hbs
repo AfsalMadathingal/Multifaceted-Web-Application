@@ -24,7 +24,7 @@
     <div class="container">
   <div class="palette">
     <div class="image">
-        <img src="https://play-lh.googleusercontent.com/sn_2xT5NCjg-Km4XiZMAOM6xb4LxDqC_9sd5TENCjbU9D4aXVNrendOmIzHFyQo_kahz" alt="">
+        <img id="insta-image" src="https://play-lh.googleusercontent.com/sn_2xT5NCjg-Km4XiZMAOM6xb4LxDqC_9sd5TENCjbU9D4aXVNrendOmIzHFyQo_kahz" alt="">
     </div>
   </div>
   <div id="footer">
@@ -71,6 +71,7 @@
 
             const loading= document.querySelector('.loading-bar')
             const url = document.getElementById('url').value
+            const instaImage= document.getElementById('insta-image')
 
             
 
@@ -105,8 +106,12 @@
                   return alert(data.error)
                }
 
+
                loading.style.display = 'none';
+                instaImage.src = data.data[0].thumb
                window.location.href = data.data[0].link
+
+
                
            })
 
