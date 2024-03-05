@@ -1,0 +1,105 @@
+<link rel="stylesheet" href="/style/home.css">
+
+<div class="home">
+
+
+<nav class="navbar">
+  <div class="container-fluid">
+    <h1 class="logo-get">GetReels</h1>
+  </div>
+</nav>
+
+
+
+
+
+<div class="input-group">
+    <input type="text" class="input" id="url" name="url" placeholder="Paste URL of the video" autocomplete="off">
+    <input class="button--submit" value="Download" type="submit">
+</div>
+
+    <div class="container">
+  <div class="palette">
+    <div class="image">
+        <img src="https://play-lh.googleusercontent.com/sn_2xT5NCjg-Km4XiZMAOM6xb4LxDqC_9sd5TENCjbU9D4aXVNrendOmIzHFyQo_kahz" alt="">
+    </div>
+  </div>
+  <div id="footer">
+    <div id="bookmarks">
+      <svg stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+      </svg>
+      <span>53421</span>
+    </div>
+    <svg stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg">
+      <circle r="1" cy="12" cx="12"></circle>
+      <circle r="1" cy="12" cx="19"></circle>
+      <circle r="1" cy="12" cx="5"></circle>
+    </svg>
+  </div>
+</div>
+
+<button class="botao">
+  <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="mysvg"><g id="SVGRepo_bgCarrier" stroke-width="0">
+    </g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier">
+       <g id="Interface / Download"> 
+       <path id="Vector" d="M6 21H18M12 3V17M12 17L17 12M12 17L7 12" stroke="#f1f1f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+       </path>
+    </g> </g>
+  </svg>
+  <span class="texto">Download</span>
+</button>
+
+
+</div>
+
+
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', () => {
+        
+
+        const DownloadButton = document.querySelector('.botao');
+        
+        const getReels = document.querySelector('.button--submit');
+
+        getReels.addEventListener('click', (event) => {
+
+            const url = document.getElementById('url').value
+            
+            console.log(url)
+           
+           fetch('/download', {
+               method: 'POST',
+               headers: {
+                   'Content-Type': 'application/json'
+               },
+               body: JSON.stringify({
+                   url
+               })
+           }).then(res => {
+               return res.json()
+           }).then(data => {
+               
+               console.log(data)
+
+               if (!data.status) {
+                   
+                  return alert(data.error)
+               }
+
+
+               window.location.href = data.data[0].link
+               
+           })
+
+            
+        })
+
+
+
+
+
+    })
+</script>

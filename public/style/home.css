@@ -1,0 +1,329 @@
+body {
+    margin: 0;
+    height: 100vh; /* Set the height of the body to 100% of the viewport height */
+}
+
+
+.home
+{
+    background-image: linear-gradient(to left top, #bc0555, #a9005f, #930067, #78006e, #580072, #6f006b, #820064, #91005d, #b92245, #cb5326, #c68500, #acb303);
+
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+}
+
+.container {
+    width: 300px;
+    height: 340px;
+    border-radius: 1em;
+    overflow: hidden;
+    box-shadow: 0 10px 20px #dbdbdb;
+    font-family: sans-serif;
+    background: white;
+    pointer-events: none;
+  }
+  
+  .image img {
+      width: 100%; /* Set the width of the image to 100% of the div's width */
+      height: auto; /* Maintain aspect ratio, automatically adjusting the height */
+      display: block; /* Ensure the image is displayed as a block element */
+  }
+  
+  .palette {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border-radius: 1rem;
+    overflow: hidden;
+    pointer-events: auto;
+  }
+  
+  .palette:hover > #color-code {
+    opacity: 0;
+  }
+  
+  .color {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    transform-origin: center;
+    transition: 0.3s ease-in-out;
+    box-sizing: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .color span {
+    color: white;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  
+  #color1 {
+    background: #4B0082;
+    rotate: 45deg;
+    translate: 212.13px 0;
+    outline: 0 solid #4B0082;
+    z-index: 9;
+  }
+  
+  #color1:hover {
+    translate: 0 0;
+    rotate: 0deg;
+    z-index: 99;
+    outline: 20px solid #4B0082;
+  }
+  
+  #color2 {
+    background: #8A2BE2;
+    rotate: 45deg;
+    translate: 0 212.13px;
+    outline: 0 solid #8A2BE2;
+    z-index: 9;
+  }
+  
+  #color2:hover {
+    translate: 0 0;
+    rotate: 0deg;
+    z-index: 99;
+    outline: 20px solid #8A2BE2;
+  }
+  
+  #color2 span {
+    color: #1A1A1A;
+  }
+  
+  #color3 {
+    background: #9932CC;
+    rotate: 45deg;
+    translate: -212.13px 0;
+    outline: 0 solid #9932CC;
+    z-index: 9;
+  }
+  
+  #color3:hover {
+    translate: 0 0;
+    rotate: 0deg;
+    z-index: 99;
+    outline: 20px solid #9932CC;
+  }
+  
+  #color4 {
+    background: #BA55D3;
+    rotate: 45deg;
+    translate: 0 -212.13px;
+    outline: 0 solid #BA55D3;
+    z-index: 9;
+  }
+  
+  #color4:hover {
+    translate: 0 0;
+    rotate: 0deg;
+    z-index: 99;
+    outline: 20px solid #BA55D3;
+  }
+  
+  #color-code {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    translate: 130px 130px;
+    border-radius: 20px;
+    overflow: hidden;
+    z-index: 199;
+    opacity: 1;
+    transition: 0.3s ease-in-out;
+  }
+  
+  #color-code-bg {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.8);
+    filter: blur(10px);
+  }
+  
+  #color-code-text {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #color-code-text::after {
+    content: "v2";
+    font-weight: 600;
+    font-family: sans-serif;
+    color: #1a1a1a;
+  }
+  
+  #footer {
+    height: 12%;
+    width: 100%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1em;
+    box-sizing: border-box;
+    color: #bebebe;
+  }
+  
+  #footer svg {
+    scale: 0.75;
+  }
+  
+  #footer #bookmarks {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: smaller;
+  }
+
+  .input-group {
+    display: flex;
+    align-items: center;
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+  
+  .input {
+    min-height: 50px;
+    width: 500px;
+    padding: 0 1rem;
+    color: #000000;
+    font-size: 15px;
+    border: 1px solid #5e4dcd;
+    border-radius: 6px 0 0 6px;
+    background-color: white;
+  }
+
+  @media screen and (max-width: 768px) {
+    .input {
+      width: 100%;
+    }
+    
+  }
+  
+  .button--submit {
+    min-height: 50px;
+    padding: .5em 1em;
+    border: none;
+    border-radius: 0 6px 6px 0;
+    background-color: #5e4dcd;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color .3s ease-in-out;
+  }
+  
+  .button--submit:hover {
+    background-color: #5e5dcd;
+  }
+  
+  .input:focus, .input:focus-visible {
+    border-color: #3898EC;
+    outline: none;
+  }
+  
+
+  /*nav */
+
+  .navbar{
+    width: 100%;
+    background-color: white;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    
+  }
+  .container-fluid
+  {
+    padding-left: 100px;
+  }
+
+  .logo-get
+  {
+    background: linear-gradient(to right, blue, rgb(165, 3, 30), rgb(180, 180, 1));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+
+  /* button */
+
+  .botao {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 125px;
+    height: 45px;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 1px 1px rgba(107, 221, 215, 0.37);
+    padding: 5px 10px;
+    background: rgb(47,93,197);
+    background: linear-gradient(160deg, rgba(47,93,197,1) 0%, rgba(46,86,194,1) 5%, rgba(47,93,197,1) 11%, rgba(59,190,230,1) 57%, rgba(0,212,255,1) 71%);
+    color: #fff;
+    font-family: Roboto, sans-serif;
+    font-weight: 505;
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+    filter: drop-shadow(0 0 10px rgba(59, 190, 230, 0.568));
+    transition: .5s linear;
+  }
+  
+  .botao .mysvg {
+    display: none;
+  }
+  
+  .botao:hover {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    transition: .5s linear;
+  }
+  
+  .botao:hover .texto {
+    display: none;
+  }
+  
+  .botao:hover .mysvg {
+    display: inline;
+  }
+  
+  .botao:hover::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    width: 100%;
+    height: 100%;
+    border: 3.5px solid transparent;
+    border-top: 3.5px solid #fff;
+    border-right: 3.5px solid #fff;
+    border-radius: 50%;
+    animation: animateC 2s linear infinite;
+  }
+  
+  @keyframes animateC {
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
