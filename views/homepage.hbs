@@ -135,9 +135,9 @@ Instagram Reels Downloader by Snapinsta will help you download Reels videos from
         getReels.addEventListener('click', (event) => {
 
             const loading= document.querySelector('.loading-bar')
-            const url = document.getElementById('url').value
+            var url = document.getElementById('url').value
             const instaImage= document.getElementById('insta-image')
-
+            let newurl;
             
 
            var urlRegx = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/g
@@ -147,10 +147,28 @@ Instagram Reels Downloader by Snapinsta will help you download Reels videos from
                 return alert('Please enter a valid URL')
 
             }
+    console.log(url)
+
+          
+           const questionMarkIndex = url.indexOf("?");
+    
+    // If "?" exists in the URL, remove everything after it
+    if (questionMarkIndex !== -1) {
+        newurl = url.substring(0, questionMarkIndex);
+        newurl += "?utm_source=ig_web_copy_link";
+    }
+    
+    // Add "&utm_source=ig_web_copy_link" to the end of the URL
+   
+          
 
             loading.style.display = 'block';
             
             console.log(url)
+
+            url = newurl ? newurl : url
+           
+           console.log(newurl)
            
            fetch('/download', {
                method: 'POST',
@@ -158,7 +176,7 @@ Instagram Reels Downloader by Snapinsta will help you download Reels videos from
                    'Content-Type': 'application/json'
                },
                body: JSON.stringify({
-                   url
+                   url 
                })
            }).then(res => {
                return res.json()
