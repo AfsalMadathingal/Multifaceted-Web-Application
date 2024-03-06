@@ -7,7 +7,9 @@ const instaDownload = require('../utils/instaDownloader')
 router.get('/', (req, res) => {
 
     try {
-        res.render('homepage')
+        res.render('homepage',{
+            title:"GetReels - Download Instagram Videos Easily"
+        })
     }
     catch (error) {
 
@@ -51,12 +53,39 @@ try {
 
 }
 
-   
+
+})
 
 
+router.get('/about', (req, res) => {
+
+    try {
+        
+
+        res.render('about',{
+            title:"About Us - Getreels"
+        }) 
+    }
+    catch
+    {
+
+    }
 
 
+})
 
+router.get('/contactus', (req, res) => {
+
+    try {
+        
+        res.render('contactus',{
+            title:"Contact Us - Getreels"
+        })
+
+    } catch (error) {
+        
+    }
+    
 })
 
 
