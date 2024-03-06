@@ -20,7 +20,8 @@ async function instaDownload (url,callback) {
       
     
       
-          console.log("downloading...");
+          console.log("downloading...",url);
+      
           
           try {
               const response = await axios.request(options);
