@@ -7,6 +7,11 @@ const instaDownload = require('../utils/instaDownloader')
 router.get('/', (req, res) => {
 
     try {
+
+        const ipAddress = req.header('x-forwarded-for') || req.connection.remoteAddress;
+        
+        console.log(`ip address: ${ipAddress}`);
+
         res.render('homepage',{
             title:"GetReels - Download Instagram Videos Easily"
         })
