@@ -93,6 +93,18 @@ router.get('/contactus', (req, res) => {
     
 })
 
+router.get('/services', (req, res) => {
+    
+    try {
+        
+        res.render('services',{
+            title:"Services - Getreels"
+        })
+    } catch (error) {
+        
+    }
+})
+
 
 
 
