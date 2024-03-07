@@ -3,10 +3,38 @@ body {
     height: 100vh; /* Set the height of the body to 100% of the viewport height */
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+}
+
+.headline-one
+{
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 600;
+  color: white;
+
+}
+.headline
+{
+  
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 600;
+}
 
 .home
 {
-    background-image: linear-gradient(to left top, #bc0555, #a9005f, #930067, #78006e, #580072, #6f006b, #820064, #91005d, #b92245, #cb5326, #c68500, #acb303);
+  background: #780206;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #061161, #780206);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #061161, #780206); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+  
 
     width: 100%;
     height: 100%;
@@ -201,11 +229,11 @@ body {
     min-height: 50px;
     width: 500px;
     padding: 0 1rem;
-    color: #000000;
+    color: #ffffff;
     font-size: 15px;
     border: 1px solid #5e4dcd;
     border-radius: 6px 0 0 6px;
-    background-color: white;
+    background-color: transparent;
   }
 
   @media screen and (max-width: 768px) {
@@ -240,8 +268,13 @@ body {
   /*nav */
 
   .navbar{
+
+
     width: 100%;
-    background-color: white;
+    background: #EFEFBB;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #D4D3DD, #EFEFBB);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
     height: 50px;
     display: flex;
     align-items: center;
