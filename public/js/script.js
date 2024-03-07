@@ -17,8 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (!urlRegx.test(document.getElementById('url').value)) {
 
-        return alert('Please enter a valid URL')
-
+        return swal ( "Oops" ,  "The Link you entered is wrong!" ,  "error" )
       }
       console.log(url)
 
