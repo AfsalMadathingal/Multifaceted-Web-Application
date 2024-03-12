@@ -59,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }).then(data => {
 
         console.log(data)
+        if()
 
         if (data.data.length == 0) {
 
@@ -68,7 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         if (!data.status) {
 
-          return alert(data.error)
+          return swal ( "Oops" ,  "I think You have Reached Limit For today" ,  "error" )
+
         }
 
 

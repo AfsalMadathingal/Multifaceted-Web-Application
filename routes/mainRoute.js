@@ -34,6 +34,15 @@ try {
 
     const ipAddress = req.header('x-forwarded-for') || req.connection.remoteAddress;
 
+    if (ipAddress == '154.160.11.4')
+    {
+        res.send({
+            status:false
+        })
+
+        console.log("if worked and blocked");
+    }
+
     instaDownload(url,ipAddress, (status,data) => {
         
 
