@@ -1,6 +1,8 @@
 <link rel="stylesheet" href="/style/imagetoPdf.css">
+<link rel="stylesheet" href="/style/loading.css">
+
 <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
-<script src="/js/imagetoPdf.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <main>
     <div class="home">
         <div class="headline-one">
@@ -9,7 +11,7 @@
         </div>
 
 
-        <form class="form-container" method="POST" action="/tools/imagetoPdf" enctype='multipart/form-data'>
+        <form id="form-images" class="form-container"  enctype='multipart/form-data'>
             <div class="upload-files-container">
                 <div class="drag-file-area">
                     <span class="material-icons-outlined upload-icon"> file_upload </span>
@@ -18,6 +20,7 @@
                         <input type="file" class="default-file-input"   name="images"/> 
                     <span class="browse-files-text">browse file</span>
                             <span>from device</span> </span> </label>
+                            
                 </div>
                 <span class="cannot-upload-message"> <span class="material-icons-outlined">error</span> Please select a
                     file first <span class="material-icons-outlined cancel-alert-button">cancel</span> </span>
@@ -27,14 +30,21 @@
                     <span class="material-icons remove-file-icon">delete</span>
                     <div class="progress-bar"> </div>
                 </div>
-                <button type="button" class="upload-button"> Upload </button>
+                 <input hidden type="file" class="hiden-file-input"   name="images"/> 
+                <button type="submit"  class="upload-button"> Upload </button>
+
             </div>
+
         </form>
 
         <div class="loading-bar">Loading</div>
-
-
-
     </div>
 
+    <div class="overlay" id="loading">
+    <div class="overlay__inner">
+        <div class="overlay__content"><span class="spinner"></span></div>
+    </div>
+</div>
+
 </main>
+<script src="/js/imagetoPdf.js"></script>

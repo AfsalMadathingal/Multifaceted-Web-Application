@@ -1,6 +1,8 @@
 const express = require('express')
 const router = express.Router()
-const upload = require('../middleware/upload');
+const {uploadSingle} = require('../middleware/upload');
+const {converterFunction} = require('../utils/imageToPdf');
+const { v4: uuidv4 } = require('uuid');
 
 router.get('/imagetopdf',(req, res) => {
     
@@ -12,12 +14,30 @@ router.get('/imagetopdf',(req, res) => {
 })
 
 
-router.post('/imagetopdf', upload, (req, res) => {
+router.post('/imagetopdf', uploadSingle, async (req, res) => {
 
-    console.log(req.file);
+    
     console.log(req.files);
 
-    res.send('file uploaded')
+    const {filename }= req.files[0];
+    const pngOutputName = uuidv4() + '.png';
+    
+   const response = await  converterFunction(`./public/uploads/${filename}`,`./public/uploads/${pngOutputName}`)
+    console.log("path ",response);
+ 
+    try {
+        fs.unlinkSync(response.imagePath); // Remove PDF file
+        fs.unlinkSync(filename)
+    } catch (error) {
+        
+console.log(error);
+    }
+   
+    res.json(response)
+
+
+    
+    
     
 })
 

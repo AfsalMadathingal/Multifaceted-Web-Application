@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }).then(data => {
 
         console.log(data)
-        if()
+   
 
         if (data.data.length == 0) {
 

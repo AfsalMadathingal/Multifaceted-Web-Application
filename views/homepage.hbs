@@ -1,3 +1,15 @@
+ 
+ <script>
+
+  function onSubmit(token) {
+    
+    document.getElementById("button--submit-btn").click();
+
+  }
+
+ </script>
+ 
+
 
 <main>
   <div class="home">
@@ -7,9 +19,16 @@
 </div>
 
 
+
     <div class="input-group">
       <input type="text" class="input" id="url" name="url" placeholder="Paste Instagram Link here" autocomplete="off">
-      <input class="button--submit" value="Download" type="submit">
+    <button class="g-recaptcha button--submit"
+    id="button--submit-btn"
+    data-sitekey="6LdEzJUpAAAAAJwKxMZLJkUXTCvLSJRxPOpwHe9z"
+    data-callback='onSubmit'
+    data-action='submit'>
+  Download
+</button>
     </div>
     <div class="loading-bar">Loading</div>
     <div class="container">
@@ -105,6 +124,4 @@
     </section>
   </div>
 </article>
-
-
 

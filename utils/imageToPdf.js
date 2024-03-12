@@ -7,43 +7,158 @@ const upload = require('../middleware/upload');
 
 
 
-const inputPath = 'IMG-20231120-WA0068.jpg'; 
-const outputPath = 'output.png';
-
-function convertJpgToPng ()  {
-
-  return  new Promise((resolve,reject)=>{
-
-        sharp(inputPath)
-        .png()
-        .toFile(outputPath, (err, info) => {
-            if (err) {
-                console.error('Error converting JPG to PNG:', err);
-                reject();
-            } else {
-                console.log('Conversion successful:', info);
-                resolve();
-            }
-        });
-    });
-} 
 
 
-async function converterFunction () {
+// async function converterFunction (inputPath,outputPath ,callback) {
+    
+//     let successful= false
 
-    convertJpgToPng(inputPath, outputPath).then((result) => {
+//     function convertJpgToPng ()  {
+    
+//       return  new Promise((resolve,reject)=>{
+    
+//         if(inputPath.endsWith('.jpg') || inputPath.endsWith('.jpeg')) {
+    
+//             sharp(inputPath)
+//             .png()
+//             .toFile(outputPath, (err, info) => {
+//                 if (err) {
+//                     console.error('Error converting JPG to PNG:', err);
+//                     reject(outputPath);
+//                 } else {
+//                     console.log('Conversion successful:', outputPath);
+//                     resolve(outputPath);
+//                 }
+//             });
 
-        console.log('Conversion successful:', result);
+//         }else
+//         {
+//             resolve("not a jpg file");
+//         }
+    
+          
+//         });
+//     } 
+    
+
+
+
+
+
+
+
+
+
+
+//   await  convertJpgToPng(inputPath, outputPath).then((result) => {
+
+//         console.log('Conversion successful:', result);
+
+//         async function convertImageToPdf(imagePath, pdfPath) {
+//             try {
+               
+//                 const dimensions = sizeOf(imagePath);
+                
+               
+//                 const pdfDoc = await PDFDocument.create();
+//                 const page = pdfDoc.addPage([dimensions.width, dimensions.height]);
+                
+               
+//                 const imageBytes = fs.readFileSync(imagePath);
+//                 const image = await pdfDoc.embedPng(imageBytes);
+//                 page.drawImage(image, {
+//                     x: 0,
+//                     y: 0,
+//                     width: dimensions.width,
+//                     height: dimensions.height,
+//                 });
+                
+               
+//                 const pdfBytes = await pdfDoc.save();
+//                 fs.writeFileSync(pdfPath, pdfBytes);
+
+//                 console.log('Image converted to PDF successfully!');
+
+             
+//                 successful= true
+//                console.log("success1 : ",successful);
+            
+               
+//             } catch (error) {
+//                 console.error('Error:', error);
+//             }
+//         }
+        
+ 
+       
+//         const imagePath = outputPath; 
+//         const pdfPath = `./public/pdf/`+uuidv4()+`.pdf`; 
+        
+//      convertImageToPdf(imagePath, pdfPath);
+
+    
+//     }).catch((err) => {
+        
+//     });
+
+    
+   
+
+
+//         console.log(successful);
+   
+   
+//         if (successful) {
+   
+//            return {
+//                status:true,
+//                pdfpath:pdfPath,
+//                imagepath:imagePath
+//            }
+   
+//        }
+//        return "failed";
+   
+
+
+// }
+
+
+async function converterFunction(inputPath, outputPath) {
+    try {
+        let successful = false;
+
+        // Function to convert JPG to PNG
+        async function convertJpgToPng() {
+            return new Promise((resolve, reject) => {
+                if (inputPath.endsWith('.jpg') || inputPath.endsWith('.jpeg')) {
+                    sharp(inputPath)
+                        .png()
+                        .toFile(outputPath, (err, info) => {
+                            if (err) {
+                                console.error('Error converting JPG to PNG:', err);
+                                reject(err);
+                            } else {
+                                console.log('Conversion to PNG successful:', outputPath);
+                                resolve(outputPath);
+                            }
+                        });
+                } else {
+                    console.log('Not a JPG file');
+                    resolve("not a jpg file");
+                }
+            });
+        }
+
+        // Convert JPG to PNG
+        const convertedImagePath = await convertJpgToPng();
+
+        // Function to convert image to PDF
         async function convertImageToPdf(imagePath, pdfPath) {
             try {
-               
                 const dimensions = sizeOf(imagePath);
-                
-               
                 const pdfDoc = await PDFDocument.create();
                 const page = pdfDoc.addPage([dimensions.width, dimensions.height]);
-                
-               
                 const imageBytes = fs.readFileSync(imagePath);
                 const image = await pdfDoc.embedPng(imageBytes);
                 page.drawImage(image, {
@@ -52,31 +167,48 @@ async function converterFunction () {
                     width: dimensions.width,
                     height: dimensions.height,
                 });
-                
-               
                 const pdfBytes = await pdfDoc.save();
                 fs.writeFileSync(pdfPath, pdfBytes);
-                
-                console.log('Image converted to PDF successfully!');
+                console.log('Image converted to PDF successfully:', pdfPath);
+                successful = true;
+                return pdfPath;
             } catch (error) {
-                console.error('Error:', error);
+                console.error('Error converting image to PDF:', error);
+                throw error;
             }
         }
-        
-       
-       
-        const imagePath = outputPath; 
-        const pdfPath = uuidv4()+`.pdf`; 
-        
-        convertImageToPdf(imagePath, pdfPath);
-        
-    }).catch((err) => {
-        
-    });
 
+        // Convert PNG to PDF
+        const pdfPath = `./public/pdf/${uuidv4()}.pdf`;
+        await convertImageToPdf(convertedImagePath, pdfPath);
+
+        // Check if conversion was successful
+        if (successful) {
+            console.log('Conversion successful');
+            return {
+                status: true,
+                pdfPath: pdfPath,
+                imagePath: convertedImagePath
+            };
+        } else {
+            console.log('Conversion failed');
+            return {
+                status: false,
+                error: 'Conversion failed'
+            };
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        return {
+            status: false,
+            error: 'An error occurred'
+        };
+    }
 }
 
-converterFunction();
+
+
+module.exports = {converterFunction} 
 
 
 
