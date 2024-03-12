@@ -26,6 +26,8 @@ router.post('/download', (req, res) => {
 
 try {
 
+
+
     console.log("this is download");
 
     console.log(req.body.url);
@@ -79,6 +81,7 @@ router.get('/about', (req, res) => {
 
     try {
         
+        console.log('/about');
 
         res.render('about',{
             title:"About Us - Getreels"
@@ -95,6 +98,8 @@ router.get('/about', (req, res) => {
 router.get('/contactus', (req, res) => {
 
     try {
+
+        console.log('/contactus');
         
         res.render('contactus',{
             title:"Contact Us - Getreels"
@@ -109,6 +114,8 @@ router.get('/contactus', (req, res) => {
 router.get('/services', (req, res) => {
     
     try {
+        
+        console.log('/service');
         
         res.render('services',{
             title:"Services - Getreels"
