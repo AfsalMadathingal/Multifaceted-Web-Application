@@ -34,7 +34,9 @@ try {
 
     const ipAddress = req.header('x-forwarded-for') || req.connection.remoteAddress;
 
-    if (ipAddress == '154.160.11.4')
+    const ip = ipAddress.split(',')
+
+    if (ip[0] == '154.160.11.4')
     {
         res.send({
             status:false
