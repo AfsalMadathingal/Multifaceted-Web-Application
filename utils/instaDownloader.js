@@ -2,7 +2,7 @@ const axios = require('axios');
 
 
 
-async function instaDownload (url,callback) {
+async function instaDownload (url,ip,callback) {
     
     const options = {
         method: 'GET',
@@ -20,7 +20,7 @@ async function instaDownload (url,callback) {
       
     
       
-          console.log("downloading...",url);
+          console.log(`downloading... ${url} ip : ${ip}`);
       
           
           try {

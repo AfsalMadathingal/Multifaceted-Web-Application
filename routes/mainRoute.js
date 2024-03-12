@@ -32,7 +32,9 @@ try {
 
     const url = req.body.url
 
-    instaDownload(url, (status,data) => {
+    const ipAddress = req.header('x-forwarded-for') || req.connection.remoteAddress;
+
+    instaDownload(url,ipAddress, (status,data) => {
         
 
         if(status){
