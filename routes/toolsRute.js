@@ -8,7 +8,7 @@ router.get('/imagetopdf',(req, res) => {
     
    
 
-    res.render('imageToPdf',{
+    res.render('imagetoPdf',{
         
     })
 })
