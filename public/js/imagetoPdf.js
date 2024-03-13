@@ -40,9 +40,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   uploadButton.addEventListener("click", (e) => {
     e.preventDefault()
-    alert("hello")
     const form = document.getElementById("form-images");
-    
+    if (fileInput.value == '') {
+      swal({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Please select an image',
+      });
+      return
+    }
     
     loading.style.display= "block"
     const formData = new FormData(form);
