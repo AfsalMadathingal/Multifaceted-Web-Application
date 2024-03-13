@@ -5,6 +5,7 @@ const { converterFunction } = require("../utils/imageToPdf");
 const { v4: uuidv4 } = require("uuid");
 
 router.get("/imagetopdf", (req, res) => {
+    console.log("TOOLS ROUTE !!! ");
   res.render("imagetoPdf", {});
 });
 
