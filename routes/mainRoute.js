@@ -133,7 +133,7 @@ router.get('/policy',(req,res)=>{
 
     try {
         
-        res.render('privacypolicy')
+        res.render('privacypolicy',{title:"Privacy Policy | GetReels"})
 
 
     } catch (error) {
