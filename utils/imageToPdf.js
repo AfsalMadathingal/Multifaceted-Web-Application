@@ -145,7 +145,7 @@ async function converterFunction(inputPath, outputPath) {
                         });
                 } else {
                     console.log('Not a JPG file');
-                    resolve("not a jpg file");
+                    resolve(inputPath);
                 }
             });
         }

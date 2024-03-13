@@ -58,8 +58,58 @@ document.addEventListener("DOMContentLoaded", () => {
       
       loading.style.display= "none"
       console.log(data);
-      alert(data)
-      
+
+      // Assuming you have received the PDF path from the Axios response
+const pdfPath = data.pdf
+
+// Function to download the PDF file
+function downloadPdf(pdfPath) {
+    // Construct the full URL for the PDF file
+    const fullUrl = window.location.origin + pdfPath;
+
+    console.log(fullUrl);
+
+    // Send a GET request to fetch the PDF file
+    axios.get(fullUrl, {
+        responseType: 'blob',
+        headers: {
+          'Cache-Control': 'no-cache' // Add a Cache-Control header to prevent IDM interception
+      } // Specify the response type as blob
+    })
+    .then(response => {
+
+      console.log(response);
+        // Create a blob object from the response data
+        const blob = new Blob([response.data], { type: 'application/pdf' });
+
+        // Create a link element
+        const link = document.createElement('a');
+        link.href = window.URL.createObjectURL(blob);
+
+        // Set the download attribute with the desired file name
+        link.download = 'downloaded_file.pdf';
+
+        // Append the link to the document body
+        document.body.appendChild(link);
+
+        // Click the link programmatically to start the download
+        link.click();
+
+        // Remove the link from the document body
+        document.body.removeChild(link);
+        const blobUrl = window.URL.createObjectURL(blob);
+
+        // Open the blob URL in a new browser tab
+        window.open(blobUrl, '_blank');
+    })
+    .catch(error => {
+        console.error('Error downloading PDF:', error);
+    });
+}
+
+// Call the function to download the PDF file
+downloadPdf(pdfPath);
+
       
     })
     .catch(error => console.error(error));

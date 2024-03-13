@@ -5,9 +5,16 @@ const app = express()
 require('dotenv').config()
 const mainRoute = require('./routes/mainRoute')
 const toolsRoute = require('./routes/toolsRute')
+const session = require('express-session')
 const PORT = process.env.PORT || 3323
 
 
+
+app.use(session({
+    secret: '39472398shdjfjkh398475dhsf',
+    resave: false,
+    saveUninitialized: true,
+}))
 
 app.use(express.static(path.join(__dirname, 'public')))
 app.set('view engine', 'hbs')
