@@ -127,6 +127,21 @@ router.get('/services', (req, res) => {
 })
 
 
+router.get('/policy',(req,res)=>{
+
+
+
+    try {
+        
+        res.render('privacypolicy')
+
+
+    } catch (error) {
+        console.log(error);
+        res.send('  internal error Please go back home')
+    }
+})
+
 
 
 
