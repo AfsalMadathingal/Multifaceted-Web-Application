@@ -415,25 +415,26 @@ body {
   /* cards */
 
 
-  .card1s {
+  .cards {
+    align-items: center;
     display: flex;
     flex-direction: column;
     gap: 15px;
   }
   
-  .card1s .red {
+  .cards .red {
     background-color: #f43f5e;
   }
   
-  .card1s .blue {
+  .cards .blue {
     background-color: #3b82f6;
   }
   
-  .card1s .green {
+  .cards .green {
     background-color: #22c55e;
   }
   
-  .card1s .card1 {
+  .cards .card1 {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -447,20 +448,20 @@ body {
     transition: 400ms;
   }
   
-  .card1s .card1 p.tip {
+  .cards .card1 p.tip {
     font-size: 1em;
     font-weight: 700;
   }
   
-  .card1s .card1 p.second-text {
+  .cards .card1 p.second-text {
     font-size: .7em;
   }
   
-  .card1s .card1:hover {
+  .cards .card1:hover {
     transform: scale(1.1, 1.1);
   }
   
-  .card1s:hover > .card1:not(:hover) {
+  .cards:hover > .card1:not(:hover) {
     filter: blur(10px);
     transform: scale(0.9, 0.9);
   }

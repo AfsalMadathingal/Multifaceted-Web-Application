@@ -83,20 +83,42 @@
 </div>
 
 <section>
-  <div class="cards1">
-    <div class="card1 red">
-        <p class="tip">Hover Me</p>
-        <p class="second-text">Lorem Ipsum</p>
+  <div class="cards">
+    <div id="jpg-pdf" class="card1 red">
+        <p class="tip">Convert JPG to PDF</p>
+        <p class="second-text">Covert Image to PDF for free</p>
     </div>
-    <div class="card1 blue">
-        <p class="tip">Hover Me</p>
-        <p class="second-text">Lorem Ipsum</p>
+    <div id="png-pdf" class="card1 blue">
+        <p class="tip">Convert PNG to PDF</p>
+        <p class="second-text">Covert Image to PDF for free</p>
     </div>
-    <div class="card1 green">
-        <p class="tip">Hover Me</p>
-        <p class="second-text">Lorem Ipsum</p>
+    <div id="jpg-png" class="card1 green">
+        <p class="tip">Cnvert JPG to  PNG </p>
+        <p class="second-text">Comming Soon </p>
     </div>
 </div>
+
+
+<script>
+  const jpg = document.getElementById('jpg-pdf');
+  const png = document.getElementById('png-pdf');
+  const jpgpng = document.getElementById('jpg-png');
+
+  jpg.addEventListener('click', () => {
+    window.location.href = '/tools/imagetoPdf';
+  })
+   png.addEventListener('click', () => {
+    window.location.href = '/tools/imagetoPdf';
+  })
+
+  jpgpng.addEventListener('click', () => {
+    swal({
+      title: "Coming Soon",
+      text: "This feature will be available soon",
+      icon: "warning",
+    })
+  })
+</script>
 </section>
 
 
