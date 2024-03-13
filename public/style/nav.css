@@ -57,3 +57,14 @@
   transform-origin: left;
 }
 
+@media screen and (max-width: 950px) {
+  .nav-links li a{
+    position: relative;
+    color: #333;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 0px 0;
+    text-decoration: none;
+  }
+}
+
