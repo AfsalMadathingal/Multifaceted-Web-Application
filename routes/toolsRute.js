@@ -58,11 +58,17 @@ router.post("/imagetopdf", uploadSingle, async (req, res) => {
 
 router.delete("/delete", (req, res) => {
 
-
+  
+try {
+  fs.unlinkSync(`./public/${req.session.pdfName}`);
+} catch (error) {
+  console.log(error);
+ return res.json(error)
+  
+}
     
-    fs.unlinkSync(req.session.filename);
-    
-    res.send("tools route delete")
+   
+    res.json("tools route delete")
 })
 
 
