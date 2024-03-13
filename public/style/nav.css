@@ -6,6 +6,7 @@
   align-items: center;
   background: #fff;
   border-radius: 12px;
+  margin-right: 10px;
 }
 .nav-links li{
   list-style: none;
@@ -57,13 +58,15 @@
   transform-origin: left;
 }
 
+
+
 @media screen and (max-width: 950px) {
   .nav-links li a{
     position: relative;
     color: #333;
     font-size: 15px;
     font-weight: 500;
-    padding: 0px 0;
+    padding: 0px 0px;
     text-decoration: none;
   }
 }
