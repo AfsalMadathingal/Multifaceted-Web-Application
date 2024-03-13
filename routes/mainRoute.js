@@ -111,12 +111,13 @@ router.get('/contactus', (req, res) => {
     
 })
 
+
 router.get('/services', (req, res) => {
     
     try {
         
         console.log('/service');
-        
+
         res.render('services',{
             title:"Services - Getreels"
         })
