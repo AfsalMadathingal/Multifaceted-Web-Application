@@ -42,14 +42,7 @@ try {
 
     const ip = ipAddress.split(',')
 
-    if (ip[0] == '154.160.11.4')
-    {
-        res.send({
-            status:false
-        })
-
-        console.log("if worked and blocked");
-    }
+  
 
     instaDownload(url,ipAddress, (status,data) => {
         

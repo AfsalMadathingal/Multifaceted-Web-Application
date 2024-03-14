@@ -75,9 +75,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
         loading.style.display = 'none';
-        instaImage.src = data.data[0].thumb
+        instaImage.src = data.data[0].thumbnail
         swal ( "Success" ,  "Downloaded Successfully" ,  "success" )
-        window.location.href = data.data[0].link
+        window.location.href = data.data[0].url
 
 
 

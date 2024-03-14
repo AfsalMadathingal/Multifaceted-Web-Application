@@ -64,10 +64,75 @@ router.post("/imagetopdf", uploadSingle, async (req, res) => {
 });
 
 
+router.post('/pdfapi',uploadSingle, async (req, res) => {
+
+
+  try {
+
+  const { filename } = req.files[0];
+  const pngOutputName = uuidv4() + ".png";
+
+  const response = await converterFunction(
+    `./public/uploads/${filename}`,
+    `./public/uploads/${pngOutputName}`
+  );
+
+
+
+  if (!response.status)
+  {
+    return res.json(response);
+  }
+
+
+  if (filename.endsWith(".jpg") || filename.endsWith(".jpeg")) {
+    req.session.imageTodelete = `./public/uploads/${pngOutputName}`;
+  } else {
+    req.session.imageTodelete = `./public/uploads/${filename}`;
+  }
+
+  req.session.filename = pngOutputName;
+
+  console.log("path ", response);
+
+  const pdfName = response.pdfPath.split("/").pop();
+
+  req.session.pdfName = `/pdf/${pdfName}`;
+
+  fs.unlinkSync(req.session.imageTodelete);
+  console.log("files deleted");
+
+  res.json({ response: response, pdf: req.session.pdfName });
+
+  setTimeout(() => {
+
+    try {
+      fs.unlinkSync(`./public/${req.session.pdfName}`);
+      req.session.destroy();
+    } catch (error) {
+      console.log(error);
+      return res.json(error);
+    }
+    
+  },5000)
+    
+  } catch (error) {
+
+    console.log(error);
+    
+    res.json({succuss: false, error: error})
+  }
+
+
+
+})
+
+
 
 router.delete("/delete", (req, res) => {
   try {
     fs.unlinkSync(`./public/${req.session.pdfName}`);
+    req.session.destroy();
   } catch (error) {
     console.log(error);
     return res.json(error);
