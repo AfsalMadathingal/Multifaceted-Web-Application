@@ -33,6 +33,11 @@ router.post("/imagetopdf", uploadSingle, async (req, res) => {
     `./public/uploads/${pngOutputName}`
   );
 
+  if (!response.status)
+  {
+    return res.json(response);
+  }
+
 
   if (filename.endsWith(".jpg") || filename.endsWith(".jpeg")) {
     req.session.imageTodelete = `./public/uploads/${pngOutputName}`;

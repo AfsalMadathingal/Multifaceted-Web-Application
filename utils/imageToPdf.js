@@ -198,11 +198,16 @@ async function converterFunction(inputPath, outputPath) {
             };
         }
     } catch (error) {
+
+
         console.error('Error:', error);
+
         return {
             status: false,
             error: 'An error occurred'
         };
+
+        
     }
 }
 
