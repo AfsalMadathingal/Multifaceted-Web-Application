@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const instaDownload = require('../utils/instaDownloader')
-
+const pageData = require('../public/json/pagetitles.json')
 
 
 router.get('/', (req, res) => {
@@ -13,7 +13,9 @@ router.get('/', (req, res) => {
         console.log(`ip address: ${ipAddress}`);
 
         res.render('homepage',{
-            title:"GetReels - Download Instagram Videos Easily"
+            title:pageData.homepagetitle,
+            desc:pageData.homepagedesc,
+            keywords:pageData.homeKeywords
         })
     }
     catch (error) {
@@ -21,6 +23,8 @@ router.get('/', (req, res) => {
         console.log(error)
     }
 })
+
+
 
 router.post('/download', (req, res) => {
 
