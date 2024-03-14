@@ -49,6 +49,20 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       return
     }
+
+
+    let fileNameArray = fileInput.value.split('.');
+     let fileExtension = fileNameArray[fileNameArray.length - 1];
+
+      if (!fileExtension.match(/jpg|jpeg|png/i)) {
+        swal({
+          icon: 'error',
+         title: 'Oops...',
+        text: 'Please upload a valid image (jpg, jpeg, or png)',
+      });
+      return
+    }
+   
     
     loading.style.display= "block"
     const formData = new FormData(form);
