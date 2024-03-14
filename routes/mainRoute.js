@@ -88,7 +88,8 @@ router.get('/about', (req, res) => {
         console.log('/about');
 
         res.render('about',{
-            title:"About Us - Getreels"
+            title:"About Us - Getreels",
+            desc:pageData.comondesc
         }) 
     }
     catch
@@ -106,7 +107,8 @@ router.get('/contactus', (req, res) => {
         console.log('/contactus');
         
         res.render('contactus',{
-            title:"Contact Us - Getreels"
+            title:"Contact Us - Getreels",
+            desc:pageData.comondesc
         })
 
     } catch (error) {
@@ -123,7 +125,8 @@ router.get('/services', (req, res) => {
         console.log('/service');
 
         res.render('services',{
-            title:"Services - Getreels"
+            title:"Services - Getreels",
+            desc:pageData.comondesc
         })
     } catch (error) {
         
@@ -137,7 +140,7 @@ router.get('/policy',(req,res)=>{
 
     try {
         
-        res.render('privacypolicy',{title:"Privacy Policy | GetReels"})
+        res.render('privacypolicy',{title:"Privacy Policy | GetReels",desc:pageData.comondesc})
 
 
     } catch (error) {
