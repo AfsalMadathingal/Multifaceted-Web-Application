@@ -70,57 +70,52 @@
 </button>
     </div>
     <div class="loading-bar">Loading</div>
-    <div class="container">
-      <div class="palette">
-        <div class="image">
-          <img id="insta-image"
-            src="https://www.rangefinderonline.com/wp-content/uploads/2022/08/Depositphotos_523890906_S.jpg"
-            alt="">
-        </div>
+ 
+
+   <div class="insta">
+    <div class="insta-header">
+      <img src="https://img.freepik.com/free-vector/instagram-vector-social-media-icon-7-june-2021-bangkok-thailand_53876-136728.jpg?size=338&ext=jpg&ga=GA1.1.34264412.1710460800&semt=ais" alt="Profile Picture" class="profile-picture">
+      <span class="username">@Getreels</span>
+    </div>
+    <div class="insta-image">
+      <img src="https://www.slashgear.com/img/gallery/how-to-download-instagram-photos-and-videos-to-your-iphone/l-intro-1705955793.jpg" alt="Post Image">
+    </div>
+    <div class="insta-actions">
+      <div class="action-icons">
+        <i class="far fa-heart"></i>
+        <i class="far fa-comment"></i>
+        <i class="far fa-paper-plane"></i>
       </div>
-      <div id="footer">
-        <div id="bookmarks">
-          <svg stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor" fill="none"
-            viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
-          </svg>
-          <span>53421</span>
-        </div>
-        <svg stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor" fill="none"
-          viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg">
-          <circle r="1" cy="12" cx="12"></circle>
-          <circle r="1" cy="12" cx="19"></circle>
-          <circle r="1" cy="12" cx="5"></circle>
-        </svg>
+      <div class="save-icon">
+        <i class="far fa-bookmark"></i>
       </div>
     </div>
+  </div>
+
+  
   </div>
 
 </main>
 
 <div class="headline">
-  <h1>All features of Getreels</h1>
-  <p>Getreels supports all types of Instagram video links and also includes tools to convert images to PDF</p>
+  <h1>Image to PDF converter</h1>
+  <p>Getreels also provide the pdf conversion feature</p>
 </div>
 
 <section>
   <div class="cards">
+      <i class="fa-solid fa-file-pdf"></i>
     <div id="jpg-pdf" class="card1 red">
         <p class="tip">PDF Converter Tools</p>
         <p class="second-text">Covert Image to PDF for free</p>
     </div>
 </div>
-
-
-<script>
-  const jpg = document.getElementById('jpg-pdf');
-  jpg.addEventListener('click', () => {
-    window.location.href = '/tools';
-  })
-
-</script>
 </section>
 
+<div class="headline">
+  <h1>All features of Getreels</h1>
+  <p>Getreels supports all types of Instagram video links and also includes tools to convert images to PDF</p>
+</div>
 
 <article>
   <div class="cards-content">
@@ -165,3 +160,10 @@
   </div>
 </article>
 
+<script>
+  const jpg = document.getElementById('jpg-pdf');
+  jpg.addEventListener('click', () => {
+    window.location.href = '/tools';
+  })
+
+</script>

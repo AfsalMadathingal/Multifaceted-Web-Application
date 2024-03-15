@@ -548,3 +548,55 @@ body {
     }
     
   }
+
+
+  /****/
+
+  
+  .insta {
+    background-color: #ffffff;
+    border: 1px solid #dbdbdb;
+    border-radius: 3px;
+    max-width: 330px;
+    width: 100%;
+  }
+  
+  .insta-header {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+  }
+  
+  .profile-picture {
+    border-radius: 50%;
+    height: 32px;
+    width: 32px;
+    margin-right: 8px;
+  }
+  
+  .username {
+    font-weight: 600;
+    font-size: 14px;
+  }
+  
+  .insta-image img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .insta-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+  }
+  
+  .action-icons i {
+    margin-right: 8px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .save-icon i {
+    font-size: 20px;
+    cursor: pointer;
+  }

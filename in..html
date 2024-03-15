@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instagram Post Template</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="insta">
+    <div class="insta-header">
+      <img src="https://via.placeholder.com/32" alt="Profile Picture" class="profile-picture">
+      <span class="username">@username</span>
+    </div>
+    <div class="insta-image">
+      <img src="https://via.placeholder.com/300x300" alt="Post Image">
+    </div>
+    <div class="insta-actions">
+      <div class="action-icons">
+        <i class="far fa-heart"></i>
+        <i class="far fa-comment"></i>
+        <i class="far fa-paper-plane"></i>
+      </div>
+      <div class="save-icon">
+        <i class="far fa-bookmark"></i>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #fafafa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.insta {
+  background-color: #fff;
+  border: 1px solid #dbdbdb;
+  border-radius: 3px;
+  max-width: 330px;
+  width: 100%;
+}
+
+.insta-header {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+}
+
+.profile-picture {
+  border-radius: 50%;
+  height: 32px;
+  width: 32px;
+  margin-right: 8px;
+}
+
+.username {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.insta-image img {
+  width: 100%;
+  height: auto;
+}
+
+.insta-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+}
+
+.action-icons i {
+  margin-right: 8px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.save-icon i {
+  font-size: 20px;
+  cursor: pointer;
+}
+</style>
