@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document Scanner</title>
+  <!-- Include OpenCV.js -->
+  <script async src="https://docs.opencv.org/4.8.0/opencv.js" type="text/javascript"></script>
+  <!-- Include Document Scanner library -->
+  <script type="module">
+    import { DocumentScanner } from 'https://cdn.jsdelivr.net/npm/opencv-document-scanner/dist/opencv-document-scanner.js';
+  </script>
+</head>
+<body>
+  <input type="file" id="fileInput">
+  <canvas id="canvas" width="800" height="600"></canvas>
+  <script>
+    // Initialize Document Scanner
+    const documentScanner = new DocumentScanner();
+
+    // Function to handle file input change
+    document.getElementById('fileInput').addEventListener('change', async function(event) {
+      const file = event.target.files[0];
+      const imgElement = document.createElement('img');
+      
+      // Convert file to base64 string
+      const base64String = await readFileAsBase64(file);
+      imgElement.src = base64String;
+      imgElement.onload = async function() {
+        // Display image on canvas
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = imgElement.width;
+        canvas.height = imgElement.height;
+        ctx.drawImage(imgElement, 0, 0);
+        
+        // Detect document boundaries
+        const points = documentScanner.detect(imgElement);
+        
+        // Get cropped image
+        const croppedImage = documentScanner.crop(imgElement);
+        
+        // Send cropped image to Node.js (you need to implement this)
+        sendToNodeJS(croppedImage);
+      };
+    });
+
+    // Function to convert file to base64 string
+    function readFileAsBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+    }
+
+    // Function to send cropped image to Node.js
+    function sendToNodeJS(imageData) {
+      // Implement sending imageData to your Node.js app using fetch or another method
+      // Example:
+      // fetch('/upload', {
+      //   method: 'POST',
+      //   body: JSON.stringify({ imageData }),
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   }
+      // })
+      // .then(response => response.json())
+      // .then(data => console.log(data))
+      // .catch(error => console.error('Error:', error));
+    }
+  </script>
+</body>
+</html>
