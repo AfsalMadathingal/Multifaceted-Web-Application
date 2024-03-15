@@ -77,6 +77,17 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(data => {
       
       loading.style.display= "none"
+
+      if(data.status == false)
+      {
+        swal({
+          icon: 'error',
+         title: 'Oops...',
+        text: data.message,
+      });
+      
+      return
+      }
       console.log(data);
 
       // Assuming you have received the PDF path from the Axios response

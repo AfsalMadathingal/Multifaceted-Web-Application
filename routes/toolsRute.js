@@ -5,6 +5,7 @@ const { uploadSingle } = require("../middleware/upload");
 const { converterFunction } = require("../utils/imageToPdf");
 const { v4: uuidv4 } = require("uuid");
 const pageData = require("../public/json/pagetitles.json");
+const multer = require("multer");
 
 
 router.get("/", (req, res) => {
@@ -23,6 +24,9 @@ router.get("/imagetopdf", (req, res) => {
 
 
 router.post("/imagetopdf", uploadSingle, async (req, res) => {
+
+
+
   console.log(req.files);
 
   const { filename } = req.files[0];
@@ -57,6 +61,7 @@ router.post("/imagetopdf", uploadSingle, async (req, res) => {
     fs.unlinkSync(req.session.imageTodelete);
     console.log("files deleted");
   } catch (error) {
+    console.log("no files to delete");
     console.log(error);
   }
 
@@ -140,5 +145,27 @@ router.delete("/delete", (req, res) => {
 
   res.json("tools route delete");
 });
+
+
+router.use(function (err, req, res, next) {
+  if (err instanceof multer.MulterError) {
+    
+      console.log("errororororo");
+      
+    if (err.code === 'LIMIT_FILE_SIZE') {
+
+      return res.status(400).json({status: false, message: 'File size limit exceeded (Max: 2MB)' });
+
+    } else {
+      return res.status(500).json({ status: false, message: 'Uploading error occurred' });
+    }
+  } else {
+    return res.status(500).json({status: false,  message: 'Internal server error' });
+  }
+});
+
+
+
+
 
 module.exports = router;
