@@ -16,6 +16,14 @@ app.use(session({
     saveUninitialized: true,
 }))
 
+app.use((req, res, next) => {
+    res.setHeader('Cache-Control', 'public, max-age=3600');
+    next();
+  });
+
+
+
+
 app.use(express.static(path.join(__dirname, 'public')))
 app.set('view engine', 'hbs')
 app.set('views', path.join(__dirname, 'views'));
