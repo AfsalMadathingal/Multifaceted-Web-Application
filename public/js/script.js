@@ -75,10 +75,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
         loading.style.display = 'none';
-        instaImage.src = data.data[0].thumbnail
-        swal ( "Success" ,  "Downloaded Successfully" ,  "success" )
-        window.location.href = data.data[0].url
+       
 
+       if (data.data[0].url == undefined) {
+        return swal ( "Oops" ,  "I think You have entred worong Link" ,  "error" )
+       }
+
+       instaImage.src = data.data[0].thumbnail
+
+       swal({
+        title: "Success",
+        text: "Video loaded Successfully",
+        icon: "success",
+        buttons: {
+          cancel: "Cancel",
+          download: {
+            text: "Download",
+            value: "download",
+          },
+        },
+      })
+      .then((value) => {
+        switch (value) {
+          case "download":
+            const a = document.createElement('a');
+            a.href = data.data[0].url;
+            a.download = data.data[0].filename;
+            a.style.display = 'none';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            break;
+          default:
+            break;
+        }
+      });
 
 
       })
