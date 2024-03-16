@@ -6,8 +6,11 @@ require('dotenv').config()
 const mainRoute = require('./routes/mainRoute')
 const toolsRoute = require('./routes/toolsRute')
 const session = require('express-session')
+const cleanup = require('./utils/filescleanup')
 const PORT = process.env.PORT || 3323
 
+cleanup();
+setInterval(cleanup, 30 * 60 * 1000);
 
 app.use(session({
     secret: '39472398shdjfjkh398475dhsf',
