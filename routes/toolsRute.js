@@ -6,6 +6,7 @@ const { converterFunction } = require("../utils/imageToPdf");
 const { v4: uuidv4 } = require("uuid");
 const pageData = require("../public/json/pagetitles.json");
 const multer = require("multer");
+const bunny = require('../utils/bunnyStorage');
 
 
 router.get("/", (req, res) => {
@@ -72,6 +73,8 @@ router.post("/imagetopdf", uploadSingle, async (req, res) => {
 router.post('/pdfapi',uploadSingle, async (req, res) => {
 
 
+  console.log("api call");
+
   try {
 
   const { filename } = req.files[0];
@@ -105,9 +108,10 @@ router.post('/pdfapi',uploadSingle, async (req, res) => {
   req.session.pdfName = `/pdf/${pdfName}`;
 
   fs.unlinkSync(req.session.imageTodelete);
-  console.log("files deleted");
+  console.log("images deleted");
 
-  res.json({ response: response, pdf: req.session.pdfName });
+  const bunnyRespose = await bunny.main(pdfName)
+  res.json({ pdfLink: bunnyRespose });
 
   setTimeout(() => {
 
