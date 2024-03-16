@@ -23,7 +23,16 @@ function cleanup() {
         }
 
         const fileAge = Date.now() - stats.mtime.getTime();
-        if (fileAge > maxAgeInMs) {
+        if (fileAge > maxAgeInMs ) {
+          
+          if (filePath.endsWith('.json')) {
+            
+            console.log("skipping json file ",filePath);
+            
+              return 
+          
+          }
+
           fs.unlink(filePath, err => {
             if (err) {
               console.error('Error deleting file:', err);
