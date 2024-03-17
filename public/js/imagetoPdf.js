@@ -1,46 +1,98 @@
 
-document.addEventListener("DOMContentLoaded", () => {
+
+
+const dropZone = document.querySelector('.drop-zone');
+const fileInput = document.querySelector('.drop-zone__input');
+const previewList = document.querySelector('.preview-list');
+const uploadBtn = document.querySelector('.upload-btn');
+
+const modal = document.getElementById("modal");
+const closeBtn = document.getElementsByClassName("close-btn")[0];
 
 
 
-  
+// Close the modal when the close button is clicked
+closeBtn.addEventListener("click", () => {
+  modal.style.display = "none";
+});
 
-  var isAdvancedUpload = (function () {
-    var div = document.createElement("div");
-    return (
-      ("draggable" in div || ("ondragstart" in div && "ondrop" in div)) &&
-      "FormData" in window &&
-      "FileReader" in window
-    );
-  })();
+// Close the modal when clicking outside the modal
+window.addEventListener("click", (event) => {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+});
 
-  let draggableFileArea = document.querySelector(".drag-file-area");
-  let browseFileText = document.querySelector(".browse-files");
-  let uploadIcon = document.querySelector(".upload-icon");
-  let dragDropText = document.querySelector(".dynamic-message");
-  let fileInput = document.querySelector(".default-file-input");
-  let cannotUploadMessage = document.querySelector(".cannot-upload-message");
-  let cancelAlertButton = document.querySelector(".cancel-alert-button");
-  let uploadedFile = document.querySelector(".file-block");
-  let fileName = document.querySelector(".file-name");
-  let fileSize = document.querySelector(".file-size");
-  let progressBar = document.querySelector(".progress-bar");
-  let removeFileButton = document.querySelector(".remove-file-icon");
-  let uploadButton = document.querySelector(".upload-button");
-  let fileFlag = 0;
-  let hiddenInput = document.querySelector(".hiden-file-input");
-  const loading = document.getElementById('loading')
-  fileInput.addEventListener("click", () => {
-   
-    fileInput.value=''
-    console.log(fileInput.value);
-    dragDropText.innerText = "Image Selected Click Upload"
+
+const browseBtn = document.querySelector('.drop-zone__browse');
+browseBtn.addEventListener('click', () => fileInput.click());
+
+let files = [];
+
+// Handle file drop
+dropZone.addEventListener('dragover', (e) => {
+  e.preventDefault();
+  dropZone.classList.add('drop-zone--over');
+});
+
+['dragleave', 'dragend'].forEach((type) => {
+  dropZone.addEventListener(type, (e) => {
+    dropZone.classList.remove('drop-zone--over');
   });
+});
 
+dropZone.addEventListener('drop', (e) => {
+  e.preventDefault();
+  dropZone.classList.remove('drop-zone--over');
+  handleFiles(e.dataTransfer.files);
+});
 
-  uploadButton.addEventListener("click", (e) => {
+// Handle file input
+fileInput.addEventListener('change', () => {
+  handleFiles(fileInput.files);
+});
+
+function handleFiles(newFiles) {
+  files = [...files, ...newFiles];
+  updatePreviewList();
+  uploadBtn.disabled = files.length === 0;
+}
+
+function updatePreviewList() {
+  previewList.innerHTML = '';
+  files.forEach(createPreviewItem);
+}
+
+function createPreviewItem(file) {
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const previewItem = document.createElement('div');
+    previewItem.classList.add('preview-item');
+
+    const img = document.createElement('img');
+    img.src = e.target.result;
+
+    const removeBtn = document.createElement('button');
+    removeBtn.classList.add('remove-btn');
+    removeBtn.textContent = 'x';
+    removeBtn.addEventListener('click', () => {
+      files = files.filter((f) => f !== file);
+      updatePreviewList();
+      uploadBtn.disabled = files.length === 0;
+    });
+
+    previewItem.appendChild(img);
+    previewItem.appendChild(removeBtn);
+    previewList.appendChild(previewItem);
+  };
+  reader.readAsDataURL(file);
+}
+
+uploadBtn.addEventListener('click', (e) => {
+
     e.preventDefault()
-    const form = document.getElementById("form-images");
+    const form = document.getElementById("form");
+
     if (fileInput.value == '') {
       swal({
         icon: 'error',
@@ -119,7 +171,8 @@ async function downloadPdf  (pdfPath) {
         document.body.removeChild(link);
         const blobUrl = window.URL.createObjectURL(blob);
 
-        window.open(blobUrl, "_blank");
+        modal.style.display = "block";
+        //window.open(blobUrl, "_blank");
 
        
       }).then(() => {
@@ -141,67 +194,8 @@ downloadPdf(pdfPath);
 
 
 
-  });
-
-  cancelAlertButton.addEventListener("click", () => {
-    cannotUploadMessage.style.cssText = "display: none;";
-  });
-
-  if (isAdvancedUpload) {
-    [
-      "drag",
-      "dragstart",
-      "dragend",
-      "dragover",
-      "dragenter",
-      "dragleave",
-      "drop",
-    ].forEach((evt) =>
-      draggableFileArea.addEventListener(evt, (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-      })
-    );
-
-    ["dragover", "dragenter"].forEach((evt) => {
-      draggableFileArea.addEventListener(evt, (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        uploadIcon.innerHTML = "file_download";
-        dragDropText.innerHTML = "Drop your file here!";
-      });
-    });
-
-    draggableFileArea.addEventListener("drop", (e) => {
-      uploadIcon.innerHTML = "check_circle";
-      dragDropText.innerHTML = "File Dropped Successfully!";
-      document.querySelector(
-        ".label"
-      ).innerHTML = `drag & drop or <span class="browse-files"> <input type="file" class="default-file-input" style=""/> <span class="browse-files-text" style="top: -23px; left: -20px;"> browse file</span> </span>`;
-      uploadButton.innerHTML = `Upload`;
-
-      let files = e.dataTransfer.files;
-      fileInput.files = files;
-      console.log(files[0].name + " " + files[0].size);
-      console.log(document.querySelector(".default-file-input").value);
-      fileName.innerHTML = files[0].name;
-      fileSize.innerHTML = (files[0].size / 1024).toFixed(1) + " KB";
-      uploadedFile.style.cssText = "display: flex;";
-      progressBar.style.width = 0;
-      fileFlag = 0;
-    });
-  }
-
-  removeFileButton.addEventListener("click", () => {
-    uploadedFile.style.cssText = "display: none;";
-    fileInput.value = "";
-    uploadIcon.innerHTML = "file_upload";
-    dragDropText.innerHTML = "Drag & drop any file here";
-    document.querySelector(
-      ".label"
-    ).innerHTML = `or <span class="browse-files"> <input type="file" class="default-file-input"/> <span class="browse-files-text">browse file</span> <span>from device</span> </span>`;
-    uploadButton.innerHTML = `Upload`;
-  });
+ 
 
 
 });
+

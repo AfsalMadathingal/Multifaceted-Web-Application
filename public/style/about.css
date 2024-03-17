@@ -57,3 +57,20 @@ span{
   background: #000;
   border: 1px solid #4070f4;
 }
+
+ 
+@media screen and (max-width: 768px) {
+
+  .footer2 {
+    position: absolute;
+    bottom: 0;
+  }
+}
+
+
+.footer2 p {
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
+  text-align: center;
+}

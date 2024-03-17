@@ -9,7 +9,10 @@
 
  </script>
  
+{{>nav}}
 
+<link rel="stylesheet" href="/style/home.css">
+<link rel="stylesheet" href="/style/card.css">
 
 <main>
   <div class="home">
@@ -92,7 +95,6 @@
     </div>
   </div>
 
-  
   </div>
 
 </main>
@@ -160,6 +162,10 @@
   </div>
 </article>
 
+
+{{>footer}}
+
+<script src="/js/script.js"></script>
 <script>
   const jpg = document.getElementById('jpg-pdf');
   jpg.addEventListener('click', () => {

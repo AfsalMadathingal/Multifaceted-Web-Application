@@ -1,51 +1,131 @@
+{{>nav}}
 <link rel="stylesheet" href="/style/imagetopdf.css">
 <link rel="stylesheet" href="/style/loading.css">
-
-<link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <main>
-    <div class="home">
-        <div class="headline-one">
-            <h1>Image to PDF converter</h1>
-            <p>Convert Your Images to PDF for Free</p>
+  <div class="home">
+    <div class="headline-one">
+      <h1>Image to PDF converter</h1>
+      <p>Convert Your Images to PDF for Free</p>
+    </div>
+
+
+  <form id="form" >
+<div class="upload-container">
+      <div class="drop-zone">
+        <div class="drop-zone__content">
+          <span class="drop-zone__icon">
+            <i class="fas fa-cloud-upload-alt"></i>
+          </span>
+          <span class="drop-zone__prompt">Drop files here or <span class="drop-zone__browse">browse</span></span>
+          <input type="file" name="images" id="fileUpload" class="drop-zone__input">
         </div>
+      </div>
 
-
-        <form id="form-images" class="form-container"  enctype='multipart/form-data'>
-            <div class="upload-files-container">
-                <div class="drag-file-area">
-                    <span class="material-icons-outlined upload-icon"> file_upload </span>
-                    <h3 class="dynamic-message"> Drag & drop any file here </h3>
-                    <label class="label"> or <span class="browse-files">  
-                        <input type="file" class="default-file-input"   name="images"/> 
-                    <span class="browse-files-text">browse file</span>
-                            <span>from device</span> </span> </label>
-                            
-                </div>
-                <span class="cannot-upload-message"> <span class="material-icons-outlined">error</span> Please select a
-                    file first <span class="material-icons-outlined cancel-alert-button">cancel</span> </span>
-                <div class="file-block">
-                    <div class="file-info"> <span class="material-icons-outlined file-icon">description</span> <span
-                            class="file-name"> </span> | <span class="file-size"> </span> </div>
-                    <span class="material-icons remove-file-icon">delete</span>
-                    <div class="progress-bar"> </div>
-                </div>
-                 <input hidden type="file" class="hiden-file-input"   name="images"/> 
-                <button type="submit"  class="upload-button"> Upload </button>
-
-            </div>
-
-        </form>
-
-        <div class="loading-bar">Loading</div>
+      <div class="preview-container">
+        <div class="preview-list"></div>
+        <button class="upload-btn" disabled>Upload</button>
+      </div>
     </div>
+  </form>
 
-    <div class="overlay" id="loading">
+    
+
+    <div class="loading-bar">Loading</div>
+  </div>
+
+  <div class="overlay" id="loading">
     <div class="overlay__inner">
-        <div class="overlay__content"><span class="spinner"></span></div>
+      <div class="overlay__content"><span class="spinner"></span></div>
     </div>
-</div>
+  </div>
 
 </main>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.7/axios.min.js" integrity="sha512-NQfB/bDaB8kaSXF8E77JjhHG5PM6XVRxvHzkZiwl3ddWCEPBa23T76MuWSwAJdMGJnmQqM0VeY9kFszsrBEFrQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<!-- Modal -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <div class="product-details">
+      <h1>PDF Converted successfully !! </h1>
+      <img src="https://media.ldlc.com/r1600/ld/products/00/05/77/64/LD0005776426_1_0005778916.jpg" alt="Product Image">
+      <h3>Perfect Office Laptop SALE <span>59% OFF on AMAZON  </span></h3>
+      <p>Don't Miss This</p>
+      <p class="price"> <S style="color: red;"> ₹ 59000 </S><span style="color: #45a049;" > ₹ 26780 </span>  </p>
+      <p class="description">Lenovo V15 AMD </p>
+    </div>
+    <a href="https://amzn.to/48XZNUn" target="_blank" rel="noopener noreferrer">
+    <button class="place-order-btn"> <i class="fa-brands fa-amazon"></i> Place Order From Amazon </button>
+    </a>
+    
+  </div>
+</div>
+
+
 <script src="/js/imagetoPdf.js"></script>
+{{>footer}}
+
+
+<style>
+  /* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 30%;
+  position: relative;
+}
+
+.close-btn {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.product-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.product-details img {
+  max-width: 200px;
+  margin-bottom: 10px;
+}
+
+.place-order-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.place-order-btn:hover {
+  background-color: #45a049;
+}
+</style>
+

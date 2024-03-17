@@ -86,9 +86,10 @@ router.get('/about', (req, res) => {
             desc:pageData.comondesc
         }) 
     }
-    catch
+    catch(error)
     {
 
+        console.log(error);
     }
 
 
@@ -147,7 +148,11 @@ router.get('/policy',(req,res)=>{
 
 
 
+router.get('/api',(req,res)=>{
+    
 
+    res.render('api',{title:"API | IMAGE TO PDF ",desc:pageData.comondesc })
+})
 
 
 
