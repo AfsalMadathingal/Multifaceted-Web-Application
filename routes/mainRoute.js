@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const instaDownload = require('../utils/instaDownloader')
 const pageData = require('../public/json/pagetitles.json')
-
+let adclick = 0
 
 
 router.get('/', (req, res) => {
@@ -154,6 +154,26 @@ router.get('/api',(req,res)=>{
     res.render('api',{title:"API | IMAGE TO PDF ",desc:pageData.comondesc })
 })
 
+
+router.post('/adclick',(req,res)=>{
+    
+    try {
+        
+        console.log('ad click');
+    
+        adclick++
+
+        console.log(adclick);
+
+        res.json({
+            status:true
+        })
+
+    } catch (error) {
+        
+    }
+
+})
 
 
 module.exports = router

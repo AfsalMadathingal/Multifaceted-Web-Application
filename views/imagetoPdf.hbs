@@ -3,6 +3,11 @@
 <link rel="stylesheet" href="/style/loading.css">
 <main>
   <div class="home">
+
+      <div class="ad-banner">
+        <img src="/images/New Project.webp" alt="Ad Banner">
+    </div>
+
     <div class="headline-one">
       <h1>Image to PDF converter</h1>
       <p>Convert Your Images to PDF for Free</p>
@@ -27,6 +32,10 @@
       </div>
     </div>
   </form>
+
+   <div class="ad-banner">
+        <img src="/images/New Project.webp" alt="Ad Banner">
+    </div>
 
     <div class="loading-bar"></div>
 
@@ -135,4 +144,56 @@
   }
 }
 </style>
+
+
+<style>
+  .ad-banner {
+    max-width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.ad-banner img {
+    width: 100%;
+    height: auto;
+}
+</style>
+<script>
+
+
+  let ads = document.querySelectorAll('.ad-banner');
+  if (ads) {
+    ads.forEach((el) => {
+      el.addEventListener('click', () => {
+        fetch('/adclick', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+          },
+          body: JSON.stringify({})
+        })
+        .then((response) => {
+          if (response.ok) {
+            window.location.href = 'https://kukufm.page.link/g3LPeAENbog72tVX8';
+          } else {
+            console.error('Error clicking ad:', response);
+          }
+        })
+        .catch((error) => {
+          console.error('Error fetching ad click:', error);
+        });
+      });
+    });
+  }
+
+
+
+</script>
 
