@@ -1,0 +1,132 @@
+/* p,a,h1,h2,h3,h4,h5,h6 {
+	margin: 0;
+	padding: 0;
+} */
+
+.section-blog {
+	position: relative;
+	font-family: "Poppins", sans-serif;
+    background-color: #191919;
+    color: #ffffff;
+}
+
+/* .section-blog:after {
+	content: "";
+	position: absolute;
+	display: inline-block;
+	top: -10px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 2px;
+	height: 50px;
+	background-color: #ec1d51;
+} */
+
+.section-blog .background-style {
+    background-image: radial-gradient(circle, #371026, #2d1228, #231328, #1a1426, #131322, #0e1421, #0b151f, #0a161d, #09191f, #091c20, #0a1e20, #0c2120);
+
+    padding-top: 110px;
+    padding-bottom: 120px;
+}
+
+.section-blog .header-section {
+	margin-bottom: 55px;
+}
+
+.section-blog .header-section h2 {
+	font-family: "Fjalla One", sans-serif;
+    font-size: 70px;
+    text-transform: uppercase;
+}
+
+.section-blog .header-section h2 .dot {
+	color: #ec1d51;
+}
+
+.section-blog .col,
+.section-blog [class*="col-"] {
+	padding-right: 7px;
+	padding-left: 7px;
+}
+
+.section-blog .single-post {
+	margin-top: 20px;
+	padding: 25px;
+	background-color: #000;
+}
+
+.section-blog .single-post .content {
+	padding-bottom: 40px;
+    border-bottom: 1px solid #454545;
+}
+
+.section-blog .single-post .content .title {
+	margin-bottom: 20px;
+	font-size: 21px;
+	font-weight: 700;
+	line-height: 1.4em;
+}
+
+.section-blog .single-post .content .title a {
+	color: #fff !important;
+}
+
+.section-blog .single-post:hover .content .title a {
+	color: #ec1d51 !important;
+	text-decoration: underline;
+}
+
+.section-blog .single-post .content .description {
+	
+}
+
+.section-blog .single-post .infos {
+    padding-top: 20px;
+}
+
+.section-blog .single-post .infos .writer,
+.section-blog .single-post .infos .date {
+	display: block;
+    color: #828282;
+    font-size: 15px;
+}
+
+.section-blog .single-post .infos .date {
+	
+}
+
+@media (max-width: 575.99px) {
+	/* Extra Small Device */
+
+	.section-blog .header-section h2 {
+		font-size: 40px;
+	}
+}
+
+@media (min-width: 576px) and (max-width: 767.99px) {
+	/* Small Device */
+
+	.section-blog .header-section h2 {
+		font-size: 40px;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 991.99px) {
+	/* Medium Device */
+
+	.section-blog .header-section h2 {
+		font-size: 50px;
+	}
+}
+
+@media (min-width: 992px) and (max-width: 1199.99px) {
+	/* Large Device */
+
+	.section-blog .header-section h2 {
+		font-size: 60px;
+	}
+}
+
+@media (min-width: 1200px) {
+	/* Extra Large Device */
+}

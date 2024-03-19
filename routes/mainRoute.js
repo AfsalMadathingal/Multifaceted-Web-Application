@@ -176,4 +176,20 @@ router.post('/adclick',(req,res)=>{
 })
 
 
+router.get('/blog',(req,res)=>{
+
+
+    try
+    {
+
+        res.render('blog', {title:"Blog | GetReels",desc:pageData.comondesc})
+
+    }catch(err)
+    {
+        res.send("internal error Please go back home")
+        console.log(err);
+    }
+})
+
+
 module.exports = router
