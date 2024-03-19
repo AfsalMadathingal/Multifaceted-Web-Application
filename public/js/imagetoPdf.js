@@ -128,10 +128,11 @@ uploadBtn.addEventListener('click', (e) => {
     .then(response => response.json())
     .then(data => {
       
-      loading.style.display= "none"
+     
 
       if(data.status == false)
       {
+        loading.style.display= "none"
         swal({
           icon: 'error',
          title: 'Oops...',
@@ -140,6 +141,7 @@ uploadBtn.addEventListener('click', (e) => {
       
       return
       }
+
       console.log(data);
 
       // Assuming you have received the PDF path from the Axios response
@@ -170,7 +172,7 @@ async function downloadPdf  (pdfPath) {
 
         document.body.removeChild(link);
         const blobUrl = window.URL.createObjectURL(blob);
-
+        loading.style.display= "none"
         modal.style.display = "block";
         //window.open(blobUrl, "_blank");
 
