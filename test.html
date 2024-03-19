@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Blog</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">My Blog</div>
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Blog</a>
+        <a href="#">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="blog-post">
+      <div class="post-header">
+        <h1>Welcome to My Blog</h1>
+        <div class="post-meta">
+          <span class="author">By John Doe</span>
+          <span class="date">March 20, 2024</span>
+        </div>
+      </div>
+      <div class="post-content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel eleifend augue. Suspendisse potenti. Nullam id euismod libero. Fusce sit amet magna ut tellus faucibus tincidunt. Mauris nec mauris vel turpis finibus tincidunt. Curabitur vel augue eu nulla finibus efficitur.</p>
+        <p>Suspendisse potenti. Nullam id euismod libero. Fusce sit amet magna ut tellus faucibus tincidunt. Mauris nec mauris vel turpis finibus tincidunt. Curabitur vel augue eu nulla finibus efficitur.</p>
+      </div>
+    </section>
+
+    <aside class="sidebar">
+      <div class="widget">
+        <h3>Categories</h3>
+        <ul>
+          <li><a href="#">Technology</a></li>
+          <li><a href="#">Travel</a></li>
+          <li><a href="#">Food</a></li>
+          <li><a href="#">Lifestyle</a></li>
+        </ul>
+      </div>
+      <div class="widget">
+        <h3>Recent Posts</h3>
+        <ul>
+          <li><a href="#">Post Title 1</a></li>
+          <li><a href="#">Post Title 2</a></li>
+          <li><a href="#">Post Title 3</a></li>
+        </ul>
+      </div>
+    </aside>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 My Blog. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
+
+<style>
+    /* CSS Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f9f9f9;
+}
+
+/* Header */
+header {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.nav-links a {
+  color: #333;
+  text-decoration: none;
+  margin-left: 1rem;
+  position: relative;
+  padding-bottom: 5px;
+  transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #333;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #666;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Main Content */
+main {
+  max-width: 1200px;
+  margin: 2rem auto;
+  display: flex;
+}
+
+.blog-post {
+  flex: 3;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+
+.post-header {
+  margin-bottom: 2rem;
+}
+
+.post-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.post-content {
+  line-height: 1.8;
+}
+
+/* Sidebar */
+.sidebar {
+  flex: 1;
+  margin-left: 2rem;
+}
+
+.widget {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.widget h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.widget ul {
+  list-style: none;
+}
+
+.widget li {
+  margin-bottom: 0.5rem;
+}
+
+.widget a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.widget a:hover {
+  color: #666;
+}
+
+/* Footer */
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+}
+</style>
