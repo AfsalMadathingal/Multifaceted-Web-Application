@@ -20,7 +20,7 @@ router.get("/imagetopdf", (req, res) => {
 
   console.log("TOOLS ROUTE !!! ");
 
-  res.render("imagetoPdf",{title:"Image To PDF Converter | GetReels");
+  res.render("imagetoPdf",{title:"Image To PDF Converter | GetReels"});
 
 
 });
