@@ -1,201 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Blog</title>
-  <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <nav>
-      <div class="logo">My Blog</div>
-      <div class="nav-links">
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Blog</a>
-        <a href="#">Contact</a>
-      </div>
-    </nav>
-  </header>
-
-  <main>
-    <section class="blog-post">
-      <div class="post-header">
-        <h1>Welcome to My Blog</h1>
-        <div class="post-meta">
-          <span class="author">By John Doe</span>
-          <span class="date">March 20, 2024</span>
+    <div class="sidebar">
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
         </div>
-      </div>
-      <div class="post-content">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel eleifend augue. Suspendisse potenti. Nullam id euismod libero. Fusce sit amet magna ut tellus faucibus tincidunt. Mauris nec mauris vel turpis finibus tincidunt. Curabitur vel augue eu nulla finibus efficitur.</p>
-        <p>Suspendisse potenti. Nullam id euismod libero. Fusce sit amet magna ut tellus faucibus tincidunt. Mauris nec mauris vel turpis finibus tincidunt. Curabitur vel augue eu nulla finibus efficitur.</p>
-      </div>
-    </section>
-
-    <aside class="sidebar">
-      <div class="widget">
-        <h3>Categories</h3>
-        <ul>
-          <li><a href="#">Technology</a></li>
-          <li><a href="#">Travel</a></li>
-          <li><a href="#">Food</a></li>
-          <li><a href="#">Lifestyle</a></li>
-        </ul>
-      </div>
-      <div class="widget">
-        <h3>Recent Posts</h3>
-        <ul>
-          <li><a href="#">Post Title 1</a></li>
-          <li><a href="#">Post Title 2</a></li>
-          <li><a href="#">Post Title 3</a></li>
-        </ul>
-      </div>
-    </aside>
-  </main>
-
-  <footer>
-    <p>&copy; 2024 My Blog. All rights reserved.</p>
-  </footer>
-
+        <nav>
+            <ul>
+                <li><a href="#home" class="active"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#users"><i class="fas fa-users"></i> Users</a></li>
+                <li><a href="#ads"><i class="fas fa-ad"></i> Ads</a></li>
+                <li><a href="#blogs"><i class="fas fa-blog"></i> Blogs</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="main">
+        <header>
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="user-info">
+                <i class="fas fa-bell"></i>
+                <div class="user-avatar">
+                    <img src="avatar.png" alt="User Avatar">
+                </div>
+            </div>
+        </header>
+        <div class="content">
+            <div id="home" class="page-content active">
+                <h2>Welcome to the Admin Panel</h2>
+                <p>This is the homepage.</p>
+            </div>
+            <div id="users" class="page-content">
+                <h2>Users</h2>
+                <p>This is the users page.</p>
+            </div>
+            <div id="ads" class="page-content">
+                <h2>Ads</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="image">Image:</label>
+                        <input type="file" id="image" name="image">
+                    </div>
+                    <!-- Add other input fields for ads -->
+                </form>
+            </div>
+            <div id="blogs" class="page-content">
+                <h2>Blogs</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="title">Title:</label>
+                        <input type="text" id="title" name="title">
+                    </div>
+                    <div class="form-group">
+                        <label for="short-description">Short Description:</label>
+                        <textarea id="short-description" name="short-description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="long-description">Long Description:</label>
+                        <textarea id="long-description" name="long-description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="blog-image">Image:</label>
+                        <input type="file" id="blog-image" name="blog-image">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
 
+<script>
+  // Toggle dark mode
+// Switch between pages
+const pages = document.querySelectorAll('.page-content');
+const navLinks = document.querySelectorAll('.sidebar nav a');
+
+navLinks.forEach((link, index) => {
+    link.addEventListener('click', () => {
+        pages.forEach(page => page.classList.remove('active'));
+        pages[index].classList.add('active');
+
+        navLinks.forEach(navLink => navLink.classList.remove('active'));
+        link.classList.add('active');
+    });
+});
+</script>
+
+
 <style>
-    /* CSS Reset */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  :root {
+    --primary-color: #6c63ff;
+    --secondary-color: #f2f2f2;
+    --text-color: #333;
+    --accent-color: #ff6c63;
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
-  line-height: 1.6;
-  color: #333;
-  background-color: #f9f9f9;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    display: flex;
+    height: 100vh;
 }
 
-/* Header */
-header {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 1rem;
-}
-
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
+.sidebar {
+    width: 250px;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .logo {
-  font-size: 1.5rem;
-  font-weight: 700;
+    margin-bottom: 30px;
 }
 
-.nav-links a {
-  color: #333;
-  text-decoration: none;
-  margin-left: 1rem;
-  position: relative;
-  padding-bottom: 5px;
-  transition: color 0.3s ease;
+.logo img {
+    max-width: 100px;
 }
 
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: #333;
-  transition: width 0.3s ease;
+.sidebar nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
 
-.nav-links a:hover {
-  color: #666;
+.sidebar nav a {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
 }
 
-.nav-links a:hover::after {
-  width: 100%;
+.sidebar nav a:hover,
+.sidebar nav a.active {
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Main Content */
-main {
-  max-width: 1200px;
-  margin: 2rem auto;
-  display: flex;
+.sidebar nav a i {
+    margin-right: 10px;
 }
 
-.blog-post {
-  flex: 3;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 2rem;
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
-.post-header {
-  margin-bottom: 2rem;
+header {
+    background-color: #fff;
+    padding: 15px 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.post-meta {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.8rem;
-  color: #666;
+.search-bar {
+    position: relative;
 }
 
-.post-content {
-  line-height: 1.8;
+.search-bar input {
+    padding: 8px 30px 8px 15px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    outline: none;
+    width: 250px;
 }
 
-/* Sidebar */
-.sidebar {
-  flex: 1;
-  margin-left: 2rem;
+.search-bar i {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: #999;
 }
 
-.widget {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 1rem;
-  margin-bottom: 2rem;
+.user-info {
+    display: flex;
+    align-items: center;
 }
 
-.widget h3 {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
+.user-info i {
+    margin-right: 15px;
+    color: var(--accent-color);
+    font-size: 20px;
+    cursor: pointer;
 }
 
-.widget ul {
-  list-style: none;
+.user-avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
 }
 
-.widget li {
-  margin-bottom: 0.5rem;
+.content {
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto;
 }
 
-.widget a {
-  color: #333;
-  text-decoration: none;
-  transition: color 0.3s ease;
+.page-content {
+    display: none;
 }
 
-.widget a:hover {
-  color: #666;
+.page-content.active {
+    display: block;
 }
 
-/* Footer */
-footer {
-  background-color: #333;
-  color: #fff;
-  text-align: center;
-  padding: 1rem;
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
 }
 </style>
