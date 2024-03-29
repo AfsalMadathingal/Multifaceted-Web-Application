@@ -3,13 +3,15 @@ document.addEventListener('DOMContentLoaded', () => {
   
 
 
-    const getReels = document.querySelector('.button--submit');
+    const iluvnet = document.querySelector('.button--submit');
 
-    getReels.addEventListener('click', (event) => {
+    iluvnet.addEventListener('click', (event) => {
 
       const loading = document.querySelector('.loading-bar')
       var url = document.getElementById('url').value
       const instaImage = document.getElementById('insta-image')
+      const route = iluvnet.getAttribute('data-download')
+      console.log(route);
       let newurl;
 
 
@@ -42,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       console.log(newurl)
 
-      fetch('/download', {
+      fetch(`/downloader/${route}-download`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

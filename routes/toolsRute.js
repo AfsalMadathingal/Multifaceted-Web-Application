@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const sharp = require('sharp');
 const fs = require("fs");
 const { uploadSingle } = require("../middleware/upload");
 const { converterFunction } = require("../utils/imageToPdf");
@@ -9,18 +10,39 @@ const multer = require("multer");
 const bunny = require("../utils/bunnyStorage");
 
 router.get("/", (req, res) => {
-  res.render("tools", {
-    title: pageData.toolspagetitle,
-    desc: pageData.toolspagedescription,
-    keywords: pageData.toolskeywords,
-  });
+
+  try {
+    const dec = encodeURIComponent(pageData.toolspagedescription);
+    const keywords = encodeURIComponent(pageData.toolskeywords);
+    res.render("tools", {
+      title: pageData.toolspagetitle,
+      desc: dec,
+      keywords: keywords,
+    });
+  } catch (error) {
+
+    res.send("internal error Please go back home");
+  }
+
 });
 
-router.get("/imagetopdf", (req, res) => {
+router.get("/image-to-pdf", (req, res) => {
 
-  console.log("TOOLS ROUTE !!! ");
+try {
+  
+  const dec = encodeURIComponent(pageData.toolspagedescription);
+  const keywords = encodeURIComponent(pageData.imagetopdfkeywords);
+  res.render("imagetoPdf", {
+    title: pageData.imagetopdftitle,
+    desc: dec,
+    keywords: keywords,
+  });
 
-  res.render("imagetoPdf");
+} catch (error) {
+  
+  res.send("internal error Please go back home");
+}
+
 
 
 });
@@ -132,6 +154,89 @@ router.delete("/delete", (req, res) => {
 
   res.json("tools route delete");
 });
+
+
+router.get('/camscanner-image-scanner', (req, res) => {
+
+    res.render('imagescanner')
+
+    
+})
+
+const sharpCont = require ('../controller/sharpController')
+
+router.post('/scan-image',uploadSingle, async (req, res) => {
+
+
+try {
+
+  console.log(req.files);
+
+  const { filename } = req.files[0];
+  const pngOutputName = uuidv4() + ".png";
+  let sharpoutputName ;
+  if(filename.endsWith(".jpg") || filename.endsWith(".jpeg")){
+
+    sharpoutputName = uuidv4() + ".jpeg";
+  }else
+  {
+    sharpoutputName = uuidv4() + ".png";
+  }
+ 
+
+  await sharpCont(filename, sharpoutputName);
+
+  console.log(sharpoutputName);
+  
+
+  const response = await converterFunction(
+    `./public/uploads/${sharpoutputName}`,
+    `./public/uploads/${pngOutputName}`
+  );
+
+  if (!response.status) {
+    return res.json(response);
+  }
+
+  if (filename.endsWith(".jpg") || filename.endsWith(".jpeg")) {
+    req.session.imageTodelete = `./public/uploads/${pngOutputName}`;
+  } else {
+    req.session.imageTodelete = `./public/uploads/${filename}`;
+  }
+
+  req.session.filename = pngOutputName;
+
+  console.log("path ", response);
+
+  const pdfName = response.pdfPath.split("/").pop();
+
+  req.session.pdfName = `/pdf/${pdfName}`;
+
+  try {
+    fs.unlinkSync(req.session.imageTodelete);
+    console.log("files deleted");
+  } catch (error) {
+    console.log("no files to delete");
+    console.log(error);
+  }
+
+
+
+
+  res.json({ response: response, pdf: req.session.pdfName });
+  
+} catch (error) {
+  
+
+  res.json(false);
+
+}
+
+
+  
+ 
+})
+
 
 router.use(function (err, req, res, next) {
   if (err instanceof multer.MulterError) {

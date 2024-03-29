@@ -1,0 +1,111 @@
+{{>nav}}
+<main>
+    <div class="content-wrapper">
+        <article>
+            <header>
+                <h1>{{blog.title}}</h1>
+                <div class="post-meta">
+                    <span class="author">By ILuvnet.com</span>
+                    <span class="date">{{formatDate blog.date}}</span>
+                    <div class="tags">
+                        {{#each blog.tags}}
+                        <span class="tag">{{this}}</span>
+                        {{/each}}
+                    </div>
+                </div>
+            </header>
+            <div class="post-content">
+                <p>{{blog.shortDescription}}</p>
+                <img src="{{blog.image}}" alt="Blog Post Image">
+                {{{blog.description}}}
+                <blockquote>
+                    <p>{{blog.shortDescription}}</p>
+                </blockquote>
+                <p>For more blog posts, please visit our page daily <a href="https://luvnet.com">luvnet.com</a>.</p>
+            </div>
+        </article>
+        <aside class="sidebar">
+            <h3>Related Posts</h3>
+            <div class="related-posts">
+                {{#each relatedBlog}}
+                <div class="related-post">
+                    <img src="{{this.image}}" alt="Related Post Image">
+                    <h4>{{this.title}}</h4>
+                    <p>{{this.shortDescription}}</p>
+                    <a href="/blogview/{{this.id}}">Read More</a>
+                </div>
+                {{/each}}
+            </div>
+        </aside>
+    </div>
+<div class="comments">
+        <h2>Comments</h2>
+        <div id="comments-container">
+{{#each blog.comments}}
+            <div class="comment">
+                <div class="comment-header">
+                    <span class="comment-author">{{this.name}}</span>
+                    <span class="comment-date">{{formatDate this.date}}</span>
+                </div>
+                <div class="comment-body">{{this.comment}}</div>
+            </div>
+{{/each}}
+        </div>
+
+        <div id="comments-container"></div>
+        <form id="comment-form">
+            <input type="text" id="name-input" placeholder="Enter your name...">
+            <textarea id="comment-input" placeholder="Enter your comment..."></textarea>
+            <button data-id="{{blog._id}}" id="submit-btn-comment" type="submit">Submit</button>
+        </form>
+    </div>
+
+</main>
+{{>footer}}
+<link rel="stylesheet" href="/style/blogview.css">
+
+<script>
+    const commentpost= document.getElementById("submit-btn-comment");
+
+    commentpost.addEventListener("click", (event) => {
+        event.preventDefault();
+        alert("jhelelelel")
+        const name = document.getElementById("name-input").value;
+        const comment = document.getElementById("comment-input").value;
+        const id = commentpost.getAttribute("data-id");
+        const date = new Date();
+
+        alert(id)
+
+        fetch("/comment-blog", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ name, comment, id }),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.status) {
+                    const commentContainer = document.getElementById("comments-container");
+                    const commentElement = document.createElement("div");
+                    commentElement.classList.add("comment");
+                    commentElement.innerHTML = `
+                        <div class="comment-header">
+                            <span class="comment-author">${name}</span>
+                            <span class="comment-date">${date}</span>
+                        </div>
+                        <div class="comment-body">${comment}</div>
+                    `;
+                    commentContainer.appendChild(commentElement);
+                    document.getElementById("name-input").value = "";
+                    document.getElementById("comment-input").value = "";
+                } else {
+                    alert(data.message);
+                }
+
+
+    });
+    });
+    
+    </script>

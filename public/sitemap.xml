@@ -2,58 +2,102 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
-    <loc>https://getreels.cloud/</loc>
+    <loc>https://iluvnet.com/</loc>
     <lastmod>2024-03-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://getreels.cloud/tools</loc>
+    <loc>https://iluvnet.com/tools</loc>
     <lastmod>2024-03-14</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://getreels.cloud/blog</loc>
+    <loc>https://iluvnet.com/blog</loc>
     <lastmod>2024-03-20</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://getreels.cloud/tools/imagetoPdf</loc>
+    <loc>https://iluvnet.com/tools/imagetoPdf</loc>
     <lastmod>2024-03-14</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://getreels.cloud/about</loc> 
+    <loc>https://iluvnet.com/about</loc> 
     <lastmod>2024-03-06</lastmod> 
     <changefreq>monthly</changefreq> 
     <priority>0.8</priority> 
     </url>
 
   <url>
-    <loc>https://getreels.cloud/contactus</loc> 
+    <loc>https://iluvnet.com/contactus</loc> 
     <lastmod>2024-03-06</lastmod> 
     <changefreq>yearly</changefreq> 
     <priority>0.6</priority> 
     </url>
       <url>
-    <loc>https://getreels.cloud/services</loc> 
+    <loc>https://iluvnet.com/services</loc> 
     <lastmod>2024-03-08</lastmod> 
     <changefreq>yearly</changefreq> 
     <priority>0.6</priority> 
     </url>
       <url>
-    <loc>https://getreels.cloud/policy</loc> 
+    <loc>https://iluvnet.com/policy</loc> 
     <lastmod>2024-03-13</lastmod> 
     <changefreq>monthly</changefreq> 
     <priority>0.9</priority> 
     </url>
      <url>
-    <loc>https://getreels.cloud/api</loc> 
-    <lastmod>2024-03-17</lastmod> 
+    <loc>https://iluvnet.com/api</loc> 
+    <lastmod>2024-03-29</lastmod> 
     <changefreq>monthly</changefreq> 
     <priority>0.9</priority> 
     </url>
+     <url>
+    <loc>https://iluvnet.com/terms-of-service</loc> 
+    <lastmod>2024-03-29</lastmod> 
+    <changefreq>monthly</changefreq> 
+    <priority>0.9</priority> 
+    </url>
+     <url>
+    <loc>https://iluvnet.com/FAQ</loc> 
+    <lastmod>2024-03-29</lastmod> 
+    <changefreq>monthly</changefreq> 
+    <priority>0.9</priority> 
+    </url>
+    <url>
+    <loc>https://iluvnet.com/downloader</loc> 
+    <lastmod>2024-03-29</lastmod> 
+    <changefreq>monthly</changefreq> 
+    <priority>1.0</priority> 
+    </url>
+    <url>
+    <loc>https://iluvnet.com/downloader/instagram-video-downloader</loc> 
+    <lastmod>2024-03-29</lastmod> 
+    <changefreq>monthly</changefreq> 
+    <priority>1.0</priority> 
+    </url>
+    <url>
+    <loc>https://iluvnet.com/downloader/twitter-video-downloader</loc> 
+    <lastmod>2024-03-29</lastmod> 
+    <changefreq>monthly</changefreq> 
+    <priority>1.0</priority> 
+    </url>
+     <url>
+    <loc>https://iluvnet.com/downloader/tiktok-video-downloader</loc> 
+    <lastmod>2024-03-29</lastmod> 
+    <changefreq>monthly</changefreq> 
+    <priority>1.0</priority> 
+    </url>
+ <url>
+    <loc>https://iluvnet.com/downloader/facebook-video-downloader</loc> 
+    <lastmod>2024-03-29</lastmod> 
+    <changefreq>monthly</changefreq> 
+    <priority>1.0</priority> 
+    </url>
+
+
 </urlset>

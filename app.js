@@ -8,7 +8,12 @@ const toolsRoute = require('./routes/toolsRute')
 const session = require('express-session')
 const cleanup = require('./utils/filescleanup')
 const PORT = process.env.PORT || 3323
+const adminRoute = require('./routes/adminRoute/adminRoute')
+const mongoose = require('mongoose')
 
+mongoose.connect(process.env.MONGO_URI).then(() => {
+    console.log('MongoDB connected')
+})
 cleanup();
 setInterval(cleanup, 30 * 60 * 1000);
 
@@ -18,10 +23,10 @@ app.use(session({
     saveUninitialized: true,
 }))
 
-app.use((req, res, next) => {
-    res.setHeader('Cache-Control', 'public, max-age=3600');
-    next();
-  });
+// app.use((req, res, next) => {
+//     res.setHeader('Cache-Control', 'public, max-age=3600');
+//     next();
+//   });
 
 
 
@@ -32,13 +37,21 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 hbs.registerPartials(path.join(__dirname, 'views/partials'));
+hbs.registerHelper('formatDate', function(isoDate) {
+    const date = new Date(isoDate);
+    const day = ('0' + date.getDate()).slice(-2);
+    const month = ('0' + (date.getMonth() + 1)).slice(-2);
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+  });
 
 
 
-
-
+const downRoute = require('./routes/downloaderRoute')
 app.use('/', mainRoute)
 app.use('/tools',toolsRoute)
+app.use('/admin',adminRoute)
+app.use('/downloader',downRoute)
 
 
 

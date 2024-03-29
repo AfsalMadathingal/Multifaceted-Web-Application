@@ -1,0 +1,90 @@
+ 
+ <script>
+
+  function onSubmit(token) {
+    
+    document.getElementById("button--submit-btn").click();
+
+  }
+
+ </script>
+ 
+{{>nav}}
+
+<link rel="stylesheet" href="/style/home.css">
+<link rel="stylesheet" href="/style/card.css">
+
+<main>
+  <div class="home">
+    <div class="headline-one">
+  <h1>Facebook Video , Videos and Post Downloader</h1>
+  <p>ILuvNet.com supports all types of Facebook videos links</p>
+</div>
+
+
+<div class="main-div" >
+<a style="--clr: #7808d0" class="button" href="#">
+            <span class="button__icon-wrapper">
+                <svg width="10" class="button__icon-svg" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 15">
+                    <path fill="currentColor" d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"></path>
+                </svg>
+                
+                <svg class="button__icon-svg  button__icon-svg--copy" xmlns="http://www.w3.org/2000/svg" width="10" fill="none" viewBox="0 0 14 15">
+                    <path fill="currentColor" d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"></path>
+                </svg>
+            </span>
+           Download Videos
+        </a>
+        <a style="--clr: #7808d0" class="button" href="#">
+            <span class="button__icon-wrapper">
+                <svg width="10" class="button__icon-svg" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 15">
+                    <path fill="currentColor" d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"></path>
+                </svg>
+                
+                <svg class="button__icon-svg  button__icon-svg--copy" xmlns="http://www.w3.org/2000/svg" width="10" fill="none" viewBox="0 0 14 15">
+                    <path fill="currentColor" d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"></path>
+                </svg>
+            </span>
+          Download Story
+        </a>
+        <a style="--clr: #7808d0" class="button" href="#">
+            <span class="button__icon-wrapper">
+                <svg width="10" class="button__icon-svg" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 15">
+                    <path fill="currentColor" d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"></path>
+                </svg>
+                
+                <svg class="button__icon-svg  button__icon-svg--copy" xmlns="http://www.w3.org/2000/svg" width="10" fill="none" viewBox="0 0 14 15">
+                    <path fill="currentColor" d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"></path>
+                </svg>
+            </span>
+           Download Post
+        </a>
+</div>
+
+
+    <div class="input-group">
+      <input type="text" class="input" id="url" name="url" placeholder="Paste Facebook Link" autocomplete="off">
+    <button class="g-recaptcha button--submit"
+    id="button--submit-btn"
+    data-sitekey="6LdEzJUpAAAAAJwKxMZLJkUXTCvLSJRxPOpwHe9z"
+    data-callback='onSubmit'
+    data-download="facebook"
+    data-action='submit'>
+  Download
+</button>
+    </div>
+    <div class="loading-bar">Loading</div>
+ 
+
+  </div>
+
+</main>
+
+
+<div class="headline">
+  <h1>All features of ILuvNet.com</h1>
+  <p>ILuvNet.com supports all types of Facebook video links and also includes tools to convert images to PDF</p>
+</div>
+{{>facebookaccor}}
+{{>footer}}
+<script src="/js/facebookscript.js"></script>

@@ -164,7 +164,7 @@ async function downloadPdf  (pdfPath) {
         const link = document.createElement("a");
         link.href = window.URL.createObjectURL(blob);
 
-        link.download = "getreelsPDFTools_downloaded.pdf";
+        link.download = "iluvnetPDFTools_downloaded.pdf";
 
         document.body.appendChild(link);
 

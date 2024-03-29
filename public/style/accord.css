@@ -1,0 +1,79 @@
+
+
+
+body {
+  background-color: #f5f5f5;
+}
+
+h1 {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.zxqwe {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.azsxdcfv {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.qwertyu {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.qwertyu:hover {
+  background-color: #f5f5f5;
+}
+
+.iopasdfg {
+  font-size: 1.2rem;
+  margin-right: 1rem;
+  color: #666;
+  transition: transform 0.3s ease;
+}
+
+.qwertyu h3 {
+  font-size: 1rem;
+  color: #333;
+}
+
+.hjklzxcv {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.bnmqwert {
+  padding: 0 1rem 1rem 3rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+.bnmqwert a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.bnmqwert a:hover {
+  text-decoration: underline;
+}
+
+/* Rotate the question icon when the answer is expanded */
+.azsxdcfv.active .iopasdfg {
+  transform: rotate(180deg);
+}
+
+.azsxdcfv.active .hjklzxcv {
+  max-height: 500px; /* Adjust as needed */
+}

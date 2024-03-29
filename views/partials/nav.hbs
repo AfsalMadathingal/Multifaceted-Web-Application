@@ -1,19 +1,36 @@
 <link rel="stylesheet" href="/style/nav.css">
-{{!-- <ul class="nav-links">
-        <li><a href="/">Home</a></li>
-         <li><a href="/api">Api</a></li>
-        <li class="upward"><a href="/tools">PDF tools</a></li>
-         <li class="center"><a href="/about">About</a></li>
-</ul> --}}
 
-  <header class="headerFornav">
-    <nav>
-      <div class="logo">GetReels</div>
-      <div class="nav-links">
-        <a href="/">Home</a>
-        <a href="/blog">Blog</a>
-        <a href="/api">API</a>
-        <a href="/tools">PDF Tools</a>
+
+
+   <header class="header">
+    <nav class="navbar">
+      <div class="logo">
+        <a href="/" style="text-decoration: none; color: inherit">
+          <div><img src="/images/logonav.png" alt=""></div>
+      </a>
       </div>
+      <div class="menu-toggle">
+        <i class="fa fa-bars"></i>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="/">Home</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/downloader">Downloader</a></li>
+        <li><a href="/tools">PDF Tools</a></li>
+        <li><a href="/about">About</a></li>
+      </ul>
     </nav>
   </header>
+
+
+  <script>
+
+    // Toggle menu on mobile devices
+const menuToggle = document.querySelector('.menu-toggle');
+const navMenu = document.querySelector('.nav-menu');
+
+menuToggle.addEventListener('click', () => {
+  navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+});
+
+  </script>
