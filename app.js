@@ -23,10 +23,10 @@ app.use(session({
     saveUninitialized: true,
 }))
 
-// app.use((req, res, next) => {
-//     res.setHeader('Cache-Control', 'public, max-age=3600');
-//     next();
-//   });
+app.use((req, res, next) => {
+    res.setHeader('Cache-Control', 'public, max-age=3600');
+    next();
+  });
 
 app.use((req, res, next) => {
   const clientIP = req.headers['x-real-ip'] || req.headers['x-forwarded-for'] || req.socket.remoteAddress;
