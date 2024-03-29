@@ -150,7 +150,7 @@ const faq = (req, res) => {
         
         console.log('/FAQ');
 
-        res.render('FAQ',{
+        res.render('faq',{
             title:"FAQ - ILuvnet",
             desc:pageData.comondesc
         })
