@@ -14,9 +14,6 @@ const downloader = async (req, res) => {
         const ipAddress = req.header('x-forwarded-for') || req.connection.remoteAddress;
         console.log(`ip address: ${ipAddress}`);
         const blogData = await blog.find({})
-        console.log(blogData);
-
-
         res.render('newhome',{
             blogData:blogData,
             title:pageData.homepagetitle,
