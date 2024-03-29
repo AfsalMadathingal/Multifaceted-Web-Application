@@ -28,12 +28,6 @@ app.use((req, res, next) => {
     next();
   });
 
-app.use((req, res, next) => {
-  const clientIP = req.headers['x-real-ip'] || req.headers['x-forwarded-for'] || req.socket.remoteAddress;
-  console.log(`Client IP: ${clientIP}`);
-  next();
-});
-
 
 app.use(express.static(path.join(__dirname, 'public')))
 app.set('view engine', 'hbs')
