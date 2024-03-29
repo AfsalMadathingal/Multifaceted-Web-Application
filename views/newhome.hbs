@@ -55,7 +55,7 @@
         <div class="container">
           {{#each blogData}}
           
-            <div class="blog">
+            <div data-id="{{this._id}}" class="blog">
               <div class="blog__header">
                 <img src="{{this.image}}" alt="blog__image" class="blog__image" width="600">
               </div>
@@ -168,7 +168,13 @@ section
     max-width: 100%;
     object-fit: cover;
   }
-  
+  .blog :hover
+  {
+    color: blueviolet;
+    cursor: pointer;
+  }
+
+
   .blog {
     display: flex;
     flex-direction: column;
@@ -411,3 +417,18 @@ section
 </style>
 
 {{>footer}}
+
+
+<script>
+
+  const blog = document.querySelectorAll('.blog')
+
+  blog.forEach((blog) => {
+    blog.addEventListener('click', () => {
+      const id = blog.getAttribute('data-id')
+      window.location.href = `/blogview/${id}`
+    })
+  })
+
+
+</script>
