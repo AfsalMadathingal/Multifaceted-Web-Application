@@ -302,7 +302,12 @@ const commentBlog = async (req, res) => {
         
         
         const { name, comment ,id } = req.body;
-        console.log("id ", id);
+
+        if (name.trim() === "" || comment.trim() === "") {
+            res.json({status:false, message:"Name and Comment must not be empty!"})
+            return;
+        }
+        
         const date = new Date();
         const response = await blog.updateOne({
             _id: id
@@ -317,7 +322,8 @@ const commentBlog = async (req, res) => {
         res.json({status:true, message:"comment added"})
 
     } catch (error) {
-        console.log(error);
+        res.json({status:false, message:"comment not added"})
+
     }
 }
 

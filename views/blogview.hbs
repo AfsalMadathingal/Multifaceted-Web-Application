@@ -74,8 +74,8 @@
         const comment = document.getElementById("comment-input").value;
         const id = commentpost.getAttribute("data-id");
         const date = new Date();
-
-        
+        const dateFormat = new Intl.DateTimeFormat('default', { dateStyle: 'medium' });
+        const formattedDate = dateFormat.format(date);
         if(name.trim() === "" || comment.trim() === ""){
             swal({
                 title: "Error!",
@@ -109,7 +109,7 @@
                     commentElement.innerHTML = `
                         <div class="comment-header">
                             <span class="comment-author">${name}</span>
-                            <span class="comment-date">${date}</span>
+                            <span class="comment-date">${formattedDate}</span>
                         </div>
                         <div class="comment-body">${comment}</div>
                     `;
