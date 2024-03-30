@@ -16,7 +16,7 @@
             </header>
             <div class="post-content">
                 <p>{{blog.shortDescription}}</p>
-                <img src="{{blog.image}}" alt="Blog Post Image">
+                <img src="{{blog.image}}" alt="{{blog.title}}">
                 {{{blog.description}}}
                 <blockquote>
                     <p>{{blog.shortDescription}}</p>
@@ -29,7 +29,7 @@
             <div class="related-posts">
                 {{#each relatedBlog}}
                 <div class="related-post">
-                    <img src="{{this.image}}" alt="Related Post Image">
+                    <img src="{{this.image}}" alt="{{this.title}}">
                     <h4>{{this.title}}</h4>
                     <p>{{this.shortDescription}}</p>
                     <a href="/blogview/{{this.id}}">Read More</a>
