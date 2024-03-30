@@ -10,6 +10,21 @@ const cleanup = require('./utils/filescleanup')
 const PORT = process.env.PORT || 3323
 const adminRoute = require('./routes/adminRoute/adminRoute')
 const mongoose = require('mongoose')
+const siteMap = require('./utils/sitemap')
+const cron = require('node-cron');
+const { v4: uuidv4 } = require('uuid');
+
+cron.schedule('0 2 * * *', () => {
+    siteMap.generateSitemap()
+      .then(() => {
+        console.log('Sitemap generated successfully');
+      })
+      .catch((error) => {
+        console.error('Error generating sitemap:', error);
+      });
+  }, {
+    timezone: 'Asia/Kolkata' 
+});
 
 mongoose.connect(process.env.MONGO_URI).then(() => {
     console.log('MongoDB connected')
@@ -19,7 +34,7 @@ setInterval(cleanup, 30 * 60 * 1000);
 
 
 app.use(session({
-    secret: '39472398shdjfjkh398475dhsf',
+    secret: uuidv4(),
     resave: false,
     saveUninitialized: true,
 }))
