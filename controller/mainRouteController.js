@@ -13,7 +13,7 @@ const downloader = async (req, res) => {
 
         const ipAddress = req.header('x-forwarded-for') || req.connection.remoteAddress;
         console.log(`ip address: ${ipAddress}`);
-        const blogData = await blog.find({})
+        const blogData = await blog.find({}).sort({date:-1}).limit(12)
         res.render('newhome',{
             blogData:blogData,
             title:pageData.homepagetitle,
