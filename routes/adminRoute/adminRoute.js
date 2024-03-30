@@ -12,7 +12,7 @@ const adminmodel = require('../../model/admin')
 const bcrypt = require('bcrypt')
 const saltRounds = 12
 const auth = require('../../middleware/auth')
-const nocache = require('../../middleware/nocache')
+const nocache = require('nocache')
 
 
 router.use(nocache)
