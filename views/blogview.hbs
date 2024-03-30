@@ -70,14 +70,29 @@
 
     commentpost.addEventListener("click", (event) => {
         event.preventDefault();
-        alert("jhelelelel")
         const name = document.getElementById("name-input").value;
         const comment = document.getElementById("comment-input").value;
         const id = commentpost.getAttribute("data-id");
         const date = new Date();
 
-        alert(id)
-
+        
+        if(name.trim() === "" || comment.trim() === ""){
+            swal({
+                title: "Error!",
+                text: "Name and Comment must not be empty!",
+                icon: "error",
+              });
+            return;
+        }
+        
+        swal({
+            title: "Success!",
+            text: "Your comment is submited successfully!",
+            icon: "success",
+          });
+        
+ 
+        
         fetch("/comment-blog", {
             method: "POST",
             headers: {
@@ -102,7 +117,11 @@
                     document.getElementById("name-input").value = "";
                     document.getElementById("comment-input").value = "";
                 } else {
-                    alert(data.message);
+                   swal({
+                title: "Error!",
+                text: "Name and Comment must not be empty!",
+                icon: "error",
+              });
                 }
 
 
