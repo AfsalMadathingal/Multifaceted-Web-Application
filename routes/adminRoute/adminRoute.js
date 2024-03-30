@@ -15,7 +15,7 @@ const auth = require('../../middleware/auth')
 const nocache = require('nocache')
 
 
-router.use(nocache)
+router.use(nocache())
 
 router.get('/',auth.isLogin,(req,res)=>{
 
