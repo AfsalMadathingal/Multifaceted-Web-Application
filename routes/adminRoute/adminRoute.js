@@ -75,7 +75,7 @@ router.post('/login', async (req, res) => {
 })
 
 
-router.get('/write-blog',auth.isLogin,(req,res)=>{
+router.get('/write-blog',auth.checkSession,(req,res)=>{
     
     res.render('admin/blogManage',{
         layout: 'admin/adminlayout'
@@ -139,7 +139,7 @@ router.post('/blog-submit', upload.uploadSingle, async (req, res) => {
 router.get('/logout',auth.isLogin,(req,res)=>{
 try {
     req.session.destroy();
-    res.redirect('/admin/login')
+    res.redirect('/')
 } catch (error) {
     res.send("internal error Please go back home")
 }
