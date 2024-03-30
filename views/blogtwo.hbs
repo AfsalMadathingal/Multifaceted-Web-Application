@@ -275,9 +275,10 @@
     blog.forEach((blog) => {
         blog.addEventListener('click', () => {
             const id = blog.getAttribute('data-id')
-            let query = id.replace(/-/g, '@') // replace dash with @
-            changed = query.replace(/ /g, '-')
-            window.location.href = `/blogview/${changed}`
+            let query = id.replace(/-/g, '@').replace(/\?/g, 'qmark').replace(/ /g, '-')
+            //let query = id.replace(/-/g, '@')
+           // let changed = query.replace(/ /g, '-')
+            window.location.href = `/blogview/${query}`
         })
     })
 </script>

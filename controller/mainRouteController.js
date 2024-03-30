@@ -207,11 +207,11 @@ try {
     const id = req.params.id;
 
     const query = id.replace(/-/g, ' ');
-    let changed= query.replace(/@/g, '-');
-    console.log(changed);
-    const blogdata = await blog.findOne({title:changed});
-    console.log(blogdata);
-    const relatedBlog = await blog.find({}).limit(4);
+    const newchanged = query.replace(/@/g, '-').replace(/qmark/g, '?');
+    console.log(newchanged);
+    // const blogdata = await blog.findOne({title:newchanged});
+   const blogdata = await blog.findOneAndUpdate({title:newchanged},{$inc:{views:1}})
+    const relatedBlog = await blog.find({}).sort({date:-1}).limit(4);
 
     marked.setOptions({
         pedantic: false
@@ -233,7 +233,8 @@ try {
                     shortDescription: blogdata.shortDescription,
                     tags: blogdata.tags,
                     _id: blogdata._id,
-                    comments: blogdata.comments
+                    comments: blogdata.comments,
+                    views:blogdata.views
                 }
                 ,
                 relatedBlog: relatedBlog
