@@ -189,6 +189,7 @@ const blogPage = async (req,res)=>{
     try
     {
         const blogData = await blog.find({}).sort({date:-1});
+
        const desc = encodeURIComponent(pageData.bloghomeDesc);
        const keywords = encodeURIComponent(pageData.bloghomeKeywords);
         res.render('blogtwo', {title:"Blogs | ILuvnet.com",desc:desc , blogData:blogData,keywords:keywords})
@@ -205,7 +206,11 @@ const blogView  = async (req,res)=>{
 try {
     const id = req.params.id;
 
-    const blogdata = await blog.findOne({_id:id});
+    const query = id.replace(/-/g, ' ');
+    let changed= query.replace(/@/g, '-');
+    console.log(changed);
+    const blogdata = await blog.findOne({title:changed});
+    console.log(blogdata);
     const relatedBlog = await blog.find({}).limit(4);
 
     marked.setOptions({
@@ -237,9 +242,8 @@ try {
 } catch (error) {
     console.log(error);
     res.send("internal error Please go back home")
-}
     
-
+}
 }
 
 const landing  = (req,res)=>{

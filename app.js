@@ -43,11 +43,16 @@ hbs.registerHelper('formatDate', function(isoDate) {
     const year = date.getFullYear();
     return `${day}/${month}/${year}`;
   });
+hbs.registerHelper('changeSpacesToDash', function(str) {
+    return str.replace(/\s/g, '-');
+});
+
 
 
 
 const downRoute = require('./routes/downloaderRoute')
 const rssRoute = require('./routes/rssFeed')
+
 
 app.use('/', rssRoute);
 app.use('/', mainRoute)
@@ -55,10 +60,9 @@ app.use('/tools',toolsRoute)
 app.use('/admin',adminRoute)
 app.use('/downloader',downRoute)
 
-
-
-
-
+app.use((req, res, next) => {
+    res.status(404).render('error', { title: 'Page Not Found' });
+});
 
 
 
