@@ -17,6 +17,7 @@ mongoose.connect(process.env.MONGO_URI).then(() => {
 cleanup();
 setInterval(cleanup, 30 * 60 * 1000);
 
+
 app.use(session({
     secret: '39472398shdjfjkh398475dhsf',
     resave: false,
@@ -46,6 +47,9 @@ hbs.registerHelper('formatDate', function(isoDate) {
 
 
 const downRoute = require('./routes/downloaderRoute')
+const rssRoute = require('./routes/rssFeed')
+
+app.use('/', rssRoute);
 app.use('/', mainRoute)
 app.use('/tools',toolsRoute)
 app.use('/admin',adminRoute)
