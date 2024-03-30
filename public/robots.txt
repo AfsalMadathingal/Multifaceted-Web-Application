@@ -1,0 +1,8 @@
+###
+# For domain: https://iluvnet.com/
+###
+
+User-Agent: *
+Disallow : /admin
+Disallow : /admin/write-blog
+Disallow : /admin/dashboard
