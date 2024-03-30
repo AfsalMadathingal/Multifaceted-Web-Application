@@ -13,12 +13,13 @@ router.get('/rss', async (req, res) => {
     });
 
     try {
-        const articles = await Blog.find().sort({ date: -1 }).limit(10); // Fetch latest 10 articles
+        const articles = await Blog.find().sort({ date: -1 }).limit(20); 
         articles.forEach(article => {
+            let query = article.title.replace(/-/g, '@').replace(/\?/g, 'qmark').replace(/ /g, '-')
             feed.item({
                 title: article.title,
                 description: article.shortDescription,
-                url: `http://iluvnet.com/blogview/${article._id}`,
+                url: `http://iluvnet.com/blogview/${query}`,
                 date: article.date
             });
         });
