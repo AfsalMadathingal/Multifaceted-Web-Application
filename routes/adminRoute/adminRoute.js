@@ -12,6 +12,10 @@ const adminmodel = require('../../model/admin')
 const bcrypt = require('bcrypt')
 const saltRounds = 12
 const auth = require('../../middleware/auth')
+const nocache = require('../../middleware/nocache')
+
+
+router.use(nocache)
 
 router.get('/',auth.isLogin,(req,res)=>{
 
@@ -58,7 +62,7 @@ router.post('/login', async (req, res) => {
 
             if (result) {
 
-                req.session.admin = admin;
+                req.session.admin = admin[0]._id;
                 res.json({status:true , message:"Login successfull"});
             }
 
