@@ -76,18 +76,10 @@
         const date = new Date();
         const dateFormat = new Intl.DateTimeFormat('default', { dateStyle: 'medium' });
         const formattedDate = dateFormat.format(date);
-        if(name.trim() === "" || comment.trim() === ""){
+        if(name.trim().length === 0 || comment.trim().length === 0 || name.trim().length > 50 || comment.trim().length > 150){
             swal({
                 title: "Error!",
-                text: "Name and Comment must not be empty!",
-                icon: "error",
-              });
-            return;
-        }else if(comment.trim().length === 0 || comment.trim().length > 150){
-            const errorMsg = comment.trim().length === 0 ? "Comment must not be empty!" : "Comment must be less than 150 characters!";
-            swal({
-                title: "Error!",
-                text: errorMsg,
+                text: "Name and Comment must not be empty and must be less than 50 characters for name and 150 characters for comment!",
                 icon: "error",
               });
             return;

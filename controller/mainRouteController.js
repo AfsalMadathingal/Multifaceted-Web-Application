@@ -303,7 +303,7 @@ const commentBlog = async (req, res) => {
         
         const { name, comment ,id } = req.body;
 
-        if (name.trim() === "" || comment.trim() === "") {
+        if (name.trim() === "" || comment.trim() === "" || name.trim().length > 50 || comment.trim().length > 150) {
             res.json({status:false, message:"Name and Comment must not be empty!"})
             return;
         }
