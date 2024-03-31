@@ -3,12 +3,9 @@ const SitemapGenerator = require('sitemap-generator');
 
 
 function generateSitemap() {
-  const path = require('path');
 
-// Get the current working directory
+const path = require('path');
 const currentDirectory = process.cwd();
-
-// Get the absolute path of a file relative to the current working directory
 const absoluteFilePath = path.join(currentDirectory, '/public/sitemap.xml');
 
 console.log('Current Working Directory:', currentDirectory);

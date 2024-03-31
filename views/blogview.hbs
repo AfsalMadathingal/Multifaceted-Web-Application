@@ -83,6 +83,14 @@
                 icon: "error",
               });
             return;
+        }else if(comment.trim().length === 0 || comment.trim().length > 150){
+            const errorMsg = comment.trim().length === 0 ? "Comment must not be empty!" : "Comment must be less than 150 characters!";
+            swal({
+                title: "Error!",
+                text: errorMsg,
+                icon: "error",
+              });
+            return;
         }
         
         swal({
