@@ -13,7 +13,7 @@ const bcrypt = require('bcrypt')
 const saltRounds = 12
 const auth = require('../../middleware/auth')
 const nocache = require('nocache')
-
+const siteMap = require('../../utils/sitemap')
 
 router.use(nocache())
 
@@ -21,6 +21,24 @@ router.get('/',auth.isLogin,(req,res)=>{
 
     res.redirect('/admin/dashboard')
 
+})
+
+
+router.get('/create-sitemap',auth.isLogin,(req,res)=>{
+    
+    try {
+
+        siteMap.generateSitemap().then(() => {
+           
+            res.send("sitemap generated")
+            
+        }).catch((error) => {
+            res.send(error)
+        })
+        
+    } catch (error) {
+        res.send(error,"internal error Please go back home")
+    }
 })
 
 router.get('/dashboard',auth.isLogin,(req,res)=>{
