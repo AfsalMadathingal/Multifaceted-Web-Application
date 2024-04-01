@@ -218,13 +218,12 @@ try {
       });
     const markdownContent = `${blogdata.description}`;
     const htmlContent = marked(markdownContent);
-    
-    
+    const description = encodeURIComponent(blogdata.shortDescription);
         res.render(
             'blogview',
             {
                 title: `ILUVNET | ${blogdata.title}`,
-                desc: blogdata.shortDescription,
+                desc: description,
                 blog: {
                     title: blogdata.title,
                     description: htmlContent,
