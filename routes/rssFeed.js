@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const RSS = require('rss');
 const Blog = require('../model/blog'); 
+const marked = require('marked');
 
 router.get('/rss', async (req, res) => {
     const feed = new RSS({
@@ -16,9 +17,10 @@ router.get('/rss', async (req, res) => {
         const articles = await Blog.find().sort({ date: -1 }).limit(20); 
         articles.forEach(article => {
             let query = article.title.replace(/-/g, '@').replace(/\?/g, 'qmark').replace(/ /g, '-')
+            let plainTextContent = marked.parse(article.description).replace(/<[^>]*>?/g, '').replace(/#39;/g, "'");
             feed.item({
                 title: article.title,
-                description: article.shortDescription,
+                description: `${article.shortDescription} ${plainTextContent}`,
                 url: `http://iluvnet.com/blogview/${query}`,
                 date: article.date
             });
