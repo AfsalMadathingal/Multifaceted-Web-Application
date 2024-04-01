@@ -223,8 +223,8 @@ try {
         res.render(
             'blogview',
             {
-                title: "Blog | ILuvnet",
-                desc: pageData.comondesc,
+                title: `ILUVNET | ${blogdata.title}`,
+                desc: blogdata.shortDescription,
                 blog: {
                     title: blogdata.title,
                     description: htmlContent,
