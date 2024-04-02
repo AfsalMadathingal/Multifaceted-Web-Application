@@ -22,7 +22,8 @@ router.get('/rss', async (req, res) => {
                 title: article.title,
                 description: `${article.shortDescription} ${plainTextContent}`,
                 url: `http://iluvnet.com/blogview/${query}`,
-                date: article.date
+                date: article.date,
+                enclosure: {url: `${article.image}`},
             });
         });
 
