@@ -183,33 +183,65 @@ const api = (req,res)=>{
 }
 
 
-const blogPage = async (req,res)=>{
+// const blogPage = async (req,res)=>{
 
 
-    try
-    {
-        const blogData = await blog.find({}).sort({date:-1});
+//     try
+//     {
+//         const blogData = await blog.find({}).sort({date:-1});
+//         const arrayWithSkippedItems = blogData.slice(3);
+//        const desc = encodeURIComponent(pageData.bloghomeDesc);
+//        const keywords = encodeURIComponent(pageData.bloghomeKeywords);
+//         res.render('blogtwo', {title:"Blogs | ILuvnet.com",desc:desc , blogData:blogData,skipped: arrayWithSkippedItems,keywords:keywords})
 
-       const desc = encodeURIComponent(pageData.bloghomeDesc);
-       const keywords = encodeURIComponent(pageData.bloghomeKeywords);
-        res.render('blogtwo', {title:"Blogs | ILuvnet.com",desc:desc , blogData:blogData,keywords:keywords})
+//     }catch(err)
+//     {
+//         res.send("internal error Please go back home")
+//         console.log(err);
+//     }
+// }
 
-    }catch(err)
-    {
-        res.send("internal error Please go back home")
+const blogPage = async (req, res) => {
+    try {
+        // Get the query parameters for pagination
+        const { skip = 0, limit = 12 } = req.query;
+        
+        // Convert skip and limit to numbers
+        const skipNum = parseInt(skip);
+        const limitNum = parseInt(limit);
+
+        // Fetch blog data based on skip and limit
+        const blogData = await blog.find({}).sort({ date: -1 }).skip(skipNum).limit(limitNum);
+        
+        const arrayWithSkippedItems = blogData.slice(3);
+        // If there's more data available, set a flag to indicate it
+        const hasMoreData = (skipNum + limitNum) < (await blog.countDocuments());
+
+        // Render the blog page with the fetched data and the hasMoreData flag
+        res.render('blogtwo', {
+            title: "Blogs | ILuvnet.com",
+            desc: encodeURIComponent(pageData.bloghomeDesc),
+            keywords: encodeURIComponent(pageData.bloghomeKeywords),
+            blogData: blogData,
+            arrayWithSkippedItems: arrayWithSkippedItems,
+            hasMoreData: hasMoreData
+        });
+    } catch (err) {
+        res.send("Internal error. Please go back home.");
         console.log(err);
     }
-}
+};
 
 const blogView  = async (req,res)=>{
 
 try {
     const id = req.params.id;
 
+    const indianDate = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+    console.log(`Current date and time in Mumbai, India: ${indianDate}`);
     const query = id.replace(/-/g, ' ');
     const newchanged = query.replace(/@/g, '-').replace(/qmark/g, '?');
     console.log(newchanged);
-    // const blogdata = await blog.findOne({title:newchanged});
    const blogdata = await blog.findOneAndUpdate({title:newchanged},{$inc:{views:1}})
     const relatedBlog = await blog.find({}).sort({date:-1}).limit(4);
 

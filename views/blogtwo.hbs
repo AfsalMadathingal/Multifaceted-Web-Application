@@ -202,10 +202,10 @@
         </article>
     </div>
 
-    <div class="lg:grid lg:grid-cols-3">
-        {{#each blogData}}
+    <div class="lg:grid lg:grid-cols-3 blog-container">
+        {{#each arrayWithSkippedItems}}
         <article
-            class="transition-colors duration-300 hover:bg-gray-100 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl">
+            class="blog-item  transition-colors duration-300 hover:bg-gray-100 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl">
             <div  data-id="{{this.title}}" class="py-6 px-5 blog">
                 <div>
                     <img src="{{this.image}}" alt="{{this.title}}" class="rounded-xl">
@@ -263,7 +263,13 @@
 
     </div>
 </main>
+<div class="flex justify-center mt-8">
+    <button id="loadMoreBtn" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-700 cursor-pointer">
+        Load More
+    </button>
+</div>
 </section>
+
 <br>
 
 {{>footer}}
@@ -276,9 +282,41 @@
         blog.addEventListener('click', () => {
             const id = blog.getAttribute('data-id')
             let query = id.replace(/-/g, '@').replace(/\?/g, 'qmark').replace(/ /g, '-')
-            //let query = id.replace(/-/g, '@')
-           // let changed = query.replace(/ /g, '-')
             window.location.href = `/blogview/${query}`
         })
     })
+
+
+document.getElementById('loadMoreBtn').addEventListener('click', function() {
+    const currentCount = document.querySelectorAll('.blog-item').length; // Count of currently displayed blog items
+    const limit = 9; // Number of items to fetch per request
+   
+    fetch(`/blog?skip=${currentCount}&limit=${limit}`, {
+        method: 'GET',
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.text();
+    })
+    .then(data => {
+        console.log(data)
+        const parser = new DOMParser();
+        const newBlogItems = parser.parseFromString(data, 'text/html').querySelectorAll('.blog-item');
+        if(newBlogItems.length === 0) {
+            document.getElementById('loadMoreBtn').style.display = 'none';
+        }
+        const blogContainer = document.querySelector('.blog-container');
+        newBlogItems.forEach(item => {
+            blogContainer.appendChild(item); // Append the new blog items to the container
+        });
+    })
+    .catch(error => {
+        console.error('Error fetching blog data:', error);
+    });
+});
+
+
+    
 </script>

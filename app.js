@@ -51,6 +51,9 @@ hbs.registerHelper('changeSpacesToDash', function(str) {
     return str.replace(/-/g, '@').replace(/\s/g, '-').replace(/\?/g, 'qmark')
 });
 
+hbs.registerHelper('skipThree', function(array) {
+  return array.slice(3);
+});
 
 
 
