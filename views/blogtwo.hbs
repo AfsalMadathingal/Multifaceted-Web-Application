@@ -276,16 +276,7 @@
 
 
 <script>
-    const blog  = document.querySelectorAll('.blog')
-
-    blog.forEach((blog) => {
-        blog.addEventListener('click', () => {
-            const id = blog.getAttribute('data-id')
-            let query = id.replace(/-/g, '@').replace(/\?/g, 'qmark').replace(/ /g, '-')
-            window.location.href = `/blogview/${query}`
-        })
-    })
-
+ let blog  = document.querySelectorAll('.blog')
 
 document.getElementById('loadMoreBtn').addEventListener('click', function() {
     const currentCount = document.querySelectorAll('.blog-item').length; // Count of currently displayed blog items
@@ -311,11 +302,23 @@ document.getElementById('loadMoreBtn').addEventListener('click', function() {
         newBlogItems.forEach(item => {
             blogContainer.appendChild(item); // Append the new blog items to the container
         });
+        blog  = document.querySelectorAll('.blog')
     })
     .catch(error => {
         console.error('Error fetching blog data:', error);
     });
 });
+
+
+
+    blog.forEach((blog) => {
+        blog.addEventListener('click', () => {
+            const id = blog.getAttribute('data-id')
+            let query = id.replace(/-/g, '@').replace(/\?/g, 'qmark').replace(/ /g, '-')
+            window.location.href = `/blogview/${query}`
+        })
+    })
+
 
 
     
