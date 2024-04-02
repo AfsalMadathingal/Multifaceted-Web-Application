@@ -18,5 +18,6 @@ router.get('/blog',mainCont.blogPage)
 router.get('/blogview/:id',mainCont.blogView)
 router.post('/contact-form',mainCont.contactForm)
 router.post('/comment-blog',mainCont.commentBlog)
+router.get('/sitemap',mainCont.sitemap)
 
 module.exports = router

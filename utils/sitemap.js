@@ -12,17 +12,17 @@ console.log('Current Working Directory:', currentDirectory);
 console.log('Absolute File Path:', absoluteFilePath);
 
     return new Promise((resolve, reject) => {
-      const generator = SitemapGenerator('http://iluvnet.com', {
+      const generator = SitemapGenerator('http://localhost:3323/', {
         maxDepth: 0,
         filepath: absoluteFilePath,
-        maxEntriesPerFile: 50000,
+        maxEntriesPerFile: 5000,
         stripQuerystring: true,
         changeFreq: 'weekly', 
         lastMod: true,
         priorityMap: [1.0, 0.8]
       });
   
-      generator.on('done', () => {
+      generator.on('done', (a) => {
         resolve();
       });
   

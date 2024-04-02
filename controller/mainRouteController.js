@@ -358,6 +358,23 @@ const commentBlog = async (req, res) => {
     }
 }
 
+const sitemap = async (req, res) => {
+    
+    try {
+
+        const blogData = await blog.find({});
+
+        res.render('sitemap', {
+            blogData: blogData
+        })
+
+        
+    } catch (error) {
+        
+
+    }
+}
+
 module.exports = {
     downloader,
     instaDwn,
@@ -372,5 +389,6 @@ module.exports = {
     blogView,
     landing,
     contactForm,
-    commentBlog
+    commentBlog,
+    sitemap
 }
