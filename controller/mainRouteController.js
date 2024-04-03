@@ -269,7 +269,8 @@ try {
                     views:blogdata.views
                 }
                 ,
-                relatedBlog: relatedBlog
+                relatedBlog: relatedBlog,
+                thumbnail: blogdata.image
             }
         );
 } catch (error) {
