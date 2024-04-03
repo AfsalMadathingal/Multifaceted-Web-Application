@@ -18,7 +18,8 @@ const downloader = async (req, res) => {
             blogData:blogData,
             title:pageData.homepagetitle,
             desc:pageData.downloaderDesc,
-            keywords:pageData.commonKeys
+            keywords:pageData.commonKeys,
+            canonical:`https://iluvnet.com/downloader`
         })
     }
     catch (error) {
@@ -84,7 +85,8 @@ const about = (req, res) => {
 
         res.render('about',{
             title:"About Us - ILuvnet",
-            desc:pageData.comondesc
+            desc:pageData.comondesc,
+            canonical:`https://iluvnet.com/about`
         }) 
     }
     catch(error)
@@ -105,7 +107,8 @@ const contactus= (req, res) => {
         
         res.render('contactus',{
             title:"Contact Us - ILuvnet",
-            desc:pageData.comondesc
+            desc:pageData.comondesc,
+            canonical:`https://iluvnet.com/contactus`
         })
 
     } catch (error) {
@@ -122,7 +125,8 @@ const service = (req, res) => {
 
         res.render('services',{
             title:"Services - ILuvnet",
-            desc:pageData.comondesc
+            desc:pageData.comondesc,
+            canonical:`https://iluvnet.com/services`
         })
     } catch (error) {
         
@@ -137,7 +141,8 @@ const terms =  (req, res) => {
 
         res.render('termsofservice',{
             title:"termsofservice - ILuvnet",
-            desc:pageData.comondesc
+            desc:pageData.comondesc,
+            canonical:`https://iluvnet.com/terms-of-service`
         })
     } catch (error) {
         
@@ -152,7 +157,8 @@ const faq = (req, res) => {
 
         res.render('faqnew',{
             title:"FAQ - ILuvnet",
-            desc:pageData.comondesc
+            desc:pageData.comondesc,
+            canonical:`https://iluvnet.com/FAQ`
         })
     } catch (error) {
         
@@ -165,7 +171,11 @@ const policy = (req,res)=>{
 
     try {
         
-        res.render('privacypolicy',{title:"Privacy Policy | ILuvnet",desc:pageData.comondesc})
+        res.render('privacypolicy',{
+            title:"Privacy Policy | ILuvnet",
+            desc:pageData.comondesc,
+            canonical:`https://iluvnet.com/policy`
+        })
 
 
     } catch (error) {
@@ -179,27 +189,10 @@ const policy = (req,res)=>{
 
 const api = (req,res)=>{
     
-    res.render('api',{title:"API | IMAGE TO PDF ",desc:pageData.comondesc })
+    res.render('api',{title:"API | IMAGE TO PDF ",desc:pageData.comondesc,canonical:`https://iluvnet.com/api`}) 
 }
 
 
-// const blogPage = async (req,res)=>{
-
-
-//     try
-//     {
-//         const blogData = await blog.find({}).sort({date:-1});
-//         const arrayWithSkippedItems = blogData.slice(3);
-//        const desc = encodeURIComponent(pageData.bloghomeDesc);
-//        const keywords = encodeURIComponent(pageData.bloghomeKeywords);
-//         res.render('blogtwo', {title:"Blogs | ILuvnet.com",desc:desc , blogData:blogData,skipped: arrayWithSkippedItems,keywords:keywords})
-
-//     }catch(err)
-//     {
-//         res.send("internal error Please go back home")
-//         console.log(err);
-//     }
-// }
 
 const blogPage = async (req, res) => {
     try {
@@ -224,7 +217,8 @@ const blogPage = async (req, res) => {
             keywords: encodeURIComponent(pageData.bloghomeKeywords),
             blogData: blogData,
             arrayWithSkippedItems: arrayWithSkippedItems,
-            hasMoreData: hasMoreData
+            hasMoreData: hasMoreData,
+            canonical:`https://iluvnet.com/blog`
         });
     } catch (err) {
         res.send("Internal error. Please go back home.");
@@ -290,7 +284,8 @@ const landing  = (req,res)=>{
     res.render('landingpage',{
         title:pageData.homepagetitle,
         desc:desc,
-        keywords:keywords
+        keywords:keywords,
+        canonical:`https://iluvnet.com/`
     })
 }
 
@@ -369,7 +364,8 @@ const sitemap = async (req, res) => {
         const blogData = await blog.find({});
 
         res.render('sitemap', {
-            blogData: blogData
+            blogData: blogData,
+            canonical:`https://iluvnet.com/sitemap`
         })
 
         
