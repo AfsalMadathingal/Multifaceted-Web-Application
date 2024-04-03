@@ -25,6 +25,9 @@
   {{#if thumbnail}}
  <meta property="og:image" content="{{thumbnail}}" />
  {{/if}}
+ {{#if canonical}}
+ <link rel="canonical" href="{{canonical}}">
+ {{/if}}
   <meta name="description" content={{desc}}>
   <meta name="keywords" content={{keywords}}>
   <title>{{title}}</title>
@@ -74,8 +77,8 @@
         "@type": "Organization",
         "name": "Iluvnet.com",
         "url": "https://iluvnet.com/",
-        "logo": "https://iluvnet.com/icons/favicon.ico",
-        "description": "iluvnet.com is your one-stop destination for downloading Instagram videos quickly and easily. Simply paste the URL of the Instagram video and get instant access to download options.",
+        "logo": "https://iluvnet.com/favicon.ico",
+        "description": "Iluvnet.com - The best blog for all of your technical needs.",
         "sameAs": [
         "https://www.linkedin.com/in/afsalmadathingal"
         ]

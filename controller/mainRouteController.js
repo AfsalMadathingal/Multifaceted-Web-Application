@@ -257,6 +257,7 @@ try {
             {
                 title: `${blogdata.title} | ILuvnet.com `,
                 desc: description,
+                keywords: blogdata.tags,
                 blog: {
                     title: blogdata.title,
                     description: htmlContent,
@@ -270,7 +271,8 @@ try {
                 }
                 ,
                 relatedBlog: relatedBlog,
-                thumbnail: blogdata.image
+                thumbnail: blogdata.image,
+                canonical: `https://iluvnet.com/blogview/${id}`
             }
         );
 } catch (error) {
