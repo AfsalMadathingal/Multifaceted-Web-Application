@@ -11,6 +11,7 @@ const PORT = process.env.PORT || 3323
 const adminRoute = require('./routes/adminRoute/adminRoute')
 const mongoose = require('mongoose')
 const { v4: uuidv4 } = require('uuid');
+const he = require('he')
 
 
 
@@ -54,6 +55,9 @@ hbs.registerHelper('changeSpacesToDash', function(str) {
 hbs.registerHelper('skipThree', function(array) {
   return array.slice(3);
 });
+hbs.registerHelper('he', function(desc) {
+    return he.decode(desc)
+})
 
 
 

@@ -4,6 +4,7 @@ const blog = require('../model/blog')
 const { marked } = require('marked')
 const nodemailer = require('nodemailer');
 require('dotenv').config()
+const he = require('he')
 
 
 
@@ -245,12 +246,13 @@ try {
       });
     const markdownContent = `${blogdata?.description}`;
     const htmlContent = marked(markdownContent);
-    const description = encodeURIComponent(blogdata.shortDescription);
+   
+
         res.render(
             'blogview',
             {
                 title: `${blogdata.title} | ILuvnet.com `,
-                desc: description,
+                desc: blogdata.shortDescription,
                 keywords: blogdata.tags,
                 blog: {
                     title: blogdata.title,
