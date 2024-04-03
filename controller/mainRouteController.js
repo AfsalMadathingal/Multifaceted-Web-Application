@@ -254,7 +254,7 @@ try {
         res.render(
             'blogview',
             {
-                title: `ILUVNET | ${blogdata.title}`,
+                title: `${blogdata.title} | ILuvnet.com `,
                 desc: description,
                 blog: {
                     title: blogdata.title,
