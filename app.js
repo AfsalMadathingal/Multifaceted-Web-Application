@@ -61,7 +61,7 @@ const downRoute = require('./routes/downloaderRoute')
 const rssRoute = require('./routes/rssFeed')
 
 
-app.use('/', rssRoute);
+app.use('/rss', rssRoute);
 app.use('/', mainRoute)
 app.use('/tools',toolsRoute)
 app.use('/admin',adminRoute)
