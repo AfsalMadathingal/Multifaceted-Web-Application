@@ -242,13 +242,14 @@ try {
     const query = id.replace(/-/g, ' ');
     const newchanged = query.replace(/@/g, '-').replace(/qmark/g, '?');
     console.log(newchanged);
-   const blogdata = await blog.findOneAndUpdate({title:newchanged},{$inc:{views:1}})
-    const relatedBlog = await blog.find({}).sort({date:-1}).limit(4);
+    const blogdata = await blog.findOneAndUpdate({title:newchanged},{$inc:{views:1}})
+    const relatedBlog = await blog.find({ title: { $ne: newchanged } }).sort({ date: -1 }).limit(5);
+ 
 
     marked.setOptions({
         pedantic: false
       });
-    const markdownContent = `${blogdata.description}`;
+    const markdownContent = `${blogdata?.description}`;
     const htmlContent = marked(markdownContent);
     const description = encodeURIComponent(blogdata.shortDescription);
         res.render(
