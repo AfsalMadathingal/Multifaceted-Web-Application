@@ -49,7 +49,7 @@ const regexTags = tagsToFind.map(tag => new RegExp(tag, 'i'));
 
     try {
         const articles = await Blog.find({ tags: { $in: regexTags } }).sort({ date: -1 }).limit(20); 
-        console.log(articles);
+     
         articles.forEach(article => {
             let query = article.title.replace(/-/g, '@').replace(/\?/g, 'qmark').replace(/ /g, '-')
             let plainTextContent = marked.parse(article.description).replace(/<[^>]*>?/g, '').replace(/#39;/g, "'");
@@ -84,7 +84,7 @@ router.get('/life', async (req, res) => {
 
     try {
         const articles = await Blog.find({ tags: { $in: regexTags} }).sort({ date: -1 }).limit(20); 
-        console.log(articles);
+        
         articles.forEach(article => {
             let query = article.title.replace(/-/g, '@').replace(/\?/g, 'qmark').replace(/ /g, '-')
             let plainTextContent = marked.parse(article.description).replace(/<[^>]*>?/g, '').replace(/#39;/g, "'");
@@ -119,7 +119,7 @@ router.get('/finance', async (req, res) => {
 
     try {
         const articles = await Blog.find({ tags: { $in: regexTags} }).sort({ date: -1 }).limit(20); 
-        console.log(articles);
+        
         articles.forEach(article => {
             let query = article.title.replace(/-/g, '@').replace(/\?/g, 'qmark').replace(/ /g, '-')
             let plainTextContent = marked.parse(article.description).replace(/<[^>]*>?/g, '').replace(/#39;/g, "'");
@@ -154,7 +154,7 @@ router.get('/news', async (req, res) => {
 
     try {
         const articles = await Blog.find({ tags: { $in: regexTags} }).sort({ date: -1 }).limit(20); 
-        console.log(articles);
+        
         articles.forEach(article => {
             let query = article.title.replace(/-/g, '@').replace(/\?/g, 'qmark').replace(/ /g, '-')
             let plainTextContent = marked.parse(article.description).replace(/<[^>]*>?/g, '').replace(/#39;/g, "'");
@@ -189,7 +189,7 @@ router.get('/movies', async (req, res) => {
 
     try {
         const articles = await Blog.find({ tags: { $in: regexTags} }).sort({ date: -1 }).limit(20); 
-        console.log(articles);
+       
         articles.forEach(article => {
             let query = article.title.replace(/-/g, '@').replace(/\?/g, 'qmark').replace(/ /g, '-')
             let plainTextContent = marked.parse(article.description).replace(/<[^>]*>?/g, '').replace(/#39;/g, "'");
