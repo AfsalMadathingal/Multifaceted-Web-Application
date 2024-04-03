@@ -314,7 +314,7 @@ document.getElementById('loadMoreBtn').addEventListener('click', function() {
     blog.forEach((blog) => {
         blog.addEventListener('click', () => {
             const id = blog.getAttribute('data-id')
-            let query = id.replace(/-/g, '@').replace(/\?/g, 'qmark').replace(/ /g, '-')
+            let query = id.replace(/-/g, '@').replace(/\?/g, 'qmark').replace(/ /g, '-').replace(/%/g, 'percentage')
             window.location.href = `/blogview/${query}`
         })
     })

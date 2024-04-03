@@ -48,7 +48,7 @@ hbs.registerHelper('formatDate', function(isoDate) {
     return `${day}/${month}/${year}`;
   });
 hbs.registerHelper('changeSpacesToDash', function(str) {
-    return str.replace(/-/g, '@').replace(/\s/g, '-').replace(/\?/g, 'qmark')
+    return str.replace(/-/g, '@').replace(/\s/g, '-').replace(/\?/g, 'qmark').replace(/%/g, 'percentage')
 });
 
 hbs.registerHelper('skipThree', function(array) {
