@@ -231,12 +231,10 @@ const blogView  = async (req,res)=>{
 
 try {
     const id = req.params.id;
-    console.log(id);
     const indianDate = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
-    console.log(`Current date and time in Mumbai, India: ${indianDate}`);
     const query = id.replace(/-/g, ' ');
     const newchanged = query.replace(/@/g, '-').replace(/qmark/g, '?').replace(/percentage/g, '%');
-    console.log(newchanged);
+    console.log(`India: ${indianDate} ${newchanged}`);
     const blogdata = await blog.findOneAndUpdate({title:newchanged},{$inc:{views:1}})
     const relatedBlog = await blog.find({ title: { $ne: newchanged } }).sort({ date: -1 }).limit(5);
  
