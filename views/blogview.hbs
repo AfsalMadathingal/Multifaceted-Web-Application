@@ -18,11 +18,11 @@
             <div class="post-content">
                 <p>{{blog.shortDescription}}</p>
                 <img src="{{blog.image}}" alt="{{blog.title}}">
-                {{#if blog.audioLink}}
+                {{#if blog.audio}}
                 <audio controls>
                 
                     <source
-                        src="audioLink"
+                        src="{{blog.audio}}"
                         type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
