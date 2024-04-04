@@ -12,8 +12,8 @@ const bunny = require("../utils/bunnyStorage");
 router.get("/", (req, res) => {
 
   try {
-    const dec = encodeURIComponent(pageData.toolspagedescription);
-    const keywords = encodeURIComponent(pageData.toolskeywords);
+    const dec =pageData.toolspagedescription;
+    const keywords = pageData.toolskeywords;
     res.render("tools", {
       title: pageData.toolspagetitle,
       desc: dec,
@@ -30,8 +30,8 @@ router.get("/image-to-pdf", (req, res) => {
 
 try {
   
-  const dec = encodeURIComponent(pageData.toolspagedescription);
-  const keywords = encodeURIComponent(pageData.imagetopdfkeywords);
+  const dec = pageData.toolspagedescription;
+  const keywords = pageData.imagetopdfkeywords;
   res.render("imagetoPdf", {
     title: pageData.imagetopdftitle,
     desc: dec,

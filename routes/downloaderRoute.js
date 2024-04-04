@@ -7,6 +7,7 @@ const {twitter} = require('btch-downloader')
 const instaDownload = require('../utils/instaDownloader')
 const pageData = require('../public/json/pagetitles.json')
 const he = require('he')
+
 router.get('/facebook-video-downloader', (req, res) => {
 
     try {
@@ -73,8 +74,8 @@ router.get('/instagram-video-downloader', (req, res) => {
     try {
         
 
-        const desc = encodeURIComponent(pageData.instadesc);
-        const keywords = encodeURIComponent(pageData.instagram);
+        const desc = pageData.instadesc;
+        const keywords = pageData.instagram;
         res.render('downloaderViews/instagramDownloader',{
             title:pageData.homepagetitle,
             desc:desc,
@@ -125,8 +126,8 @@ router.get('/tiktok-video-downloader', (req, res) => {
 
     try {
 
-        const desc = encodeURIComponent(pageData.tiktokdesc);
-        const keywords = encodeURIComponent(pageData.tiktok);
+        const desc = pageData.tiktokdesc;
+        const keywords = pageData.tiktok;
         res.render('downloaderViews/tiktokDownloader',{
             title:"Tiktok Video Downloader - ILuvnet",
             desc:desc,

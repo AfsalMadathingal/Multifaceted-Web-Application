@@ -214,8 +214,8 @@ const blogPage = async (req, res) => {
         // Render the blog page with the fetched data and the hasMoreData flag
         res.render('blogtwo', {
             title: "Blogs | ILuvnet.com",
-            desc: encodeURIComponent(pageData.bloghomeDesc),
-            keywords: encodeURIComponent(pageData.bloghomeKeywords),
+            desc: pageData.bloghomeDesc,
+            keywords: pageData.bloghomeKeywords,
             blogData: blogData,
             arrayWithSkippedItems: arrayWithSkippedItems,
             hasMoreData: hasMoreData,
@@ -278,8 +278,8 @@ try {
 
 const landing  = (req,res)=>{
 
-    const keywords = encodeURIComponent(pageData.commonKeys);
-    const desc = encodeURIComponent(pageData.homepagedesc);
+    const keywords = pageData.commonKeys;
+    const desc = pageData.homepagedesc;
 
     res.render('landingpage',{
         title:pageData.homepagetitle,
