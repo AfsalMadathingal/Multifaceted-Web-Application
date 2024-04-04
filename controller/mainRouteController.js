@@ -261,7 +261,8 @@ try {
                     tags: blogdata.tags,
                     _id: blogdata._id,
                     comments: blogdata.comments,
-                    views:blogdata.views
+                    views:blogdata.views,
+                    audio:blogdata.audio
                 }
                 ,
                 relatedBlog: relatedBlog,
