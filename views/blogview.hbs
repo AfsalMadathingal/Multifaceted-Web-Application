@@ -3,7 +3,7 @@
     <div class="content-wrapper">
         <article>
             <header>
-                <h1>{{blog.title}}</h1>
+                <h1 id="heading">{{blog.title}}</h1>
                 <div class="post-meta">
                     <span class="author">By ILuvnet.com</span>
                     <span class="author"><i class="fa-solid fa-eye"></i> {{blog.views}}</span>
@@ -129,3 +129,13 @@
     });
     
     </script>
+
+    <style>
+
+     @media only screen and (max-width: 600px) {
+         h1 
+         {
+             font-size: 22px;
+         }
+     }
+    </style>
