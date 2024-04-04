@@ -14,7 +14,8 @@ const saltRounds = 12
 const auth = require('../../middleware/auth')
 const nocache = require('nocache')
 const siteMap = require('../../utils/sitemap')
-
+const voiceMaker = require('../../utils/textToAudio')
+const marked = require('marked')
 router.use(nocache())
 
 router.get('/',auth.isLogin,(req,res)=>{
@@ -126,13 +127,32 @@ router.post('/blog-submit', upload.uploadSingle, async (req, res) => {
         });
 
         const tagsArray= tags.split(',')
+       
+        const renderer = new marked.Renderer();
+        renderer.text = function (text) {
+          return text;
+        };
 
+        function revertMarkedText(markedText) {
+          return marked.parser(marked.lexer(markedText), {
+            renderer: renderer,
+          });
+        }
+
+        const markedText = revertMarkedText(`${Description}${Content}`);
+        const normalText = revertMarkedText(markedText);
+       
+        const data = await voiceMaker.textToAudio(normalText);
+       console.log(data.data);
+       const audioLink = data.data.success ? data.data.path : "";
+        
         const newBlog = new blog({
             title,
             description: Content,
             image: uploadedImage.url,
             shortDescription: Description,
-            tags: tagsArray
+            tags: tagsArray,
+            audio : audioLink
         });
 
         newBlog.save();
@@ -154,6 +174,7 @@ router.post('/blog-submit', upload.uploadSingle, async (req, res) => {
         res.json("blog submitted");
 
     } catch (error) {
+        
         console.log(error);
     }
 });

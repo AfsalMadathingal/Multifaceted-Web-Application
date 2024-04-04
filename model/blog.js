@@ -33,6 +33,10 @@ const blogSchema = new mongoose.Schema({
     comments:{
         type:Array,
         default:[]
+    },
+    audio:{
+        type:String,
+        default:""
     }
 
 
