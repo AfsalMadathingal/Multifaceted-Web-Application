@@ -272,7 +272,7 @@ try {
         );
 } catch (error) {
     console.log(error);
-    res.send("internal error Please go back home")
+    res.render('error')
     
 }
 }
