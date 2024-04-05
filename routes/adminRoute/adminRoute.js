@@ -128,23 +128,23 @@ router.post('/blog-submit', upload.uploadSingle, async (req, res) => {
 
         const tagsArray= tags.split(',')
        
-        const renderer = new marked.Renderer();
-        renderer.text = function (text) {
-          return text;
-        };
+    //     const renderer = new marked.Renderer();
+    //     renderer.text = function (text) {
+    //       return text;
+    //     };
 
-        function revertMarkedText(markedText) {
-          return marked.parser(marked.lexer(markedText), {
-            renderer: renderer,
-          });
-        }
+    //     function revertMarkedText(markedText) {
+    //       return marked.parser(marked.lexer(markedText), {
+    //         renderer: renderer,
+    //       });
+    //     }
 
-        const markedText = revertMarkedText(`${Description}${Content}`);
-        const normalText = revertMarkedText(markedText);
+    //     const markedText = revertMarkedText(`${Description}${Content}`);
+    //     const normalText = revertMarkedText(markedText);
        
-        const data = await voiceMaker.textToAudio(normalText);
-       console.log(data.data);
-       const audioLink = data.data.success ? data.data.path : "";
+    //     const data = await voiceMaker.textToAudio(normalText);
+    //    console.log(data.data);
+    //    const audioLink = data.data.success ? data.data.path : "";
         
         const newBlog = new blog({
             title,
@@ -152,7 +152,7 @@ router.post('/blog-submit', upload.uploadSingle, async (req, res) => {
             image: uploadedImage.url,
             shortDescription: Description,
             tags: tagsArray,
-            audio : audioLink
+            audio : ""
         });
 
         newBlog.save();
