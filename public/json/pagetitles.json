@@ -12,7 +12,11 @@
     "homepagetitle": "ILuvnet - internet Tools for Your needs | Downloader Tools",
     "homepagedesc": "ILuvnet is your one-stop solution for effortlessly accessing online tools and PDF conversion. Our platform offers a wide range of features and functionalities that enable you to transform your photos, images, or JPEG documents into professional PDF documents. With our user-friendly interface, you can easily upload your images, select the desired format, and download your PDF document in just a few clicks. Our powerful converter supports various image formats such as JPEG, PNG, GIF, and BMP, as well as PDF documents. Download your PDF document in high-quality with ease using our Image to PDF Converter.",
 
-    "instadesc":"ILuvnet is your ultimate solution for effortlessly downloading Instagram videos in just a few clicks. Whether it's a captivating clip, a hilarious moment, or an inspiring post, ILuvnet offers a seamless experience for grabbing your favorite Instagram videos with ease. Simply paste the URL of the Instagram video into our user-friendly interface and unlock instant access to a plethora of download options. With ILuvnet, you can save Instagram videos directly to your device in high quality, ensuring you never miss a moment worth keeping. Our intuitive platform streamlines the process, allowing you to download Instagram videos quickly and conveniently. Say goodbye to complicated procedures and hello to hassle-free downloading with ILuvnet.",
+    "tiktokdesc":"TikTok Video Download, Photos, Reels, and to Mobile and PC, TikTok Downloader (Photo, Video, Reels) is the Best Free Online Downloader Tool. Easily download TikTok photos, videos, reels (mp4)...",
+    "facebookdesc":"Facebook Post, Video, Photo, and to Mobile and PC, Facebook Downloader (Post, Video, Photo) is the Best Free Online Downloader Tool. Easily download Facebook posts, videos, photos...",
+    "twitterdesc":"Twitter Post, Video, Photo, and to Mobile and PC, Twitter Downloader (Post, Video, Photo) is the Best Free Online Downloader Tool. Easily download Twitter posts, videos, photos...",
+    "instadesc": "Instagram Reels, Video, Photo, ig downloader, ig video, and to Mobile and PC, Instagram Downloader (Reels, Video, Photo) is the Best Free Online Downloader Tool. Easily download Instagram reels, videos, photos...",
+
 
     "homeKeywords" : "instagram reels, instagram video, instagram videos, download reels, download video, download videos, reels downloader, video downloader, save reels, save video, save videos, instagram reels downloader, instagram video downloader, instagram videos downloader, reels saver, video saver, save reels, download instagram reels, download instagram video, download instagram videos, instagram reels saver, instagram video saver, instagram videos saver, instagram reels download, instagram video download, instagram videos download, instagram reels saver app, instagram video saver app, instagram videos saver app, instagram reels download app, instagram video download app, instagram videos download app",
 
@@ -20,7 +24,7 @@
 
 
     "facebookTitle": "Facebook Video Downloader | ILuvnet ",
-    "facebookdesc":"Discover the easiest way to download Facebook videos with our efficient Facebook Video Downloader. Effortlessly save your favorite videos from Facebook to enjoy them offline anytime, anywhere. Our user-friendly tool ensures quick and seamless downloads, allowing you to access your favorite content without interruptions. Experience the convenience and reliability of our Facebook Video Downloader today!",
+    
 
     "downloaderDesc" : "Welcome to Iluvnet.com! It's your go-to spot for downloading stuff from Instagram, Twitter, TikTok, and Facebook. Our site makes it super easy to grab cool photos, fun videos, and interesting posts from these popular social media sites. No more hassle searching for good downloaders – we've got you covered. Check out our homepage now and start saving your favorite stuff!",
 
@@ -89,9 +93,7 @@
         "Free Instagram video downloader"
       ],
 
-      "tiktokdesc":"Facebook Video Downloader. Effortlessly save your favorite videos from Facebook to watch offline, anytime, anywhere. With lightning-fast downloads and intuitive features, our downloader ensures you never miss a moment of your favorite content. Experience seamless video downloading and enjoy a world of entertainment at your fingertips. Download now and take control of your Facebook video experience!",
-
-      "twitterdesc":" Twitter Video Downloader – your key to seamless access to captivating videos on Twitter. Effortlessly save and enjoy viral clips, tutorials, and inspiring moments offline, without missing a beat. With lightning-fast downloads and intuitive features, our platform ensures you're always connected to the latest trends and insights. Elevate your Twitter experience today and stay ahead of the curve with our innovative downloader",
+     
 
       "commonKeys": [
         "Download photos from Instagram",

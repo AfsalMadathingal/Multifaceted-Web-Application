@@ -63,8 +63,10 @@ hbs.registerHelper('he', function(desc) {
 
 const downRoute = require('./routes/downloaderRoute')
 const rssRoute = require('./routes/rssFeed')
+const category = require('./routes/categoryRoute')
 
 
+app.use('/blog/category',category)
 app.use('/rss', rssRoute);
 app.use('/', mainRoute)
 app.use('/tools',toolsRoute)

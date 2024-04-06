@@ -5,18 +5,22 @@
 
 <header class="max-w-xl mx-auto mt-20 text-center">
     <h1 class="text-4xl">
-        ILuvnet <span class="text-blue-500">Lattest Blogs</span>
+        ILuvnet.com <span class="text-blue-500">Lattest Blogs</span>
     </h1>
 
     <div class="space-y-2 lg:space-y-0 lg:space-x-4 mt-8">
         <!--  Category -->
         <div class="relative flex lg:inline-flex items-center bg-gray-100 rounded-xl">
-            <select class="flex-1 appearance-none bg-transparent py-2 pl-3 pr-9 text-sm font-semibold">
-                <option value="category" disabled selected>Category
-                </option>
-                <option value="personal">Personal</option>
-                <option value="business">Business</option>
-            </select>
+        <select id="categoryDropdown" class="flex-1 appearance-none bg-transparent py-2 pl-3 pr-9 text-sm font-semibold">
+            <option value="" disabled selected>Category</option>
+            <option value="tech">Tech</option>
+            <option value="gadgets">Gadgets Reviews</option>
+            <option value="finance">Finance</option>
+            <option value="movies">Movies</option>
+            <option value="lifestyle">Lifestyle</option>
+            <option value="news">News and Politics</option>
+        </select>
+
 
             <svg class="transform -rotate-90 absolute pointer-events-none" style="right: 12px;" width="22" height="22"
                 viewBox="0 0 22 22">
@@ -281,7 +285,7 @@
 document.getElementById('loadMoreBtn').addEventListener('click', function() {
     const currentCount = document.querySelectorAll('.blog-item').length; // Count of currently displayed blog items
     const limit = 9; // Number of items to fetch per request
-   
+
     fetch(`/blog?skip=${currentCount}&limit=${limit}`, {
         method: 'GET',
     })
@@ -319,6 +323,33 @@ document.getElementById('loadMoreBtn').addEventListener('click', function() {
         })
     })
 
+document.getElementById("categoryDropdown").addEventListener("change", function() {
+    var selectedOption = this.value;
+    if (selectedOption !== "") {
+      
+        switch (selectedOption) {
+            case "tech":
+                window.location.href = "/blog/category/tech";
+                break;
+            case "gadgets":
+                window.location.href = "/blog/category/gadgets-reviews";
+                break;
+            case "finance":
+                window.location.href = "/blog/category/finance";
+                break;
+            case "movies":
+                window.location.href = "/blog/category/movies";
+                break;
+            case "lifestyle":
+                window.location.href = "/blog/category/life-style";
+                break;
+            case "news":
+                window.location.href = "/blog/category/news";
+            default:
+                break;
+        }
+    }
+});
 
 
     
