@@ -13,6 +13,7 @@
         <div class="relative flex lg:inline-flex items-center bg-gray-100 rounded-xl">
         <select id="categoryDropdown" class="flex-1 appearance-none bg-transparent py-2 pl-3 pr-9 text-sm font-semibold">
             <option value="" disabled selected>Category</option>
+            <option value="home">Home</option>
             <option value="tech">Tech</option>
             <option value="gadgets">Gadgets Reviews</option>
             <option value="finance">Finance</option>
@@ -345,6 +346,8 @@ document.getElementById("categoryDropdown").addEventListener("change", function(
                 break;
             case "news":
                 window.location.href = "/blog/category/news";
+            case "home":
+                window.location.href = "/blog";
             default:
                 break;
         }
