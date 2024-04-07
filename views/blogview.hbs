@@ -16,10 +16,22 @@
                 </div>
             </header>
             <div class="post-content">
+                <div id="lazy-script2" style="display: flex; justify-content: center">
+                    <script type="text/javascript">
+	atOptions = {
+		'key' : 'a20b0fb151c790196ccd0792f98bf72a',
+		'format' : 'iframe',
+		'height' : 90,
+		'width' : 728,
+		'params' : {}
+	};
+</script>
+<script defer type="text/javascript" src="//www.topcreativeformat.com/a20b0fb151c790196ccd0792f98bf72a/invoke.js"></script>
+                </div>
                 <p>{{blog.shortDescription}}</p>
 
                 <img src="{{blog.image}}" alt="{{blog.title}}">
-                
+
                 {{#if blog.audio}}
                 <audio controls>
 
@@ -31,25 +43,13 @@
                 <blockquote>
                     <p>{{blog.shortDescription}}</p>
                 </blockquote>
-                
+
                 <p>For more blog posts, please visit our page daily <a href="https://luvnet.com">luvnet.com</a>.</p>
-                
+
             </div>
         </article>
         <aside class="sidebar">
-            <div style="display: flex; justify-content: center">
- <script defer type="text/javascript">
-	atOptions = {
-		'key' : '0818a42acf2f7878f55e06e90ca379f2',
-		'format' : 'iframe',
-		'height' : 600,
-		'width' : 160,
-		'params' : {}
-	};
-</script>
-<script defer  type="text/javascript" src="//www.topcreativeformat.com/0818a42acf2f7878f55e06e90ca379f2/invoke.js"></script>
-            </div>
-        
+    
             <h3>Related Posts</h3>
             <div class="related-posts">
                 {{#each relatedBlog}}
@@ -161,5 +161,3 @@
         }
     }
 </style>
-
-   
