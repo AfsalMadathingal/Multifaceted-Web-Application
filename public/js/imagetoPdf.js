@@ -5,23 +5,8 @@ const dropZone = document.querySelector('.drop-zone');
 const fileInput = document.querySelector('.drop-zone__input');
 const previewList = document.querySelector('.preview-list');
 const uploadBtn = document.querySelector('.upload-btn');
-
-const modal = document.getElementById("modal");
 const closeBtn = document.getElementsByClassName("close-btn")[0];
 
-
-
-// Close the modal when the close button is clicked
-closeBtn.addEventListener("click", () => {
-  modal.style.display = "none";
-});
-
-// Close the modal when clicking outside the modal
-window.addEventListener("click", (event) => {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-});
 
 
 const browseBtn = document.querySelector('.drop-zone__browse');
@@ -173,7 +158,7 @@ async function downloadPdf  (pdfPath) {
         document.body.removeChild(link);
         const blobUrl = window.URL.createObjectURL(blob);
         loading.style.display= "none"
-        modal.style.display = "block";
+       
         //window.open(blobUrl, "_blank");
 
        

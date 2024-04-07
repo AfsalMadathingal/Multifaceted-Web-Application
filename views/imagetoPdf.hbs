@@ -44,7 +44,7 @@
 </main>
 
 
-<!-- Modal -->
+{{!-- <!-- Modal -->
 <div id="modal" class="modal">
   <div class="modal-content">
     <span class="close-btn">&times;</span>
@@ -61,14 +61,14 @@
     </a>
     
   </div>
-</div>
+</div> --}}
 
 
 <script src="/js/imagetoPdf.js"></script>
 {{>footer}}
 
 
-<style>
+{{!-- <style>
   /* Modal Styles */
 .modal {
   display: none;
@@ -137,57 +137,7 @@
     margin: 20% auto;
   }
 }
-</style>
+</style> --}}
 
 
-<style>
-  .ad-banner {
-    max-width: 100%;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-.ad-banner img {
-    width: 100%;
-    height: auto;
-}
-</style>
-<script>
-
-
-  let ads = document.querySelectorAll('.ad-banner');
-  if (ads) {
-    ads.forEach((el) => {
-      el.addEventListener('click', () => {
-        fetch('/adclick', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json;charset=utf-8'
-          },
-          body: JSON.stringify({})
-        })
-        .then((response) => {
-          if (response.ok) {
-            window.location.href = 'https://link.upstox.com/rbQc';
-          } else {
-            console.error('Error clicking ad:', response);
-          }
-        })
-        .catch((error) => {
-          console.error('Error fetching ad click:', error);
-        });
-      });
-    });
-  }
-
-
-
-</script>
 

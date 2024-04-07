@@ -17,13 +17,13 @@
             </header>
             <div class="post-content">
                 <p>{{blog.shortDescription}}</p>
+
                 <img src="{{blog.image}}" alt="{{blog.title}}">
+                
                 {{#if blog.audio}}
                 <audio controls>
-                
-                    <source
-                        src="{{blog.audio}}"
-                        type="audio/mpeg">
+
+                    <source src="{{blog.audio}}" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
                 {{/if}}
@@ -31,10 +31,25 @@
                 <blockquote>
                     <p>{{blog.shortDescription}}</p>
                 </blockquote>
+                
                 <p>For more blog posts, please visit our page daily <a href="https://luvnet.com">luvnet.com</a>.</p>
+                
             </div>
         </article>
         <aside class="sidebar">
+            <div style="display: flex; justify-content: center">
+ <script defer type="text/javascript">
+	atOptions = {
+		'key' : '0818a42acf2f7878f55e06e90ca379f2',
+		'format' : 'iframe',
+		'height' : 600,
+		'width' : 160,
+		'params' : {}
+	};
+</script>
+<script defer  type="text/javascript" src="//www.topcreativeformat.com/0818a42acf2f7878f55e06e90ca379f2/invoke.js"></script>
+            </div>
+        
             <h3>Related Posts</h3>
             <div class="related-posts">
                 {{#each relatedBlog}}
@@ -48,10 +63,10 @@
             </div>
         </aside>
     </div>
-<div class="comments">
+    <div class="comments">
         <h2>Comments</h2>
         <div id="comments-container">
-{{#each blog.comments}}
+            {{#each blog.comments}}
             <div class="comment">
                 <div class="comment-header">
                     <span class="comment-author">{{this.name}}</span>
@@ -59,7 +74,7 @@
                 </div>
                 <div class="comment-body">{{this.comment}}</div>
             </div>
-{{/each}}
+            {{/each}}
         </div>
 
         <div id="comments-container"></div>
@@ -75,7 +90,7 @@
 <link rel="stylesheet" href="/style/blogView.css">
 
 <script>
-    const commentpost= document.getElementById("submit-btn-comment");
+    const commentpost = document.getElementById("submit-btn-comment");
 
     commentpost.addEventListener("click", (event) => {
         event.preventDefault();
@@ -85,23 +100,23 @@
         const date = new Date();
         const dateFormat = new Intl.DateTimeFormat('default', { dateStyle: 'medium' });
         const formattedDate = dateFormat.format(date);
-        if(name.trim().length === 0 || comment.trim().length === 0 || name.trim().length > 50 || comment.trim().length > 150){
+        if (name.trim().length === 0 || comment.trim().length === 0 || name.trim().length > 50 || comment.trim().length > 150) {
             swal({
                 title: "Error!",
                 text: "Name and Comment must not be empty and must be less than 50 characters for name and 150 characters for comment!",
                 icon: "error",
-              });
+            });
             return;
         }
-        
+
         swal({
             title: "Success!",
             text: "Your comment is submited successfully!",
             icon: "success",
-          });
-        
- 
-        
+        });
+
+
+
         fetch("/comment-blog", {
             method: "POST",
             headers: {
@@ -126,25 +141,25 @@
                     document.getElementById("name-input").value = "";
                     document.getElementById("comment-input").value = "";
                 } else {
-                   swal({
-                title: "Error!",
-                text: "Name and Comment must not be empty!",
-                icon: "error",
-              });
+                    swal({
+                        title: "Error!",
+                        text: "Name and Comment must not be empty!",
+                        icon: "error",
+                    });
                 }
 
 
+            });
     });
-    });
-    
-    </script>
 
-    <style>
+</script>
 
-     @media only screen and (max-width: 600px) {
-         h1 
-         {
-             font-size: 22px;
-         }
-     }
-    </style>
+<style>
+    @media only screen and (max-width: 600px) {
+        h1 {
+            font-size: 22px;
+        }
+    }
+</style>
+
+   
