@@ -1,6 +1,7 @@
 {{>nav}}
     <meta name="robots" content="sitemap">
     <main>
+         <h1 style="text-align: center;">Sitemap</h1> <h2 style="text-align: center;">Sitemap for the website</h2>
         <section>
             <h2>Blog Posts</h2>
             <table>
@@ -13,7 +14,7 @@
                 </thead>
                 <tbody>
                     {{#each blogData}}
-                    <tr>
+                    <tr class="sitedata">
                         <td>{{@index}}</td>
                         <td><a href="/blogview/{{changeSpacesToDash this.title}}">{{this.title}}</a></td>
                         <td><a href="/blogview/{{changeSpacesToDash this.title}}">https://iluvnet.com/blogview/{{changeSpacesToDash this.title}}</a></td>
@@ -23,7 +24,7 @@
             </table>
         </section>
          <section>
-            <h2>Other Pages</h2>
+            <h2>Social Media Downloader</h2>
             <table>
                 <thead>
                     <tr>
@@ -32,7 +33,7 @@
                         <th>Link</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="sitedata">
                     <tr>
                         <td>1</td>
                         <td><a href="/downloader/instagram-video-downloader">Instagram Video Downloader</a></td>
@@ -57,41 +58,101 @@
                 </tbody>
             </table>
         </section>
+         <section>
+            <h2>PDF Tools</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Title</th>
+                        <th>Link</th>
+                    </tr>
+                </thead>
+                <tbody class="sitedata">
+                    <tr>
+                        <td>1</td>
+                        <td><a href="/tools/image-to-Pdf">Image To PDF </a></td>
+                        <td><a href="/tools/image-to-Pdf">https://iluvnet.com/tools/image-to-Pdf</a></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><a href="/tools/camscanner-image-scanner">Image Enhancer /scanner to PDF</a></td>
+                        <td><a href="/tools/camscanner-image-scanner">https://iluvnet.com/tools/camscanner-image-scanner</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
     </main>
 {{>footer}}
 
 <style>
-    body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
 
-main {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-}
+  body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
 
-section {
-    margin-bottom: 40px;
-}
+        main {
+            max-width: 90%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
 
-ul {
-    list-style-type: none;
-    padding: 0;
-}
+        section {
+            margin-bottom: 40px;
+        }
 
-li {
-    margin-bottom: 10px;
-}
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 10px;
+            overflow-x: auto;
+        }
 
-a {
-    color: #333;
-    text-decoration: none;
-}
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            font-size: 14px;
+            word-wrap: break-word; /* Ensure long words or URLs wrap */
+        }
 
-a:hover {
-    color: #666;
-}
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .sitedata a {
+            color: #333;
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        a:hover {
+            color: #666;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 767px) {
+            main {
+                padding: 10px;
+            }
+
+            section {
+                margin-bottom: 30px;
+            }
+
+            th, td {
+                font-size: 12px;
+            }
+            .sitedata a  {
+            color: #333;
+            text-decoration: none;
+            font-size: 8px;
+        }
+        }
 </style>
