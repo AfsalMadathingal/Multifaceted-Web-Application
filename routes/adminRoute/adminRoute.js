@@ -110,6 +110,7 @@ router.post('/blog-submit', upload.uploadSingle, async (req, res) => {
     try {
         const { title, Description, Content , tags } = req.body;
         const { filename } = req.files[0];
+        console.log(req.files);
         console.log(req.body);
     
         const newfilename = uuidv4()
