@@ -35,11 +35,6 @@ app.use((req, res, next) => {
 });
 
 
-app.use((req, res, next) => {
-    const ipAddress = req.headers['x-real-ip'] || req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-    console.log('Client IP address:', ipAddress);
-    next();
-});
 
 
 app.use(express.static(path.join(__dirname, 'public')))
