@@ -3,8 +3,8 @@
 ###
 
 User-Agent: *
-Disallow : /admin
-Disallow : /admin/write-blog
-Disallow : /admin/dashboard
+Disallow: /admin
+Disallow: /admin/write-blog
+Disallow: /admin/dashboard
 
 Sitemap: https://iluvnet.com/sitemap.xml

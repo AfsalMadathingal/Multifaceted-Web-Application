@@ -30,7 +30,7 @@ router.get("/image-to-pdf", (req, res) => {
 
 try {
   
-  const dec = pageData.toolspagedescription;
+  const dec = pageData.imagetopdfdesctription;
   const keywords = pageData.imagetopdfkeywords;
   res.render("imagetoPdf", {
     title: pageData.imagetopdftitle,
