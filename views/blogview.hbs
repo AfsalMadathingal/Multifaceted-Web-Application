@@ -19,29 +19,31 @@
                 <p style="text-align: center;">Advertisement</p>
 
                 <div id="lazy-script2" style="display: flex; justify-content: center">
-                               <script type="text/javascript">
-	atOptions = {
-		'key' : 'bd32f3227cd0a420e51115c9c3f3f12a',
-		'format' : 'iframe',
-		'height' : 250,
-		'width' : 300,
-		'params' : {}
-	};
-</script>
-<script defer type="text/javascript" src="//www.topcreativeformat.com/bd32f3227cd0a420e51115c9c3f3f12a/invoke.js"></script>
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key': 'bd32f3227cd0a420e51115c9c3f3f12a',
+                            'format': 'iframe',
+                            'height': 250,
+                            'width': 300,
+                            'params': {}
+                        };
+                    </script>
+                    <script defer type="text/javascript"
+                        src="//www.topcreativeformat.com/bd32f3227cd0a420e51115c9c3f3f12a/invoke.js"></script>
                 </div>
                 <p>{{blog.shortDescription}}</p>
 
                 <img src="{{blog.image}}" alt="{{blog.title}}">
                 {{#if blog.audio}}
-                <div class="audio" style="display: flex; flex-direction: column; justify-content: center; align-items: center; ">
+                <div class="audio"
+                    style="display: flex; flex-direction: column; justify-content: center; align-items: center; ">
                     <p>Listen to the audio</p>
- <audio controls>
-                    <source src="{{blog.audio}}" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
+                    <audio controls>
+                        <source src="{{blog.audio}}" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
                 </div>
-               
+
                 {{/if}}
                 {{{blog.description}}}
                 <blockquote>
@@ -95,7 +97,19 @@
 </main>
 {{>footer}}
 <link rel="stylesheet" href="/style/blogView.css">
-
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(function(OneSignal) {
+    OneSignal.init({
+      appId: "d3ee23ce-1027-47f1-90a6-d5822c84b8d4",
+      safari_web_id: "web.onesignal.auto.4b51c712-23a7-447d-a673-6f24b07d407b",
+      notifyButton: {
+        enable: true,
+      },
+    });
+  });
+</script>
 <script>
     const commentpost = document.getElementById("submit-btn-comment");
 
@@ -168,7 +182,7 @@
         }
     }
 
-.lazy-script2{
-    border: 1px solid #000000;
-}
+    .lazy-script2 {
+        border: 1px solid #000000;
+    }
 </style>
