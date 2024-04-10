@@ -34,10 +34,14 @@
 
                 <img src="{{blog.image}}" alt="{{blog.title}}">
                 {{#if blog.audio}}
-                <audio controls>
+                <div class="audio" style="display: flex; flex-direction: column; justify-content: center; align-items: center; ">
+                    <p>Listen to the audio</p>
+ <audio controls>
                     <source src="{{blog.audio}}" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
+                </div>
+               
                 {{/if}}
                 {{{blog.description}}}
                 <blockquote>

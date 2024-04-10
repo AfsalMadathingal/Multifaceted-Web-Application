@@ -117,14 +117,19 @@ router.post("/blog-submit", upload.uploadSingle, async (req, res) => {
         }
     
     const audioLink = data?.data.success ? data.data.path : "";
-    const audioPath = await saveAudio(audioLink);
+    let audioPath = "";
+    if(audioLink)
+    {
+       audioPath = await saveAudio(audioLink);
+    }
+    
     const newBlog = new blog({
       title,
       description: Content,
       image: uploadedImage.url,
       shortDescription: Description,
       tags: tagsArray,
-      audio: `https://iluvnet.com/audio/${audioPath}`,
+      audio: audioPath ? `https://iluvnet.com/audio/${audioPath}`: "",
     });
 
     newBlog.save();
