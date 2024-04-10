@@ -84,7 +84,7 @@ router.get("/write-blog", auth.checkSession, (req, res) => {
 
 router.post("/blog-submit", upload.uploadSingle, async (req, res) => {
   try {
-    const { title, Description, Content, tags } = req.body;
+    const { title, Description, Content, tags, audio } = req.body;
     const { filename } = req.files[0];
     console.log(req.files);
     console.log(req.body);
@@ -104,9 +104,7 @@ router.post("/blog-submit", upload.uploadSingle, async (req, res) => {
     });
 
     const tagsArray = tags.split(",");
-
-    const html = marked(`${Description} ${Content}`);
-
+    const html = marked(audio);
     const $ = cheerio.load(html);
     const normalText = $("body").text();
     let data
@@ -115,6 +113,7 @@ router.post("/blog-submit", upload.uploadSingle, async (req, res) => {
 
         } catch (error) {
             
+            console.log(error);
         }
     
     const audioLink = data?.data.success ? data.data.path : "";
@@ -143,6 +142,7 @@ router.post("/blog-submit", upload.uploadSingle, async (req, res) => {
     res.json({ok:true});
   } catch (error) {
     console.log(error);
+    res.json({ok:false});
   }
 });
 

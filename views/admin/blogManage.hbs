@@ -16,6 +16,8 @@
           <textarea name="Description" rows="5" cols="67"></textarea><br/> 
            <b>Tags:</b><br/>  
           <textarea name="tags" rows="5" cols="67"></textarea><br/> 
+           <b>Full Content For Audio:</b><br/>  
+          <textarea name="audio" rows="15" cols="67"></textarea><br/> 
         </div>
         <div>
           <input type="submit" />
@@ -491,7 +493,16 @@ td {
     .then(data => {
 
       console.log(data);
-      swal("Success", "Blog added successfully", "success", {button: "Ok"});
+      if (data.ok) {
+         swal("Success", "Blog added successfully", "success", {button: "Ok"});
+         form.reset();
+
+      }else
+      {
+        swal("Error", "Something went wrong", "error", {button: "Ok"});
+        
+      }
+     
     })
 
 
