@@ -10,6 +10,7 @@ const multer = require("multer");
 const bunny = require("../utils/bunnyStorage");
 const sharpCont = require ('../controller/sharpController');
 const { title } = require("process");
+const blog = require('../model/blog')
 router.get("/", (req, res) => {
 
   try {
@@ -28,20 +29,24 @@ router.get("/", (req, res) => {
 
 });
 
-router.get("/image-to-pdf", (req, res) => {
+router.get("/image-to-pdf", async (req, res) => {
 
 try {
   
   const dec = pageData.imagetopdfdesctription;
   const keywords = pageData.imagetopdfkeywords;
+  const blogData = await blog.find({}).sort({date:-1}).limit(12)
   res.render("imagetoPdf", {
     title: pageData.imagetopdftitle,
     desc: dec,
+    blogData:blogData,
     keywords: keywords,
     canonical: "https://iluvnet.in/tools/image-to-pdf",
   });
 
 } catch (error) {
+
+  console.log(error);
   
   res.send("internal error Please go back home");
 }
