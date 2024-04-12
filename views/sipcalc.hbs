@@ -1,0 +1,149 @@
+{{>nav}}
+    <div class="container">
+        <h1>SIP Calculator</h1>
+        <div class="form-wrapper">
+            <div class="form-group">
+                <label for="investment-amount">Investment Amount:</label>
+                <input type="number" id="investment-amount" placeholder="Enter investment amount" required>
+            </div>
+            <div class="form-group">
+                <label for="investment-period">Investment Period:</label>
+                <input type="number" id="investment-period" placeholder="Enter investment period" required>
+                <select id="period-type">
+                    <option value="monthly">Monthly</option>
+                    <option value="yearly">Yearly</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="expected-return">Expected Return (%):</label>
+                <input type="number" id="expected-return" placeholder="Enter expected return" required>
+            </div>
+            <button id="calculate-btn">Calculate</button>
+        </div>
+        <div class="result-wrapper">
+            <h2>Result</h2>
+            <p>Total Investment: <span id="total-investment"></span></p>
+            <p>Total Return: <span id="total-return"></span></p>
+            <p>Total Value: <span id="total-value"></span></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+
+{{>footer}}
+<style>
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+}
+
+h1, h2 {
+    color: #1c7c54;
+    text-align: center;
+}
+
+.form-wrapper {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    color: #1c7c54;
+    margin-bottom: 5px;
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+button {
+    background-color: #1c7c54;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.result-wrapper {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+}
+
+.result-wrapper p {
+    font-size: 18px;
+    color: #1c7c54;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+}
+
+select {
+    margin-top: 10px;
+    margin-left: 5px;
+    background-color: #1c7c54;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+</style>
+
+<script>
+  const investmentAmount = document.getElementById('investment-amount');
+const investmentPeriod = document.getElementById('investment-period');
+const periodType = document.getElementById('period-type');
+const expectedReturn = document.getElementById('expected-return');
+const calculateBtn = document.getElementById('calculate-btn');
+const totalInvestment = document.getElementById('total-investment');
+const totalReturn = document.getElementById('total-return');
+const totalValue = document.getElementById('total-value');
+
+calculateBtn.addEventListener('click', () => {
+    const amount = parseFloat(investmentAmount.value);
+    const period = parseFloat(investmentPeriod.value);
+    const return_rate = parseFloat(expectedReturn.value) / 100;
+
+    if (isNaN(amount) || isNaN(period) || isNaN(return_rate)) {
+        alert('Please enter valid values.');
+        return;
+    }
+
+    let totalInvestedAmount, totalReturnAmount, totalValue;
+    if (periodType.value === 'monthly') {
+        totalInvestedAmount = amount * period * 12;
+        totalReturnAmount = amount * ((Math.pow(1 + return_rate / 12, period * 12) - 1) / (return_rate / 12));
+    } else {
+        totalInvestedAmount = amount * period;
+        totalReturnAmount = amount * ((Math.pow(1 + return_rate, period) - 1) / return_rate);
+    }
+
+    totalValue = totalInvestedAmount + totalReturnAmount;
+
+    totalInvestment.textContent = totalInvestedAmount.toFixed(2);
+    totalReturn.textContent = totalReturnAmount.toFixed(2);
+    totalValue.textContent = totalValue.toFixed(2);
+});
+</script>

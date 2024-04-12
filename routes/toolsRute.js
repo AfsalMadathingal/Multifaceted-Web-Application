@@ -8,7 +8,8 @@ const { v4: uuidv4 } = require("uuid");
 const pageData = require("../public/json/pagetitles.json");
 const multer = require("multer");
 const bunny = require("../utils/bunnyStorage");
-
+const sharpCont = require ('../controller/sharpController');
+const { title } = require("process");
 router.get("/", (req, res) => {
 
   try {
@@ -18,6 +19,7 @@ router.get("/", (req, res) => {
       title: pageData.toolspagetitle,
       desc: dec,
       keywords: keywords,
+      canonical: "https://iluvnet.in/tools",
     });
   } catch (error) {
 
@@ -36,6 +38,7 @@ try {
     title: pageData.imagetopdftitle,
     desc: dec,
     keywords: keywords,
+    canonical: "https://iluvnet.in/tools/image-to-pdf",
   });
 
 } catch (error) {
@@ -158,12 +161,17 @@ router.delete("/delete", (req, res) => {
 
 router.get('/camscanner-image-scanner', (req, res) => {
 
-    res.render('imagescanner')
+    res.render('imagescanner',{
+      title:"Image Scanner | ILuvnet",
+      desc:"How to scan an image ?",
+      keywords:"Image Scanner, Image Scanner, How to scan an image",
+      canonical:"https://iluvnet.in/tools/camscanner-image-scanner"
+    })
 
     
 })
 
-const sharpCont = require ('../controller/sharpController')
+
 
 router.post('/scan-image',uploadSingle, async (req, res) => {
 
@@ -238,6 +246,23 @@ try {
 })
 
 
+router.get('/sip-calculator', (req, res) => {
+
+  try {
+    
+    res.render('sipcalc',{
+      title:"SIP Calculator | ILuvnet",
+      desc:"Calculate your SIP amount here , how to calculate SIP amount ?",
+      keywords:"SIP, SIP Calculator, SIP amount, SIP calculator, How to calculate SIP amount",
+      canonical:"https://iluvnet.in/tools/sip-calculator" 
+    })
+
+  } catch (error) {
+    console.log(error) ;
+    res.send("internal error Please go back home")
+  }
+})
+
 router.use(function (err, req, res, next) {
   if (err instanceof multer.MulterError) {
     console.log("errororororo");
@@ -260,5 +285,8 @@ console.log(err);
       .json({ status: false, message: "Internal server error" });
   }
 });
+
+
+
 
 module.exports = router;

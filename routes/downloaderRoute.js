@@ -77,7 +77,7 @@ router.get('/instagram-video-downloader', (req, res) => {
         const desc = pageData.instadesc;
         const keywords = pageData.instagram;
         res.render('downloaderViews/instagramDownloader',{
-            title:pageData.homepagetitle,
+            title:pageData.instatitle,
             desc:desc,
             keywords:keywords
         })
