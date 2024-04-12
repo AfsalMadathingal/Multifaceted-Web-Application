@@ -8,6 +8,21 @@
     <div class="headline-one">
       <h1>Image to PDF converter</h1>
       <p>Convert Your Images to PDF for Free</p>
+        <p style="text-align: center;">Advertisement</p>
+
+                <div id="lazy-script2" style="display: flex; justify-content: center; margin-top: 20px margin-bottom: 20px">
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key': 'bd32f3227cd0a420e51115c9c3f3f12a',
+                            'format': 'iframe',
+                            'height': 250,
+                            'width': 300,
+                            'params': {}
+                        };
+                    </script>
+                    <script defer type="text/javascript"
+                        src="//www.topcreativeformat.com/bd32f3227cd0a420e51115c9c3f3f12a/invoke.js"></script>
+                </div>
     </div>
 
 
@@ -29,7 +44,10 @@
       </div>
     </div>
   </form>
-
+<p style="text-align: center;">Advertisement</p>
+                <script async="async" data-cfasync="false"
+                    src="//pl23027482.profitablegatecpm.com/4b47eb8d3af7bbcaa573bb48cd6c17f7/invoke.js"></script>
+                <div id="container-4b47eb8d3af7bbcaa573bb48cd6c17f7"></div>
 
     <div class="loading-bar"></div>
 
@@ -40,6 +58,39 @@
       <div class="overlay__content"><span class="spinner"></span></div>
     </div>
   </div>
+
+      <section class="news" id="news">
+        <div class="titletext">
+            <h2><span>Some of our blogs</span></h2>
+        </div>
+        <div class="container">
+          {{#each blogData}}
+          
+            <div data-id="{{this.title}}" class="blog">
+              <div class="blog__header">
+                <img src="{{this.image}}" alt="blog__image" class="blog__image" width="600">
+              </div>
+              <div class="blog__body">
+                <span class="tag">{{this.tags}}</span>
+                <h4>{{this.title}}</h4>
+                <p>{{this.shortDescription}}</p>
+                
+              </div>
+              
+              <div class="blog__footer">
+                <div class="user">
+                  <img src="/icons/android-icon-48x48.png" alt="user__image" class="user__image">
+
+                  <div class="user__info">
+                    <h5>Iluvnet.com</h5>
+                    <small>{{formatDate this.date}}</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+              {{/each }}
+          </div>
+    </section>
 
 </main>
 
