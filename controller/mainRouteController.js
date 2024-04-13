@@ -7,6 +7,15 @@ require('dotenv').config()
 const he = require('he')
 
 
+const guestPosting = async (req, res) => {
+    try {
+
+        res.render('guestBlog')
+        
+    } catch (error) {
+        
+    }
+}
 
 
 
@@ -395,5 +404,6 @@ module.exports = {
     landing,
     contactForm,
     commentBlog,
-    sitemap
+    sitemap,
+    guestPosting
 }
