@@ -66,7 +66,7 @@ hbs.registerHelper('he', function(desc) {
 const downRoute = require('./routes/downloaderRoute')
 const rssRoute = require('./routes/rssFeed')
 const category = require('./routes/categoryRoute')
-
+const api = require('./routes/api/randomq')
 
 app.use('/blog/category',category)
 app.use('/rss', rssRoute);
@@ -74,6 +74,7 @@ app.use('/', mainRoute)
 app.use('/tools',toolsRoute)
 app.use('/admin',adminRoute)
 app.use('/downloader',downRoute)
+app.use('/api',api)
 
 app.use((req, res, next) => {
     res.status(404).render('error', { title: 'Page Not Found' });
