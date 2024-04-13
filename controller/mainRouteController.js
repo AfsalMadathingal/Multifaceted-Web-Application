@@ -389,6 +389,44 @@ const sitemap = async (req, res) => {
     }
 }
 
+
+const guestRequest =  async (req, res) => {
+
+    try {   
+        const { name,title,content,email,links } = req.body;
+       
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.EMAIL,
+      pass: process.env.EMAIL_PASS
+    }
+  });
+
+ 
+  const mailOptions = {
+    from: process.env.EMAIL,
+    to: "contact.ilovenet@gmail.com",
+    subject: 'New Form Submission',
+    text: `Name: ${name}\nEmail: ${email}\ncontent: ${content},\nlinks: ${links},\ntitle: ${title}`
+  };
+
+  
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log(error);
+      res.render('guestBlog',{sent:false});
+    } else {
+      console.log('Email sent: ' + info.response);
+      res.render('guestBlog',{sent:true});
+    }
+  });
+        
+    } catch (error) {
+        
+    }
+}
+
 module.exports = {
     downloader,
     instaDwn,
@@ -405,5 +443,6 @@ module.exports = {
     contactForm,
     commentBlog,
     sitemap,
-    guestPosting
+    guestPosting,
+    guestRequest
 }
