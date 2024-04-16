@@ -62,9 +62,10 @@ router.get('/', async (req, res) => {
           description: article.shortDescription,
           url: `http://iluvnet.com/blogview/${query}`,
           guid: `http://iluvnet.com/blogview/${query}`,
-          categories: article.tags,
+          categories: [article.tags],
           author: 'Afsal Madathingal',
-          date: article.date
+          date: article.date,
+          enclosure: {url: `${article.image}`},
         });
       }
   
