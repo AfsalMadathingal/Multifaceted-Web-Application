@@ -4,6 +4,7 @@ require('dotenv').config()
 const mainCont = require('../controller/mainRouteController')
 
 
+
 router.get('/',mainCont.landing)
 router.get('/downloader',mainCont.downloader)
 router.post('/download', mainCont.instaDwn)
@@ -21,5 +22,7 @@ router.post('/comment-blog',mainCont.commentBlog)
 router.get('/sitemap',mainCont.sitemap)
 router.get('/guest-blog-posting',mainCont.guestPosting)
 router.post('/guest-blog',mainCont.guestRequest)
+router.post('/user-location',mainCont.userLocation)
+
 
 module.exports = router

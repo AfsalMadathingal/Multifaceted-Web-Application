@@ -6,6 +6,19 @@ const nodemailer = require('nodemailer');
 require('dotenv').config()
 const he = require('he')
 
+const userLocation = async (req, res) => {
+
+    try {
+        
+        console.log("this is location", req.body);
+        res.json({status:true, message:"location added"})
+    } catch (error) {
+        
+
+    }
+}
+
+
 
 const guestPosting = async (req, res) => {
     try {
@@ -444,5 +457,6 @@ module.exports = {
     commentBlog,
     sitemap,
     guestPosting,
-    guestRequest
+    guestRequest,
+    userLocation
 }
