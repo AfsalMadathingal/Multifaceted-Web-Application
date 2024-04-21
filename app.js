@@ -67,6 +67,8 @@ const downRoute = require('./routes/downloaderRoute')
 const rssRoute = require('./routes/rssFeed')
 const category = require('./routes/categoryRoute')
 const api = require('./routes/api/randomq')
+const finance = require('./routes/financeRoute')
+app.use('/finance',finance)
 app.use('/blog/category',category)
 app.use('/rss', rssRoute);
 app.use('/', mainRoute)

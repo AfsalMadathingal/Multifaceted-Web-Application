@@ -1,0 +1,170 @@
+{{>nav}}
+
+  <style>
+
+    .titletext-andinfo
+    {
+      margin-left: auto;
+      margin-right: auto;
+      width: 80%;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background-color: #f8f8f8;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+h1
+{
+  text-align: center;
+  font-size: 2em;
+}
+
+
+.container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  font-size: 16px;
+  border-collapse: collapse;
+  white-space: nowrap;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+tr:hover {
+  background-color: #e0e0e0;
+}
+
+td {
+  background-color: #fff;
+}
+
+.important-data {
+  background-color: #0dda39; /* Light pink */
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.5em;
+  }
+  .container {
+    padding: 10px;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tr {
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  td {
+    border: none;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+    padding-left: 50%;
+    padding-right: 15px;
+    background-color: #f9f9f9;
+  }
+
+  td::before {
+    position: absolute;
+    top: 12px;
+    left: 15px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    font-weight: bold;
+    content: attr(data-label);
+  }
+
+  /* New rule to handle long IPO names */
+  td:first-child {
+    width: 200px; /* Adjust this value as needed */
+    white-space: normal;
+    word-wrap: break-word;
+  }
+}
+    
+  </style>
+<div class="titletext-andinfo">
+<h1>Lattest IPO Grey Market Premium </h1>
+<p>The table below shows the latest IPO Grey Market Premium. from indian stock market</p>
+<p>Grey Market is an unregulated market to trade IPO applications and IPO shares before listing of the stock. An investor may not want to trade in the grey market, but getting an idea of the GMP can be used to estimate the listing gain on the IPO share. GMP or Grey Market Premium adding to issue price gives the estimated listing price of the IPO share.</p>
+    <p>Here we are reporting the GMP of all upcoming and current SME and Mainboard IPOs along with Subject 2 Sauda price. Estimated Listing Price is also calculated by adding up GMP and IPO cap price.</p>
+    <p><strong>The GMP prices shown here are only news related to the grey market. We do not trade/deal in grey market or subject to rates (sub2), nor do we recommend trading in grey market.</strong></p>
+</div>
+
+
+
+  <div class="container">
+    <table>
+      <thead>
+        <tr>
+          <th>IPO</th>
+          <th>Price</th>
+          <th>GMP</th>
+          <th>Est Listing</th>
+          <th>IPO Size</th>
+          <th>Lot</th>
+          <th>Open</th>
+          <th>Close</th>
+          <th>BoA Dt</th>
+          <th>Listing</th>
+          <th>GMP Updated</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        {{#each data}}
+        {{#if this.IPO}}
+
+          <tr>
+            <td data-label="IPO">{{this.IPO}}</td>
+            <td data-label="Price">{{this.Price}}</td>
+            <td data-label="GMP" class="important-data">{{this.GMP}}</td>
+            <td data-label="Est Listing">{{this.EstimatedListing}}</td>
+            <td data-label="IPO Size">{{this.IPOSize}}</td>
+            <td data-label="Lot">{{this.Lot}}</td>
+            <td data-label="Open">{{this.Open}}</td>
+            <td data-label="Close">{{this.Close}}</td>
+            <td data-label="BoA Dt">{{this.BoADt}}</td>
+            <td data-label="Listing">{{this.Listing}}</td>
+            <td data-label="GMP Updated">{{this.GMPUpdated}}</td>
+          </tr>
+          {{/if}}
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+{{>footer}}
