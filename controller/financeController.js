@@ -32,8 +32,9 @@ const scrapeIPOData = async (req, res) => {
                     // Check if the value contains the email pattern
                     if (label === 'IPO') {
                        
-                         value = value.split(`[email`).join("");
+                        value = value.split(`[email`).join("");
                         value = value.split(`protected]`).join(" Listed at");
+                        value = value.split(`Upcoming`).join(" Not Opened");
                        
                     } else if (!isNaN(value)) {
                         value = parseFloat(value);
