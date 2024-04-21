@@ -1,5 +1,6 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
+const pageData = require('../public/json/pagetitles.json');
 
 
 
@@ -30,10 +31,10 @@ const scrapeIPOData = async (req, res) => {
 
                     // Check if the value contains the email pattern
                     if (label === 'IPO') {
-                        console.log('Email pattern found:', value);
+                       
                          value = value.split(`[email`).join("");
                         value = value.split(`protected]`).join(" Listed at");
-                        console.log('after pattern found:', value);
+                       
                     } else if (!isNaN(value)) {
                         value = parseFloat(value);
                     }
@@ -53,7 +54,14 @@ const scrapeIPOData = async (req, res) => {
 
     const IPOs = await scrapeIPOData();
 
-    res.render('ipogmp', { data: IPOs });
+    res.render('ipogmp', {
+         data: IPOs ,
+        title: "IPO GMP | ILuvnet.com",
+        desc: pageData.ipogmpdesc,
+        canonical: `https://iluvnet.com//finance/IPO-GMP-Latest-News`,
+        keywords : pageData.ipogmp
+        
+        });
 
 }
 
