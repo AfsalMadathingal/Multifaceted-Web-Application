@@ -54,6 +54,8 @@ const scrapeIPOData = async (req, res) => {
 
     const IPOs = await scrapeIPOData();
 
+    console.log("GMP visited");
+
     res.render('ipogmp', {
          data: IPOs ,
         title: "IPO GMP | ILuvnet.com",
