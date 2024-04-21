@@ -61,7 +61,7 @@ const scrapeIPOData = async (req, res) => {
          data: IPOs ,
         title: "IPO GMP | ILuvnet.com",
         desc: pageData.ipogmpdesc,
-        canonical: `https://iluvnet.com//finance/IPO-GMP-Latest-News`,
+        canonical: `https://iluvnet.com/finance/IPO-GMP-Latest-News`,
         keywords : pageData.ipogmp
         
         });
