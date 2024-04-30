@@ -11,6 +11,7 @@ const bunny = require("../utils/bunnyStorage");
 const sharpCont = require ('../controller/sharpController');
 const { title } = require("process");
 const blog = require('../model/blog')
+const audioConverter = require("../utils/ffmpeg");
 router.get("/", (req, res) => {
 
   try {
@@ -290,6 +291,26 @@ console.log(err);
       .json({ status: false, message: "Internal server error" });
   }
 });
+
+
+router.post('/wav-to-mp3',async (req, res) => { 
+
+  try {
+
+    const url = req.body.url
+
+    console.log("url",url);
+
+    const output = await audioConverter.convertFile(url)
+
+    res.json({output:output})
+
+    console.log(output);
+
+  } catch (error) {
+    
+  }
+} )
 
 
 
