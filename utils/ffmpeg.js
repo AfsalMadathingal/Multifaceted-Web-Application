@@ -1,6 +1,7 @@
 const ffmpeg = require('fluent-ffmpeg');
 const path = require('path');
 const fs = require('fs');
+const { v4: uuidv4 } = require('uuid');
 // const inputFile = '/path/to/input.wav';
 
 
@@ -22,7 +23,7 @@ try {
     return new Promise((resolve, reject) => {
         const otname = uuidv4();
         const outputFile = `${outputDirectory}/${otname}.mp3`;
-
+        console.log(outputFile);
         ffmpeg(inputFile)
             .outputOptions(['-c:a libmp3lame', '-qscale:a 2'])
             .output(outputFile)
