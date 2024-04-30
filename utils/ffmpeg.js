@@ -11,9 +11,13 @@ try {
     
     // Set the path to ffmpeg executable
     ffmpeg.setFfmpegPath('/usr/bin/ffmpeg');
+// Get the directory name of the current module
+const currentDir = __dirname;
 
+// Construct the absolute path to the "public/uploads" directory
+const outputDirectory = path.join(currentDir, '..', 'public', 'uploads');
     // Define the directory where you want to save the output file
-    const outputDirectory = path.join(__dirname, 'public', 'uploads');
+    // const outputDirectory = path.join(__dirname, 'public', 'uploads');
 
     // Ensure the output directory exists, if not, create it
     if (!fs.existsSync(outputDirectory)) {
