@@ -20,13 +20,15 @@ try {
     }
 
     return new Promise((resolve, reject) => {
-        const outputFile = path.join(outputDirectory, `${path.basename(inputFile, path.extname(inputFile))}.mp3`);
+        const otname = uuidv4();
+        const outputFile = `${outputDirectory}/${otname}.mp3`;
+
         ffmpeg(inputFile)
             .outputOptions(['-c:a libmp3lame', '-qscale:a 2'])
             .output(outputFile)
             .on('end', () => {
                 console.log('Conversion from WAV to MP3 finished');
-                resolve(`https://iluvnet.com/uploads/${outputFile}`);
+                resolve(`https://iluvnet.com/uploads/${otname}.mp3`);
             })
             .on('error', (err) => {
                 console.error('Error occurred:', err);
