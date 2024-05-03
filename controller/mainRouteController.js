@@ -218,7 +218,10 @@ const api = (req,res)=>{
     res.render('api',{title:"API | IMAGE TO PDF ",desc:pageData.comondesc,canonical:`https://iluvnet.com/api`}) 
 }
 
+const redirect = (req, res) => {
 
+    res.redirect('/blog')
+}
 
 const blogPage = async (req, res) => {
     try {
@@ -458,5 +461,6 @@ module.exports = {
     sitemap,
     guestPosting,
     guestRequest,
-    userLocation
+    userLocation,
+    redirect
 }
