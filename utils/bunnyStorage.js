@@ -14,7 +14,7 @@ const HOSTNAME = REGION ? `${REGION}.${BASE_HOSTNAME}` : BASE_HOSTNAME;
 const STORAGE_ZONE_NAME = 'pdftoolsstorage';
 const FILENAME_TO_UPLOAD = pdfToUpload;
 const FILE_PATH = `./public/pdf/${FILENAME_TO_UPLOAD}`;
-const ACCESS_KEY = 'c352072f-5a78-4d5b-867a580d3cfc-c439-4239';
+const ACCESS_KEY = 'PASTE-YOUR-KEY';
 
 
 

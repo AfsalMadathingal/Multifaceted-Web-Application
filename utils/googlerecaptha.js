@@ -11,7 +11,7 @@ const {RecaptchaEnterpriseServiceClient} = require('@google-cloud/recaptcha-ente
 async function createAssessment({
   // TODO: Replace the token and reCAPTCHA action variables before running the sample.
   projectID = "getreels-1710218330760",
-  recaptchaKey = "6LfEfpUpAAAAALsua5nXPX6RmAdb9BCPEZE-fC07",
+  recaptchaKey = "yourcaptcha_KEY",
   token = "action-token",
   recaptchaAction = "action-name",
 }) {

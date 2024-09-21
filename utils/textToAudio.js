@@ -17,7 +17,7 @@ const textToAudio = async function  (text)
         "MasterPitch": "0"
       }, {
         headers: {
-          "Authorization": "Bearer 0fcfe460-f267-11ee-9301-25198f49eca6",
+          "Authorization": "Bearer YOUR_ACCESS_TOKEN",
           "Content-Type": "application/json"
         }
       })
